@@ -1,0 +1,7 @@
+{
+ "generated_from": "data/processed/archive/forecast_log.jsonl",
+ "obs_latest": "2026-10-15",
+ "ledger_issues": 1,
+ "settled_lead_days": 0,
+ "per_lead": {}
+}

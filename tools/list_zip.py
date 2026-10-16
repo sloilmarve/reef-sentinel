@@ -1,0 +1,10 @@
+import zipfile, sys, os
+sys.stdout.reconfigure(encoding="utf-8", errors="replace")
+ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+ZIP = os.path.join(os.path.dirname(ROOT), "提交包", "ai4climate_reef_sentinel_submission.zip")
+z = zipfile.ZipFile(ZIP)
+ns = z.namelist()
+print("ENTRIES", len(ns))
+print("TOP", [n for n in ns if n.count("/") == 0])
+print("HAS_BACKUP", any("_backup_before_refresh" in n for n in ns))
+print("FIRST5", ns[:5])

@@ -1,0 +1,14 @@
+# Python 缓存
+__pycache__/
+*.pyc
+
+# 浏览器临时目录 / 刷新前的中间备份
+.edge/
+_backup_before_refresh/
+
+# 原始逐小时/逐日数据（体积大、可重新抓取；提交包 zip 里仍然保留全部原始数据）
+data/raw/
+
+# 本地临时文件
+*.tmp
+*.log

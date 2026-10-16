@@ -1,0 +1,203 @@
+{
+ "protocol": "3 folds (cuts 0.62 / 0.75 / 0.88, 180-day test windows) — identical to the metrics table in dashboard_data.json",
+ "features_base": 49,
+ "features_ext": 66,
+ "raw_levels": [
+  "wh_max",
+  "precipitation_sum",
+  "surge_trail",
+  "sst_mean",
+  "sst_max",
+  "sl_mean",
+  "sl_max",
+  "sl_min",
+  "sl_range",
+  "sl_still_trail",
+  "wp_mean",
+  "ww_mean",
+  "oc_mean",
+  "temperature_2m_mean",
+  "wind_speed_10m_max",
+  "wind_gusts_10m_max",
+  "relative_humidity_2m_mean"
+ ],
+ "configs": [
+  {
+   "id": "base_lam5",
+   "label": "基础特征 + 固定 λ=5",
+   "features": 49,
+   "lam_mode": "fixed-5",
+   "by_h": {
+    "1": {
+     "rmse": 0.143,
+     "auc": 0.78,
+     "lam": [
+      5,
+      5,
+      5
+     ]
+    },
+    "3": {
+     "rmse": 0.163,
+     "auc": 0.629,
+     "lam": [
+      5,
+      5,
+      5
+     ]
+    },
+    "7": {
+     "rmse": 0.1671,
+     "auc": 0.617,
+     "lam": [
+      5,
+      5,
+      5
+     ]
+    },
+    "14": {
+     "rmse": 0.17,
+     "auc": 0.595,
+     "lam": [
+      5,
+      5,
+      5
+     ]
+    }
+   }
+  },
+  {
+   "id": "base_inner",
+   "label": "基础特征 + 内窗 CV 选 λ",
+   "features": 49,
+   "lam_mode": "inner-cv",
+   "by_h": {
+    "1": {
+     "rmse": 0.1427,
+     "auc": 0.779,
+     "lam": [
+      100,
+      50,
+      50
+     ]
+    },
+    "3": {
+     "rmse": 0.1628,
+     "auc": 0.623,
+     "lam": [
+      400,
+      20,
+      200
+     ]
+    },
+    "7": {
+     "rmse": 0.1638,
+     "auc": 0.606,
+     "lam": [
+      6400,
+      100,
+      1600
+     ]
+    },
+    "14": {
+     "rmse": 0.1612,
+     "auc": 0.625,
+     "lam": [
+      800,
+      800,
+      1600
+     ]
+    }
+   }
+  },
+  {
+   "id": "ext_lam5",
+   "label": "基础 + 当日原始水平 + 固定 λ=5",
+   "features": 66,
+   "lam_mode": "fixed-5",
+   "by_h": {
+    "1": {
+     "rmse": 0.1414,
+     "auc": 0.795,
+     "lam": [
+      5,
+      5,
+      5
+     ]
+    },
+    "3": {
+     "rmse": 0.16,
+     "auc": 0.665,
+     "lam": [
+      5,
+      5,
+      5
+     ]
+    },
+    "7": {
+     "rmse": 0.166,
+     "auc": 0.624,
+     "lam": [
+      5,
+      5,
+      5
+     ]
+    },
+    "14": {
+     "rmse": 0.1707,
+     "auc": 0.582,
+     "lam": [
+      5,
+      5,
+      5
+     ]
+    }
+   }
+  },
+  {
+   "id": "ext_inner",
+   "label": "基础 + 当日原始水平 + 内窗 CV 选 λ（部署）",
+   "features": 66,
+   "lam_mode": "inner-cv",
+   "by_h": {
+    "1": {
+     "rmse": 0.1406,
+     "auc": 0.795,
+     "lam": [
+      100,
+      50,
+      50
+     ]
+    },
+    "3": {
+     "rmse": 0.1603,
+     "auc": 0.665,
+     "lam": [
+      400,
+      20,
+      100
+     ]
+    },
+    "7": {
+     "rmse": 0.1624,
+     "auc": 0.6,
+     "lam": [
+      6400,
+      3200,
+      1600
+     ]
+    },
+    "14": {
+     "rmse": 0.1615,
+     "auc": 0.615,
+     "lam": [
+      800,
+      800,
+      3200
+     ]
+    }
+   }
+  }
+ ],
+ "deployed": "ext_inner"
+}

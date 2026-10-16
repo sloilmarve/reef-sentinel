@@ -1,0 +1,65 @@
+name: daily-refresh
+
+on:
+  schedule:
+    - cron: "10 22 * * *"        # 每天 22:10 UTC = 次日 06:10 马来西亚时间（UTC+8）
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: daily-refresh
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20          # 正常一次 1-2 分钟（首次冷启动约 90 秒）
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: 安装依赖
+        run: pip install --no-cache-dir -r requirements.txt
+
+      - name: 抓取最新数据并重建成品页
+        run: python pipeline/refresh.py
+
+      - name: 把刷新后的成品页与数据提交回仓库
+        run: |
+          git config user.name  "reef-sentinel-bot"
+          git config user.email "actions@users.noreply.github.com"
+          # data/raw 也提交：这样第二天的增量抓取只补最近几天（否则每次都要重抓 4 年），
+          # 同时让 90 天验证 S1 的原始记录在仓库里连续可查
+          git add demo/index.html data/processed data/raw
+          git commit -m "daily refresh $(date -u +%Y-%m-%d)" || echo "no changes to commit"
+          git push
+
+      # configure-pages@v5：官方 Pages 起始模板（pages/static.yml）里就有这一步，
+      # 它校验仓库已把 Pages 源设为 "GitHub Actions"，并把站点信息注入后续步骤。
+      # 2026-10-16 已逐个核对本文件用到的 action 版本确实存在：
+      # checkout@v4 / setup-python@v5 / configure-pages@v5 / upload-pages-artifact@v3 / deploy-pages@v5
+      - uses: actions/configure-pages@v5
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: demo
+
+  deploy:
+    needs: refresh
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      # deploy-pages@v5：与 GitHub 官方 Pages 起始模板（static.yml）当前推荐的版本一致，
+      # 搭配 actions/upload-pages-artifact@v3 用（模板里也是这一对）
+      - id: deployment
+        uses: actions/deploy-pages@v5

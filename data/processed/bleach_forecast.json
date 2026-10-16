@@ -1,0 +1,288 @@
+{
+ "task": "未来 28 天内本站是否出现海洋热浪日（Hobday 2016/2018 口径）",
+ "protocol": {
+  "folds": 4,
+  "test_len": 90,
+  "pooled": true,
+  "note": "扩展窗前推：训练段拟合与标准化，测试段 90 天，预测池化后再算指标；阈值只来自训练段"
+ },
+ "label": {
+  "horizon_days": 28,
+  "positive_rate": 0.2977,
+  "n_samples": 1300,
+  "note": "标签来自 bleaching_watch.json 的事件区间"
+ },
+ "features": [
+  {
+   "key": "a0",
+   "cn": "当日热异常"
+  },
+  {
+   "key": "a_mean7",
+   "cn": "近 7 天平均热异常"
+  },
+  {
+   "key": "a_mean14",
+   "cn": "近 14 天平均热异常"
+  },
+  {
+   "key": "a_mean28",
+   "cn": "近 28 天平均热异常"
+  },
+  {
+   "key": "a_max14",
+   "cn": "近 14 天最强热异常"
+  },
+  {
+   "key": "a_max28",
+   "cn": "近 28 天最强热异常"
+  },
+  {
+   "key": "cum28",
+   "cn": "近 28 天累计正异常"
+  },
+  {
+   "key": "cum84",
+   "cn": "近 84 天累计正异常（= 档位规则同口径）"
+  },
+  {
+   "key": "chg7",
+   "cn": "7 天热异常变化"
+  },
+  {
+   "key": "slope14",
+   "cn": "14 天热异常斜率"
+  },
+  {
+   "key": "days_since_end",
+   "cn": "距上次热浪结束天数"
+  },
+  {
+   "key": "mhw_days28",
+   "cn": "近 28 天热浪日数"
+  },
+  {
+   "key": "sst",
+   "cn": "当日海温"
+  },
+  {
+   "key": "sst_mean28",
+   "cn": "近 28 天平均海温"
+  },
+  {
+   "key": "d_sst7",
+   "cn": "7 天海温变化"
+  },
+  {
+   "key": "sdoy_sin",
+   "cn": "季节（sin）"
+  },
+  {
+   "key": "sdoy_cos",
+   "cn": "季节（cos）"
+  }
+ ],
+ "metrics": {
+  "model": {
+   "pr_auc": 0.364,
+   "roc_auc": 0.706,
+   "brier": 0.278,
+   "precision_at_base_rate": 0.448,
+   "recall_at_base_rate": 0.448
+  },
+  "rule_baseline": {
+   "key": "cum84 > 档位 p90",
+   "pr_auc": 0.311,
+   "precision": 0.026,
+   "recall": 0.011
+  },
+  "base_rate": 0.242
+ },
+ "by_fold": [
+  {
+   "fold": 1,
+   "train_days": 585,
+   "test_start": "2024-09-22",
+   "test_end": "2024-12-20",
+   "test_n": 90,
+   "thr_f1": 0.7,
+   "model_pr_auc": 0.374,
+   "rule_pr_auc": 0.34,
+   "base_rate": 0.456
+  },
+  {
+   "fold": 2,
+   "train_days": 728,
+   "test_start": "2025-02-24",
+   "test_end": "2025-05-24",
+   "test_n": 90,
+   "thr_f1": 0.51,
+   "model_pr_auc": 0.977,
+   "rule_pr_auc": 0.258,
+   "base_rate": 0.222
+  },
+  {
+   "fold": 3,
+   "train_days": 871,
+   "test_start": "2025-07-17",
+   "test_end": "2025-10-14",
+   "test_n": 90,
+   "thr_f1": 0.48,
+   "model_pr_auc": 0.499,
+   "rule_pr_auc": 1.0,
+   "base_rate": 0.289
+  },
+  {
+   "fold": 4,
+   "train_days": 1014,
+   "test_start": "2025-12-07",
+   "test_end": "2026-03-06",
+   "test_n": 90,
+   "thr_f1": 0.57,
+   "model_pr_auc": 0.0,
+   "rule_pr_auc": 0.0,
+   "base_rate": 0.0
+  }
+ ],
+ "calibration": [
+  {
+   "bin": "0-20%",
+   "n": 134,
+   "obs": 0.082
+  },
+  {
+   "bin": "1-21%",
+   "n": 50,
+   "obs": 0.3
+  },
+  {
+   "bin": "2-22%",
+   "n": 31,
+   "obs": 0.097
+  },
+  {
+   "bin": "3-23%",
+   "n": 28,
+   "obs": 0.321
+  },
+  {
+   "bin": "4-24%",
+   "n": 117,
+   "obs": 0.419
+  }
+ ],
+ "agree_with_current": {
+  "rule_tier": "极高",
+  "rule_score_pctl": 92.1
+ },
+ "now": {
+  "date": "2026-09-18",
+  "prob_mhw_28d": 0.202,
+  "features": {
+   "a0": 0.101,
+   "a_mean7": 0.384,
+   "a_mean14": 0.159,
+   "a_mean28": -0.025,
+   "a_max14": 0.624,
+   "a_max28": 0.624,
+   "cum28": 3.736,
+   "cum84": 12.658,
+   "chg7": 0.449,
+   "slope14": 0.055,
+   "days_since_end": 44.0,
+   "mhw_days28": 0.0,
+   "sst": 30.121,
+   "sst_mean28": 29.844,
+   "d_sst7": -0.042,
+   "sdoy_sin": -0.975,
+   "sdoy_cos": -0.221
+  },
+  "coef_rank": [
+   {
+    "key": "a_mean28",
+    "cn": "近 28 天平均热异常",
+    "z": 2.473
+   },
+   {
+    "key": "days_since_end",
+    "cn": "距上次热浪结束天数",
+    "z": 2.094
+   },
+   {
+    "key": "sst",
+    "cn": "当日海温",
+    "z": -2.029
+   },
+   {
+    "key": "a0",
+    "cn": "当日热异常",
+    "z": 1.969
+   },
+   {
+    "key": "sst_mean28",
+    "cn": "近 28 天平均海温",
+    "z": 1.544
+   },
+   {
+    "key": "cum28",
+    "cn": "近 28 天累计正异常",
+    "z": -1.497
+   },
+   {
+    "key": "sdoy_sin",
+    "cn": "季节（sin）",
+    "z": -1.316
+   },
+   {
+    "key": "a_max28",
+    "cn": "近 28 天最强热异常",
+    "z": -1.287
+   },
+   {
+    "key": "cum84",
+    "cn": "近 84 天累计正异常（= 档位规则同口径）",
+    "z": 1.237
+   },
+   {
+    "key": "sdoy_cos",
+    "cn": "季节（cos）",
+    "z": 0.386
+   },
+   {
+    "key": "a_mean14",
+    "cn": "近 14 天平均热异常",
+    "z": 0.277
+   },
+   {
+    "key": "a_mean7",
+    "cn": "近 7 天平均热异常",
+    "z": 0.198
+   },
+   {
+    "key": "chg7",
+    "cn": "7 天热异常变化",
+    "z": -0.116
+   },
+   {
+    "key": "d_sst7",
+    "cn": "7 天海温变化",
+    "z": 0.107
+   },
+   {
+    "key": "a_max14",
+    "cn": "近 14 天最强热异常",
+    "z": 0.073
+   },
+   {
+    "key": "slope14",
+    "cn": "14 天热异常斜率",
+    "z": 0.061
+   },
+   {
+    "key": "mhw_days28",
+    "cn": "近 28 天热浪日数",
+    "z": -0.011
+   }
+  ]
+ }
+}

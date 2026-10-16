@@ -1,0 +1,4 @@
+# 运行 pipeline/refresh.py 只需要 numpy（标准库之外唯一的运行时依赖）
+numpy>=1.26
+# 只有重新生成 docs_word/*.docx 时才需要（pipeline/md2docx.py）
+python-docx>=1.1

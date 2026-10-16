@@ -1,0 +1,505 @@
+{
+ "source": "NOAA Coral Reef Watch 5 km v3.1 官方公开汇总（BAA 白化预警级别分区计数与占比）",
+ "url": "https://coralreefwatch.noaa.gov/data_current/5km/v3.1_op/daily/csv/5km-v3.1_stats-alert01_baa5_dailyupdate.csv",
+ "header": [
+  "Year",
+  " Month",
+  " Day",
+  " Date",
+  " Global #",
+  " Pacific #",
+  " Atlantic #",
+  " Indian #",
+  " Global %",
+  " Pacific %",
+  " Atlantic %",
+  " Indian %"
+ ],
+ "n_rows": 15178,
+ "span": [
+  "1985/03/25",
+  "2026/10/13"
+ ],
+ "latest": {
+  "date": "2026/10/13",
+  "global_n": 3056,
+  "pacific_n": 368,
+  "atlantic_n": 1810,
+  "indian_n": 878,
+  "global_pct": 0.05598,
+  "pacific_pct": 0.01026,
+  "atlantic_pct": 0.27067,
+  "indian_pct": 0.07289
+ },
+ "annual": [
+  {
+   "year": 1985,
+   "days": 282,
+   "global_max": 0.00359,
+   "pacific_max": 0.00499,
+   "atlantic_max": 0.0,
+   "indian_max": 0.01362,
+   "global_mean": 0.000163,
+   "pacific_mean": 8.8e-05
+  },
+  {
+   "year": 1986,
+   "days": 365,
+   "global_max": 0.0089,
+   "pacific_max": 0.01355,
+   "atlantic_max": 0.0,
+   "indian_max": 0.03993,
+   "global_mean": 0.001115,
+   "pacific_mean": 0.000885
+  },
+  {
+   "year": 1987,
+   "days": 365,
+   "global_max": 0.02988,
+   "pacific_max": 0.04548,
+   "atlantic_max": 0.00299,
+   "indian_max": 0.01594,
+   "global_mean": 0.002682,
+   "pacific_mean": 0.003665
+  },
+  {
+   "year": 1988,
+   "days": 366,
+   "global_max": 0.00778,
+   "pacific_max": 0.00806,
+   "atlantic_max": 0.00852,
+   "indian_max": 0.03528,
+   "global_mean": 0.000801,
+   "pacific_mean": 0.000576
+  },
+  {
+   "year": 1989,
+   "days": 365,
+   "global_max": 0.00425,
+   "pacific_max": 0.00647,
+   "atlantic_max": 0.0,
+   "indian_max": 0.01561,
+   "global_mean": 0.000255,
+   "pacific_mean": 8.2e-05
+  },
+  {
+   "year": 1990,
+   "days": 365,
+   "global_max": 0.00698,
+   "pacific_max": 0.0027,
+   "atlantic_max": 0.01107,
+   "indian_max": 0.0259,
+   "global_mean": 0.000415,
+   "pacific_mean": 0.000187
+  },
+  {
+   "year": 1991,
+   "days": 365,
+   "global_max": 0.0039,
+   "pacific_max": 0.00594,
+   "atlantic_max": 0.00015,
+   "indian_max": 0.00689,
+   "global_mean": 0.000325,
+   "pacific_mean": 0.000336
+  },
+  {
+   "year": 1992,
+   "days": 366,
+   "global_max": 0.00288,
+   "pacific_max": 0.00332,
+   "atlantic_max": 0.0,
+   "indian_max": 0.0044,
+   "global_mean": 0.000488,
+   "pacific_mean": 0.000644
+  },
+  {
+   "year": 1993,
+   "days": 365,
+   "global_max": 0.00126,
+   "pacific_max": 0.00192,
+   "atlantic_max": 0.0,
+   "indian_max": 0.00174,
+   "global_mean": 0.000101,
+   "pacific_mean": 0.000127
+  },
+  {
+   "year": 1994,
+   "days": 365,
+   "global_max": 0.00253,
+   "pacific_max": 0.00385,
+   "atlantic_max": 0.0,
+   "indian_max": 0.00457,
+   "global_mean": 0.000381,
+   "pacific_mean": 0.000506
+  },
+  {
+   "year": 1995,
+   "days": 365,
+   "global_max": 0.0072,
+   "pacific_max": 0.00201,
+   "atlantic_max": 0.05877,
+   "indian_max": 0.00938,
+   "global_mean": 0.000665,
+   "pacific_mean": 8e-05
+  },
+  {
+   "year": 1996,
+   "days": 366,
+   "global_max": 0.01388,
+   "pacific_max": 0.02114,
+   "atlantic_max": 0.00075,
+   "indian_max": 0.01777,
+   "global_mean": 0.001212,
+   "pacific_mean": 0.001603
+  },
+  {
+   "year": 1997,
+   "days": 365,
+   "global_max": 0.00205,
+   "pacific_max": 0.0029,
+   "atlantic_max": 0.00673,
+   "indian_max": 0.00033,
+   "global_mean": 0.000481,
+   "pacific_mean": 0.000725
+  },
+  {
+   "year": 1998,
+   "days": 365,
+   "global_max": 0.04759,
+   "pacific_max": 0.05267,
+   "atlantic_max": 0.13339,
+   "indian_max": 0.08261,
+   "global_mean": 0.006478,
+   "pacific_mean": 0.004543
+  },
+  {
+   "year": 1999,
+   "days": 365,
+   "global_max": 0.00397,
+   "pacific_max": 0.00192,
+   "atlantic_max": 0.03051,
+   "indian_max": 0.00639,
+   "global_mean": 0.000337,
+   "pacific_mean": 7.8e-05
+  },
+  {
+   "year": 2000,
+   "days": 366,
+   "global_max": 0.01713,
+   "pacific_max": 0.0256,
+   "atlantic_max": 0.0,
+   "indian_max": 0.02159,
+   "global_mean": 0.001684,
+   "pacific_mean": 0.002276
+  },
+  {
+   "year": 2001,
+   "days": 365,
+   "global_max": 0.01885,
+   "pacific_max": 0.02869,
+   "atlantic_max": 0.0,
+   "indian_max": 0.01395,
+   "global_mean": 0.002322,
+   "pacific_mean": 0.003262
+  },
+  {
+   "year": 2002,
+   "days": 365,
+   "global_max": 0.01539,
+   "pacific_max": 0.02342,
+   "atlantic_max": 0.0009,
+   "indian_max": 0.01943,
+   "global_mean": 0.00159,
+   "pacific_mean": 0.002261
+  },
+  {
+   "year": 2003,
+   "days": 365,
+   "global_max": 0.00932,
+   "pacific_max": 0.01364,
+   "atlantic_max": 0.04426,
+   "indian_max": 0.03138,
+   "global_mean": 0.001446,
+   "pacific_mean": 0.000734
+  },
+  {
+   "year": 2004,
+   "days": 366,
+   "global_max": 0.03257,
+   "pacific_max": 0.04958,
+   "atlantic_max": 0.09032,
+   "indian_max": 0.00249,
+   "global_mean": 0.003313,
+   "pacific_mean": 0.003803
+  },
+  {
+   "year": 2005,
+   "days": 365,
+   "global_max": 0.04664,
+   "pacific_max": 0.0109,
+   "atlantic_max": 0.38044,
+   "indian_max": 0.01876,
+   "global_mean": 0.00536,
+   "pacific_mean": 0.000935
+  },
+  {
+   "year": 2006,
+   "days": 365,
+   "global_max": 0.01075,
+   "pacific_max": 0.01637,
+   "atlantic_max": 0.04441,
+   "indian_max": 0.00349,
+   "global_mean": 0.001896,
+   "pacific_mean": 0.002358
+  },
+  {
+   "year": 2007,
+   "days": 365,
+   "global_max": 0.01682,
+   "pacific_max": 0.01681,
+   "atlantic_max": 0.12203,
+   "indian_max": 0.02134,
+   "global_mean": 0.001358,
+   "pacific_mean": 0.001013
+  },
+  {
+   "year": 2008,
+   "days": 366,
+   "global_max": 0.02433,
+   "pacific_max": 0.03703,
+   "atlantic_max": 0.0818,
+   "indian_max": 0.00922,
+   "global_mean": 0.00183,
+   "pacific_mean": 0.001477
+  },
+  {
+   "year": 2009,
+   "days": 365,
+   "global_max": 0.03942,
+   "pacific_max": 0.05906,
+   "atlantic_max": 0.04382,
+   "indian_max": 0.01046,
+   "global_mean": 0.005015,
+   "pacific_mean": 0.006999
+  },
+  {
+   "year": 2010,
+   "days": 365,
+   "global_max": 0.0609,
+   "pacific_max": 0.06271,
+   "atlantic_max": 0.29595,
+   "indian_max": 0.10154,
+   "global_mean": 0.015754,
+   "pacific_mean": 0.011469
+  },
+  {
+   "year": 2011,
+   "days": 365,
+   "global_max": 0.01865,
+   "pacific_max": 0.02621,
+   "atlantic_max": 0.15194,
+   "indian_max": 0.00872,
+   "global_mean": 0.003451,
+   "pacific_mean": 0.002724
+  },
+  {
+   "year": 2012,
+   "days": 366,
+   "global_max": 0.00976,
+   "pacific_max": 0.01408,
+   "atlantic_max": 0.02811,
+   "indian_max": 0.03885,
+   "global_mean": 0.001872,
+   "pacific_mean": 0.001311
+  },
+  {
+   "year": 2013,
+   "days": 365,
+   "global_max": 0.00916,
+   "pacific_max": 0.00931,
+   "atlantic_max": 0.00972,
+   "indian_max": 0.03869,
+   "global_mean": 0.001514,
+   "pacific_mean": 0.000906
+  },
+  {
+   "year": 2014,
+   "days": 365,
+   "global_max": 0.02929,
+   "pacific_max": 0.04264,
+   "atlantic_max": 0.04755,
+   "indian_max": 0.04118,
+   "global_mean": 0.005716,
+   "pacific_mean": 0.007233
+  },
+  {
+   "year": 2015,
+   "days": 365,
+   "global_max": 0.05138,
+   "pacific_max": 0.07755,
+   "atlantic_max": 0.19874,
+   "indian_max": 0.05621,
+   "global_mean": 0.007812,
+   "pacific_mean": 0.006932
+  },
+  {
+   "year": 2016,
+   "days": 366,
+   "global_max": 0.14113,
+   "pacific_max": 0.15512,
+   "atlantic_max": 0.06101,
+   "indian_max": 0.23528,
+   "global_mean": 0.029735,
+   "pacific_mean": 0.028526
+  },
+  {
+   "year": 2017,
+   "days": 365,
+   "global_max": 0.08523,
+   "pacific_max": 0.12833,
+   "atlantic_max": 0.14939,
+   "indian_max": 0.02939,
+   "global_mean": 0.014829,
+   "pacific_mean": 0.018645
+  },
+  {
+   "year": 2018,
+   "days": 365,
+   "global_max": 0.02693,
+   "pacific_max": 0.03714,
+   "atlantic_max": 0.01077,
+   "indian_max": 0.06633,
+   "global_mean": 0.004748,
+   "pacific_mean": 0.005069
+  },
+  {
+   "year": 2019,
+   "days": 365,
+   "global_max": 0.04414,
+   "pacific_max": 0.03215,
+   "atlantic_max": 0.27367,
+   "indian_max": 0.06036,
+   "global_mean": 0.011005,
+   "pacific_mean": 0.007384
+  },
+  {
+   "year": 2020,
+   "days": 366,
+   "global_max": 0.08776,
+   "pacific_max": 0.12718,
+   "atlantic_max": 0.25183,
+   "indian_max": 0.10112,
+   "global_mean": 0.021014,
+   "pacific_mean": 0.018192
+  },
+  {
+   "year": 2021,
+   "days": 365,
+   "global_max": 0.07851,
+   "pacific_max": 0.11631,
+   "atlantic_max": 0.10184,
+   "indian_max": 0.0851,
+   "global_mean": 0.014348,
+   "pacific_mean": 0.016768
+  },
+  {
+   "year": 2022,
+   "days": 365,
+   "global_max": 0.09071,
+   "pacific_max": 0.13505,
+   "atlantic_max": 0.14655,
+   "indian_max": 0.0406,
+   "global_mean": 0.021155,
+   "pacific_mean": 0.027296
+  },
+  {
+   "year": 2023,
+   "days": 365,
+   "global_max": 0.14141,
+   "pacific_max": 0.07111,
+   "atlantic_max": 0.87304,
+   "indian_max": 0.18896,
+   "global_mean": 0.042291,
+   "pacific_mean": 0.018343
+  },
+  {
+   "year": 2024,
+   "days": 366,
+   "global_max": 0.15747,
+   "pacific_max": 0.20651,
+   "atlantic_max": 0.82025,
+   "indian_max": 0.17343,
+   "global_mean": 0.072845,
+   "pacific_mean": 0.058081
+  },
+  {
+   "year": 2025,
+   "days": 365,
+   "global_max": 0.14513,
+   "pacific_max": 0.19901,
+   "atlantic_max": 0.59249,
+   "indian_max": 0.11241,
+   "global_mean": 0.0441,
+   "pacific_mean": 0.041621
+  },
+  {
+   "year": 2026,
+   "days": 286,
+   "global_max": 0.10904,
+   "pacific_max": 0.11263,
+   "atlantic_max": 0.57096,
+   "indian_max": 0.11814,
+   "global_mean": 0.03615,
+   "pacific_mean": 0.02727
+  }
+ ],
+ "station_table": [
+  {
+   "year": 2022,
+   "compound": 1,
+   "hot_days": 0,
+   "global_max": 0.09071,
+   "pacific_max": 0.13505,
+   "days": 365
+  },
+  {
+   "year": 2023,
+   "compound": 12,
+   "hot_days": 36,
+   "global_max": 0.14141,
+   "pacific_max": 0.07111,
+   "days": 365
+  },
+  {
+   "year": 2024,
+   "compound": 15,
+   "hot_days": 46,
+   "global_max": 0.15747,
+   "pacific_max": 0.20651,
+   "days": 366
+  },
+  {
+   "year": 2025,
+   "compound": 12,
+   "hot_days": 17,
+   "global_max": 0.14513,
+   "pacific_max": 0.19901,
+   "days": 365
+  },
+  {
+   "year": 2026,
+   "compound": 4,
+   "hot_days": 41,
+   "global_max": 0.10904,
+   "pacific_max": 0.11263,
+   "days": 286
+  }
+ ],
+ "record": {
+  "global_year": 2024,
+  "global_max": 0.15747,
+  "pacific_year": 2024,
+  "pacific_max": 0.20651,
+  "early_max_global": 0.04759
+ }
+}

@@ -1,0 +1,5 @@
+{
+  "site_url": "",
+  "_说明": "填上公开网址（GitHub Pages / Cloudflare Pages）后重跑 pipeline/refresh.py，成品页页脚会自动出现在线地址；留空表示当前只有离线单文件形态。",
+  "repo_url": ""
+}

@@ -368,6 +368,8 @@ CODE_CHECKS = [
      "跨站点取数与复核（fetch_multisite.py / multisite_check.py）与分类器诊断（diagnose.py）都已并入 refresh 链，docs/02 工具表也写明"),
     ("已被取代" in readp("tools/noaa_access_probe/fetch_vs_sabah.py") and "pipeline/fetch_noaa_vs.py" in readp("tools/noaa_access_probe/fetch_vs_sabah.py") and "不再单独运行" in d2txt,
      "官方虚拟站点抓取的探路脚本已标注被 pipeline/fetch_noaa_vs.py 取代、只作过程证据（docs/02 工具表也写明不再单独运行）"),
+    (os.path.exists(os.path.join(ROOT, "tools", "reviewer_repro.py")) and "reviewer_repro.py" in d2txt and "reviewer_repro.py" in d3txt and "reviewer_repro.py" in readp("tools/preflight.py"),
+     "评审视角复算 tools/reviewer_repro.py 已实现、写进 docs/02 与 docs/03，并作为最后一步并入 tools/preflight.py"),
 ]
 for good, msg in CODE_CHECKS:
     if good:

@@ -13,6 +13,7 @@ STEPS = [
     ("重新打包提交包", ["tools/pack_submission.py"], "ENTRIES"),
     ("提交包自检（五份材料 / 顶层说明 / 新鲜度 / 占位符）", ["tools/submission_selfcheck.py"], "RESULT ALL PASS"),
     ("90 天验证计划结算器自检（S1/S2 的算分逻辑）", ["tools/settle_forecast.py", "--selftest"], "SELFTEST OK"),
+    ("评审视角复算：解压提交包到临时目录、离线重跑 7 步并与包内页面逐字节比对", ["tools/reviewer_repro.py"], "RESULT ALL PASS"),
 ]
 
 def run(script):

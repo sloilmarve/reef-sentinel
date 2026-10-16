@@ -11,6 +11,13 @@
 输出 data/external/noaa_crw/vs_sabah_daily.csv（date,sst_min,sst_max,sst90hs,ssta90hs,hs90,dhw,alert）
 只保留 2022-10-01 起，避免把 1.2 MB 全史（1985 至今）塞进提交包；需要时可重跑本脚本延伸。
 用法：python tools/noaa_access_probe/fetch_vs_sabah.py [本地 sabah.txt 路径（离线时用）]
+
+【状态：已被取代，保留为过程证据】
+本脚本是最早的「只抓 Sabah 一个站」的手工版本。它的能力已经**提升为正式流水线的一步**：
+`pipeline/fetch_noaa_vs.py`（在 pipeline/refresh.py 的 STEPS 里每天跑）现在抓两个官方虚拟站点
+（Sabah + Palau）、失败时保留旧文件并打 WARN、先写 .tmp 再 os.replace。
+两者写的是同一个 CSV（data/external/noaa_crw/vs_sabah_daily.csv），因此**不要在本机单独运行本脚本**，
+否则会用手工版本覆盖流水线的产物。保留它的意义是记录「官方逐日序列这条路是怎么走通的」。
 """
 import io, os, sys, urllib.request
 

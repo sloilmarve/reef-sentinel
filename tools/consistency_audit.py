@@ -362,8 +362,12 @@ CODE_CHECKS = [
      "docs/02 写明特征严格因果、无前视泄漏（分析口径与预报口径的拆分与验证方式）"),
     ("2024-06-12" in d2txt and "2025-01-29" in d2txt and "1,406" in d2txt,
      "docs/02 如实披露海平面/增水的两段缺测（2024-06-12 起 7 天、2025-01-29 起 11 天，共 18 天）与缺测日不计该项压力的处理"),
+    ("口径说明" in d2txt and "1,404 天" in d2txt and "1,446 天" in d2txt and "口径提醒" in _demo_html,
+     "保护优先级百分位（三站点数据集 1,404 天）与白化识别百分位（主记录 1,446 天）的记录口径差异，已在 docs/02 与成品页并列标注"),
     (all(s in r3txt for s in ("fetch_multisite.py", "multisite_check.py", "diagnose.py")) and "在每日链条里" in d2txt,
      "跨站点取数与复核（fetch_multisite.py / multisite_check.py）与分类器诊断（diagnose.py）都已并入 refresh 链，docs/02 工具表也写明"),
+    ("已被取代" in readp("tools/noaa_access_probe/fetch_vs_sabah.py") and "pipeline/fetch_noaa_vs.py" in readp("tools/noaa_access_probe/fetch_vs_sabah.py") and "不再单独运行" in d2txt,
+     "官方虚拟站点抓取的探路脚本已标注被 pipeline/fetch_noaa_vs.py 取代、只作过程证据（docs/02 工具表也写明不再单独运行）"),
 ]
 for good, msg in CODE_CHECKS:
     if good:

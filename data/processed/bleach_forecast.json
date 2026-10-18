@@ -8,8 +8,8 @@
  },
  "label": {
   "horizon_days": 28,
-  "positive_rate": 0.2977,
-  "n_samples": 1300,
+  "positive_rate": 0.2982,
+  "n_samples": 1301,
   "note": "标签来自 bleaching_watch.json 的事件区间"
  },
  "features": [
@@ -84,15 +84,15 @@
  ],
  "metrics": {
   "model": {
-   "pr_auc": 0.364,
-   "roc_auc": 0.706,
+   "pr_auc": 0.363,
+   "roc_auc": 0.705,
    "brier": 0.278,
    "precision_at_base_rate": 0.448,
    "recall_at_base_rate": 0.448
   },
   "rule_baseline": {
    "key": "cum84 > 档位 p90",
-   "pr_auc": 0.311,
+   "pr_auc": 0.309,
    "precision": 0.026,
    "recall": 0.011
   },
@@ -106,7 +106,7 @@
    "test_end": "2024-12-20",
    "test_n": 90,
    "thr_f1": 0.7,
-   "model_pr_auc": 0.374,
+   "model_pr_auc": 0.375,
    "rule_pr_auc": 0.34,
    "base_rate": 0.456
   },
@@ -116,9 +116,9 @@
    "test_start": "2025-02-24",
    "test_end": "2025-05-24",
    "test_n": 90,
-   "thr_f1": 0.51,
-   "model_pr_auc": 0.977,
-   "rule_pr_auc": 0.258,
+   "thr_f1": 0.5,
+   "model_pr_auc": 0.979,
+   "rule_pr_auc": 0.254,
    "base_rate": 0.222
   },
   {
@@ -128,7 +128,7 @@
    "test_end": "2025-10-14",
    "test_n": 90,
    "thr_f1": 0.48,
-   "model_pr_auc": 0.499,
+   "model_pr_auc": 0.493,
    "rule_pr_auc": 1.0,
    "base_rate": 0.289
   },
@@ -147,13 +147,13 @@
  "calibration": [
   {
    "bin": "0-20%",
-   "n": 134,
-   "obs": 0.082
+   "n": 135,
+   "obs": 0.081
   },
   {
    "bin": "1-21%",
-   "n": 50,
-   "obs": 0.3
+   "n": 49,
+   "obs": 0.306
   },
   {
    "bin": "2-22%",
@@ -162,126 +162,126 @@
   },
   {
    "bin": "3-23%",
-   "n": 28,
-   "obs": 0.321
+   "n": 29,
+   "obs": 0.345
   },
   {
    "bin": "4-24%",
-   "n": 117,
-   "obs": 0.419
+   "n": 116,
+   "obs": 0.414
   }
  ],
  "agree_with_current": {
   "rule_tier": "极高",
-  "rule_score_pctl": 92.2
+  "rule_score_pctl": 94.3
  },
  "now": {
-  "date": "2026-09-18",
-  "prob_mhw_28d": 0.202,
+  "date": "2026-09-19",
+  "prob_mhw_28d": 0.136,
   "features": {
-   "a0": 0.101,
-   "a_mean7": 0.384,
-   "a_mean14": 0.159,
-   "a_mean28": -0.025,
+   "a0": -0.065,
+   "a_mean7": 0.327,
+   "a_mean14": 0.186,
+   "a_mean28": -0.028,
    "a_max14": 0.624,
    "a_max28": 0.624,
-   "cum28": 3.736,
-   "cum84": 12.658,
-   "chg7": 0.449,
-   "slope14": 0.055,
-   "days_since_end": 44.0,
+   "cum28": 3.531,
+   "cum84": 12.487,
+   "chg7": 0.282,
+   "slope14": 0.029,
+   "days_since_end": 45.0,
    "mhw_days28": 0.0,
-   "sst": 30.121,
-   "sst_mean28": 29.844,
-   "d_sst7": -0.042,
-   "sdoy_sin": -0.975,
-   "sdoy_cos": -0.221
+   "sst": 29.979,
+   "sst_mean28": 29.847,
+   "d_sst7": -0.254,
+   "sdoy_sin": -0.979,
+   "sdoy_cos": -0.204
   },
   "coef_rank": [
    {
     "key": "a_mean28",
     "cn": "近 28 天平均热异常",
-    "z": 2.473
+    "z": 2.457
    },
    {
     "key": "days_since_end",
     "cn": "距上次热浪结束天数",
-    "z": 2.093
+    "z": 2.076
    },
    {
     "key": "sst",
     "cn": "当日海温",
-    "z": -2.029
+    "z": -2.024
    },
    {
     "key": "a0",
     "cn": "当日热异常",
-    "z": 1.97
+    "z": 1.973
    },
    {
     "key": "sst_mean28",
     "cn": "近 28 天平均海温",
-    "z": 1.544
+    "z": 1.545
    },
    {
     "key": "cum28",
     "cn": "近 28 天累计正异常",
-    "z": -1.497
+    "z": -1.495
    },
    {
     "key": "sdoy_sin",
     "cn": "季节（sin）",
-    "z": -1.316
+    "z": -1.321
    },
    {
     "key": "a_max28",
     "cn": "近 28 天最强热异常",
-    "z": -1.287
+    "z": -1.295
    },
    {
     "key": "cum84",
     "cn": "近 84 天累计正异常（= 档位规则同口径）",
-    "z": 1.237
+    "z": 1.246
    },
    {
     "key": "sdoy_cos",
     "cn": "季节（cos）",
-    "z": 0.386
+    "z": 0.395
    },
    {
     "key": "a_mean14",
     "cn": "近 14 天平均热异常",
-    "z": 0.277
+    "z": 0.276
    },
    {
     "key": "a_mean7",
     "cn": "近 7 天平均热异常",
-    "z": 0.198
+    "z": 0.197
    },
    {
     "key": "chg7",
     "cn": "7 天热异常变化",
-    "z": -0.116
+    "z": -0.114
    },
    {
     "key": "d_sst7",
     "cn": "7 天海温变化",
-    "z": 0.107
+    "z": 0.103
    },
    {
     "key": "a_max14",
     "cn": "近 14 天最强热异常",
-    "z": 0.073
+    "z": 0.068
    },
    {
     "key": "slope14",
     "cn": "14 天热异常斜率",
-    "z": 0.061
+    "z": 0.059
    },
    {
     "key": "mhw_days28",
     "cn": "近 28 天热浪日数",
-    "z": -0.011
+    "z": -0.015
    }
   ]
  }

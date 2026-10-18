@@ -2,10 +2,10 @@
  "method": "Hobday et al. (2016) 海洋热浪定义 + Hobday et al. (2018) I-IV 强度分级；本站逐日海温（Open-Meteo Marine 日均）",
  "baseline": {
   "first": "2022-11-23",
-  "last": "2026-10-16",
-  "n_days": 1412,
+  "last": "2026-10-17",
+  "n_days": 1413,
   "clim_win_days": 31,
-  "anom_p90": 0.3908,
+  "anom_p90": 0.3907,
   "sst_p90": 30.667,
   "mmm_base_year": 2023,
   "mmm_month": "2023-05",
@@ -18,9 +18,9 @@
  },
  "tier_rule": {
   "metric": "近 84 天累计正向海温异常（摄氏度 天）",
-  "p50": 10.586,
-  "p75": 15.611,
-  "p90": 17.872,
+  "p50": 10.568,
+  "p75": 15.62,
+  "p90": 17.867,
   "levels": [
    "低",
    "中",
@@ -34,7 +34,7 @@
    "end": "2023-11-10",
    "days": 11,
    "max_anom": 0.6046,
-   "cum_intensity": 5.6411,
+   "cum_intensity": 5.6309,
    "peak_sst": 30.88,
    "category": 1
   },
@@ -141,8 +141,8 @@
    "start": "2026-09-24",
    "end": "2026-10-06",
    "days": 13,
-   "max_anom": 0.8499,
-   "cum_intensity": 8.1793,
+   "max_anom": 0.845,
+   "cum_intensity": 8.1556,
    "peak_sst": 31.07,
    "category": 2
   }
@@ -163,7 +163,7 @@
    "hot_days": 36,
    "mhw_days": 11,
    "events": 1,
-   "max_cum": 5.641,
+   "max_cum": 5.631,
    "max_sst": 31.22
   },
   {
@@ -186,29 +186,29 @@
   },
   {
    "year": 2026,
-   "days": 289,
-   "hot_days": 41,
+   "days": 290,
+   "hot_days": 42,
    "mhw_days": 35,
    "events": 4,
-   "max_cum": 8.179,
+   "max_cum": 8.156,
    "max_sst": 31.45
   }
  ],
  "now": {
   "window_days": 84,
-  "start": "2026-07-25",
-  "end": "2026-10-16",
-  "cum_anom": 18.222,
-  "percentile": 92.2,
+  "start": "2026-07-26",
+  "end": "2026-10-17",
+  "cum_anom": 18.616,
+  "percentile": 94.3,
   "tier": 3,
   "tier_txt": "极高",
-  "hot_days": 12,
+  "hot_days": 13,
   "last_event": {
    "start": "2026-09-24",
    "end": "2026-10-06",
    "days": 13,
-   "max_anom": 0.8499,
-   "cum_intensity": 8.1793,
+   "max_anom": 0.845,
+   "cum_intensity": 8.1556,
    "peak_sst": 31.07,
    "category": 2
   }
@@ -218,7 +218,7 @@
   "month_first": "2022-12",
   "month_last": "2026-09",
   "r_cum_pacific": 0.303,
-  "r_cum_global": 0.296,
+  "r_cum_global": 0.295,
   "r_hot_pacific": -0.031,
   "years": [
    2023,
@@ -227,10 +227,10 @@
    2026
   ],
   "year_station_cum": [
-   27.241,
-   64.537,
-   42.574,
-   41.735
+   27.161,
+   64.467,
+   42.505,
+   42.129
   ],
   "year_noaa_pacific_max": [
    0.07111,
@@ -298,12 +298,12 @@
    },
    {
     "month": "2023-10",
-    "cum_anom": 4.907,
+    "cum_anom": 4.833,
     "noaa_pacific": 0.01372
    },
    {
     "month": "2023-11",
-    "cum_anom": 8.619,
+    "cum_anom": 8.614,
     "noaa_pacific": 0.01018
    },
    {
@@ -358,7 +358,7 @@
    },
    {
     "month": "2024-10",
-    "cum_anom": 1.466,
+    "cum_anom": 1.396,
     "noaa_pacific": 0.03566
    },
    {
@@ -413,7 +413,7 @@
    },
    {
     "month": "2025-10",
-    "cum_anom": 2.125,
+    "cum_anom": 2.057,
     "noaa_pacific": 0.01127
    },
    {
@@ -619,9 +619,9 @@
    "station_mmm": 30.517,
    "sst_bias_station_minus_official": -0.013,
    "r_sst": 0.717,
-   "r_anom": 0.467,
+   "r_anom": 0.466,
    "r_cum84_vs_dhw": 0.387,
-   "r_event_intensity_vs_max_dhw": 0.58,
+   "r_event_intensity_vs_max_dhw": 0.579,
    "latest_date": "2026-10-15",
    "latest_dhw": 14.199,
    "latest_alert": 4,

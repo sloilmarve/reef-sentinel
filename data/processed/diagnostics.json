@@ -2,29 +2,29 @@
   "1": {
     "prev": 0.029,
     "model_auc": 0.819,
-    "clim_auc": 0.503,
-    "persistence_auc": 0.653,
+    "clim_auc": 0.504,
+    "persistence_auc": 0.73,
     "brier": 0.027
   },
   "3": {
     "prev": 0.062,
     "model_auc": 0.66,
-    "clim_auc": 0.421,
-    "persistence_auc": 0.84,
+    "clim_auc": 0.426,
+    "persistence_auc": 0.884,
     "brier": 0.077
   },
   "7": {
     "prev": 0.129,
-    "model_auc": 0.527,
-    "clim_auc": 0.446,
-    "persistence_auc": 0.9,
+    "model_auc": 0.526,
+    "clim_auc": 0.447,
+    "persistence_auc": 0.94,
     "brier": 0.172
   },
   "14": {
     "prev": 0.246,
     "model_auc": 0.57,
-    "clim_auc": 0.489,
-    "persistence_auc": 0.945,
-    "brier": 0.278
+    "clim_auc": 0.493,
+    "persistence_auc": 0.954,
+    "brier": 0.279
   }
 }

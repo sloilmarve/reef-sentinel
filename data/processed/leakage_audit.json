@@ -1,7 +1,7 @@
 {
  "task": "model inputs are strictly causal (no feature reads day t+1 or later)",
  "protocol": "rebuild every model column from the raw inputs of the truncated prefix 0..T with the record's causal thresholds, then compare with the stored value",
- "n_days": 1446,
+ "n_days": 1447,
  "feature_count": 66,
  "causal_thresholds": {
   "wh_max": 0.4,
@@ -38,15 +38,15 @@
    "max_abs_diff": 0.0
   },
   {
-   "cut": "2026-10-09",
-   "t": 1438,
+   "cut": "2026-10-10",
+   "t": 1439,
    "missing": [],
    "n_compared": 66,
    "max_abs_diff": 0.0
   },
   {
-   "cut": "2026-10-15",
-   "t": 1444,
+   "cut": "2026-10-16",
+   "t": 1445,
    "missing": [],
    "n_compared": 66,
    "max_abs_diff": 0.0
@@ -94,32 +94,32 @@
     "target": "n_haz（记录口径，含中心化残差）",
     "horizons": {
      "1": {
-      "model_rmse": 0.1512,
-      "pers_rmse": 0.1886,
-      "model_auc": 0.772,
-      "pers_auc": 0.569,
+      "model_rmse": 0.1513,
+      "pers_rmse": 0.1887,
+      "model_auc": 0.771,
+      "pers_auc": 0.568,
       "pos_rate": 0.2819
      },
      "3": {
-      "model_rmse": 0.1689,
-      "pers_rmse": 0.2021,
-      "model_auc": 0.64,
-      "pers_auc": 0.44,
-      "pos_rate": 0.2778
+      "model_rmse": 0.1693,
+      "pers_rmse": 0.202,
+      "model_auc": 0.638,
+      "pers_auc": 0.441,
+      "pos_rate": 0.2792
      },
      "7": {
-      "model_rmse": 0.1725,
-      "pers_rmse": 0.2008,
-      "model_auc": 0.582,
-      "pers_auc": 0.444,
-      "pos_rate": 0.2778
+      "model_rmse": 0.1724,
+      "pers_rmse": 0.2007,
+      "model_auc": 0.584,
+      "pers_auc": 0.445,
+      "pos_rate": 0.2792
      },
      "14": {
-      "model_rmse": 0.1696,
-      "pers_rmse": 0.1914,
-      "model_auc": 0.628,
+      "model_rmse": 0.1695,
+      "pers_rmse": 0.191,
+      "model_auc": 0.627,
       "pers_auc": 0.542,
-      "pos_rate": 0.275
+      "pos_rate": 0.2736
      }
     }
    },
@@ -132,32 +132,32 @@
     "target": "n_haz_t（严格因果口径）",
     "horizons": {
      "1": {
-      "model_rmse": 0.1546,
-      "pers_rmse": 0.1878,
-      "model_auc": 0.759,
-      "pers_auc": 0.587,
+      "model_rmse": 0.1545,
+      "pers_rmse": 0.1877,
+      "model_auc": 0.76,
+      "pers_auc": 0.588,
       "pos_rate": 0.2625
      },
      "3": {
-      "model_rmse": 0.1724,
-      "pers_rmse": 0.1997,
-      "model_auc": 0.588,
-      "pers_auc": 0.49,
-      "pos_rate": 0.2583
+      "model_rmse": 0.1726,
+      "pers_rmse": 0.1999,
+      "model_auc": 0.587,
+      "pers_auc": 0.489,
+      "pos_rate": 0.2597
      },
      "7": {
-      "model_rmse": 0.1727,
+      "model_rmse": 0.1728,
       "pers_rmse": 0.2026,
-      "model_auc": 0.532,
-      "pers_auc": 0.458,
-      "pos_rate": 0.2583
+      "model_auc": 0.534,
+      "pers_auc": 0.459,
+      "pos_rate": 0.2597
      },
      "14": {
-      "model_rmse": 0.1719,
-      "pers_rmse": 0.1945,
-      "model_auc": 0.562,
-      "pers_auc": 0.526,
-      "pos_rate": 0.2583
+      "model_rmse": 0.1718,
+      "pers_rmse": 0.1944,
+      "model_auc": 0.561,
+      "pers_auc": 0.525,
+      "pos_rate": 0.2569
      }
     }
    },
@@ -166,32 +166,32 @@
     "target": "n_haz_t（严格因果口径）",
     "horizons": {
      "1": {
-      "model_rmse": 0.1533,
-      "pers_rmse": 0.187,
+      "model_rmse": 0.1534,
+      "pers_rmse": 0.1869,
       "model_auc": 0.759,
-      "pers_auc": 0.596,
+      "pers_auc": 0.595,
       "pos_rate": 0.2625
      },
      "3": {
-      "model_rmse": 0.1719,
-      "pers_rmse": 0.1997,
-      "model_auc": 0.599,
-      "pers_auc": 0.494,
-      "pos_rate": 0.2583
-     },
-     "7": {
-      "model_rmse": 0.1722,
-      "pers_rmse": 0.2026,
-      "model_auc": 0.55,
-      "pers_auc": 0.468,
+      "model_rmse": 0.1721,
+      "pers_rmse": 0.1999,
+      "model_auc": 0.597,
+      "pers_auc": 0.492,
       "pos_rate": 0.2597
      },
+     "7": {
+      "model_rmse": 0.1724,
+      "pers_rmse": 0.2025,
+      "model_auc": 0.551,
+      "pers_auc": 0.469,
+      "pos_rate": 0.2611
+     },
      "14": {
-      "model_rmse": 0.1716,
-      "pers_rmse": 0.1963,
+      "model_rmse": 0.1715,
+      "pers_rmse": 0.1961,
       "model_auc": 0.566,
-      "pers_auc": 0.518,
-      "pos_rate": 0.2583
+      "pers_auc": 0.517,
+      "pos_rate": 0.2569
      }
     }
    }
@@ -215,7 +215,7 @@
    "前缀 75%": {
     "wh_max": 0.4,
     "precipitation_sum": 15.9,
-    "surge_trail": 0.035967
+    "surge_trail": 0.036
    },
    "前缀 85%": {
     "wh_max": 0.38,

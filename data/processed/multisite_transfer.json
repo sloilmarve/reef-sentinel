@@ -5,51 +5,51 @@
    "site": "Semporna, Sabah, Malaysia",
    "lat": 4.6,
    "lon": 118.7,
-   "days": 1404,
+   "days": 1405,
    "span": [
     "2022-11-23",
-    "2026-10-16"
+    "2026-10-17"
    ],
    "thresholds": {
     "wh_max": 0.4,
     "precipitation_sum": 15.7,
     "surge": 0.0335
    },
-   "sst_p90": 30.654,
+   "sst_p90": 30.658,
    "compound_days": 42,
    "features": 55,
    "skill": {
     "1": {
-     "model_rmse": 0.1424,
-     "pers_rmse": 0.1764,
+     "model_rmse": 0.1423,
+     "pers_rmse": 0.1761,
      "clim_rmse": 0.2056,
      "flat_rmse": 0.1645,
      "model_auc": 0.779,
-     "pers_auc": 0.592
+     "pers_auc": 0.594
     },
     "3": {
-     "model_rmse": 0.1638,
-     "pers_rmse": 0.1925,
-     "clim_rmse": 0.2024,
-     "flat_rmse": 0.164,
-     "model_auc": 0.611,
-     "pers_auc": 0.442
+     "model_rmse": 0.1634,
+     "pers_rmse": 0.1921,
+     "clim_rmse": 0.2019,
+     "flat_rmse": 0.1638,
+     "model_auc": 0.614,
+     "pers_auc": 0.441
     },
     "7": {
-     "model_rmse": 0.1624,
-     "pers_rmse": 0.1891,
-     "clim_rmse": 0.1999,
-     "flat_rmse": 0.1604,
-     "model_auc": 0.57,
-     "pers_auc": 0.432
+     "model_rmse": 0.1642,
+     "pers_rmse": 0.19,
+     "clim_rmse": 0.2007,
+     "flat_rmse": 0.162,
+     "model_auc": 0.593,
+     "pers_auc": 0.434
     },
     "14": {
-     "model_rmse": 0.1621,
+     "model_rmse": 0.162,
      "pers_rmse": 0.1751,
-     "clim_rmse": 0.2015,
-     "flat_rmse": 0.1626,
-     "model_auc": 0.58,
-     "pers_auc": 0.584
+     "clim_rmse": 0.2011,
+     "flat_rmse": 0.1624,
+     "model_auc": 0.577,
+     "pers_auc": 0.582
     }
    }
   },
@@ -58,10 +58,10 @@
    "site": "Bunaken, North Sulawesi, Indonesia",
    "lat": 1.62,
    "lon": 125.2,
-   "days": 1404,
+   "days": 1405,
    "span": [
     "2022-11-23",
-    "2026-10-16"
+    "2026-10-17"
    ],
    "thresholds": {
     "wh_max": 1.18,
@@ -73,36 +73,36 @@
    "features": 55,
    "skill": {
     "1": {
-     "model_rmse": 0.1316,
-     "pers_rmse": 0.1647,
-     "clim_rmse": 0.1924,
-     "flat_rmse": 0.1582,
+     "model_rmse": 0.1315,
+     "pers_rmse": 0.1644,
+     "clim_rmse": 0.1927,
+     "flat_rmse": 0.1581,
      "model_auc": 0.801,
-     "pers_auc": 0.624
+     "pers_auc": 0.626
     },
     "3": {
      "model_rmse": 0.148,
-     "pers_rmse": 0.1829,
-     "clim_rmse": 0.1906,
+     "pers_rmse": 0.1826,
+     "clim_rmse": 0.1904,
      "flat_rmse": 0.1579,
      "model_auc": 0.7,
-     "pers_auc": 0.48
+     "pers_auc": 0.482
     },
     "7": {
-     "model_rmse": 0.1524,
+     "model_rmse": 0.1523,
      "pers_rmse": 0.1812,
-     "clim_rmse": 0.1872,
-     "flat_rmse": 0.1577,
-     "model_auc": 0.641,
-     "pers_auc": 0.474
+     "clim_rmse": 0.187,
+     "flat_rmse": 0.1575,
+     "model_auc": 0.639,
+     "pers_auc": 0.471
     },
     "14": {
-     "model_rmse": 0.1492,
-     "pers_rmse": 0.1691,
-     "clim_rmse": 0.1846,
-     "flat_rmse": 0.1567,
-     "model_auc": 0.656,
-     "pers_auc": 0.612
+     "model_rmse": 0.1488,
+     "pers_rmse": 0.1689,
+     "clim_rmse": 0.184,
+     "flat_rmse": 0.1565,
+     "model_auc": 0.657,
+     "pers_auc": 0.61
     }
    }
   },
@@ -111,10 +111,10 @@
    "site": "Palau Rock Islands",
    "lat": 7.3,
    "lon": 134.5,
-   "days": 1404,
+   "days": 1405,
    "span": [
     "2022-11-23",
-    "2026-10-16"
+    "2026-10-17"
    ],
    "thresholds": {
     "wh_max": 1.5,
@@ -126,36 +126,36 @@
    "features": 55,
    "skill": {
     "1": {
-     "model_rmse": 0.1554,
-     "pers_rmse": 0.1766,
+     "model_rmse": 0.1555,
+     "pers_rmse": 0.1764,
      "clim_rmse": 0.2088,
      "flat_rmse": 0.1686,
-     "model_auc": 0.742,
-     "pers_auc": 0.616
+     "model_auc": 0.741,
+     "pers_auc": 0.618
     },
     "3": {
      "model_rmse": 0.1674,
-     "pers_rmse": 0.1934,
-     "clim_rmse": 0.209,
+     "pers_rmse": 0.1933,
+     "clim_rmse": 0.2083,
      "flat_rmse": 0.1682,
      "model_auc": 0.585,
-     "pers_auc": 0.48
+     "pers_auc": 0.482
     },
     "7": {
-     "model_rmse": 0.1682,
-     "pers_rmse": 0.2001,
-     "clim_rmse": 0.21,
-     "flat_rmse": 0.1684,
-     "model_auc": 0.551,
+     "model_rmse": 0.168,
+     "pers_rmse": 0.1997,
+     "clim_rmse": 0.2095,
+     "flat_rmse": 0.1682,
+     "model_auc": 0.549,
      "pers_auc": 0.427
     },
     "14": {
-     "model_rmse": 0.1656,
-     "pers_rmse": 0.1931,
-     "clim_rmse": 0.2077,
-     "flat_rmse": 0.166,
+     "model_rmse": 0.1655,
+     "pers_rmse": 0.193,
+     "clim_rmse": 0.2071,
+     "flat_rmse": 0.1657,
      "model_auc": 0.554,
-     "pers_auc": 0.485
+     "pers_auc": 0.483
     }
    }
   }
@@ -167,12 +167,12 @@
    "compound_days": 90,
    "compound_pct": 6.41,
    "h3": {
-    "model_rmse": 0.1906,
+    "model_rmse": 0.1907,
     "pers_rmse": 0.228,
-    "clim_rmse": 0.2448,
+    "clim_rmse": 0.2435,
     "flat_rmse": 0.1946,
-    "model_auc": 0.625,
-    "pers_auc": 0.444
+    "model_auc": 0.624,
+    "pers_auc": 0.446
    }
   },
   {
@@ -181,12 +181,12 @@
    "compound_days": 42,
    "compound_pct": 2.99,
    "h3": {
-    "model_rmse": 0.1638,
-    "pers_rmse": 0.1925,
-    "clim_rmse": 0.2024,
-    "flat_rmse": 0.164,
-    "model_auc": 0.611,
-    "pers_auc": 0.442
+    "model_rmse": 0.1634,
+    "pers_rmse": 0.1921,
+    "clim_rmse": 0.2019,
+    "flat_rmse": 0.1638,
+    "model_auc": 0.614,
+    "pers_auc": 0.441
    }
   },
   {
@@ -195,11 +195,11 @@
    "compound_days": 15,
    "compound_pct": 1.07,
    "h3": {
-    "model_rmse": 0.1209,
+    "model_rmse": 0.121,
     "pers_rmse": 0.1418,
-    "clim_rmse": 0.145,
+    "clim_rmse": 0.1448,
     "flat_rmse": 0.1212,
-    "model_auc": 0.558,
+    "model_auc": 0.569,
     "pers_auc": 0.411
    }
   },
@@ -209,12 +209,12 @@
    "compound_days": 84,
    "compound_pct": 5.98,
    "h3": {
-    "model_rmse": 0.1735,
-    "pers_rmse": 0.217,
-    "clim_rmse": 0.2282,
+    "model_rmse": 0.1736,
+    "pers_rmse": 0.2166,
+    "clim_rmse": 0.2284,
     "flat_rmse": 0.1889,
     "model_auc": 0.686,
-    "pers_auc": 0.492
+    "pers_auc": 0.497
    }
   },
   {
@@ -224,11 +224,11 @@
    "compound_pct": 2.99,
    "h3": {
     "model_rmse": 0.148,
-    "pers_rmse": 0.1829,
-    "clim_rmse": 0.1906,
+    "pers_rmse": 0.1826,
+    "clim_rmse": 0.1904,
     "flat_rmse": 0.1579,
     "model_auc": 0.7,
-    "pers_auc": 0.48
+    "pers_auc": 0.482
    }
   },
   {
@@ -238,11 +238,11 @@
    "compound_pct": 1.14,
    "h3": {
     "model_rmse": 0.104,
-    "pers_rmse": 0.1224,
-    "clim_rmse": 0.1402,
+    "pers_rmse": 0.1221,
+    "clim_rmse": 0.1399,
     "flat_rmse": 0.111,
-    "model_auc": 0.74,
-    "pers_auc": 0.556
+    "model_auc": 0.741,
+    "pers_auc": 0.558
    }
   },
   {
@@ -251,11 +251,11 @@
    "compound_days": 107,
    "compound_pct": 7.62,
    "h3": {
-    "model_rmse": 0.2055,
-    "pers_rmse": 0.2478,
-    "clim_rmse": 0.2464,
-    "flat_rmse": 0.2102,
-    "model_auc": 0.599,
+    "model_rmse": 0.2057,
+    "pers_rmse": 0.2479,
+    "clim_rmse": 0.2469,
+    "flat_rmse": 0.2103,
+    "model_auc": 0.598,
     "pers_auc": 0.457
    }
   },
@@ -266,11 +266,11 @@
    "compound_pct": 4.13,
    "h3": {
     "model_rmse": 0.1674,
-    "pers_rmse": 0.1934,
-    "clim_rmse": 0.209,
+    "pers_rmse": 0.1933,
+    "clim_rmse": 0.2083,
     "flat_rmse": 0.1682,
     "model_auc": 0.585,
-    "pers_auc": 0.48
+    "pers_auc": 0.482
    }
   },
   {
@@ -279,12 +279,12 @@
    "compound_days": 20,
    "compound_pct": 1.42,
    "h3": {
-    "model_rmse": 0.1114,
-    "pers_rmse": 0.1242,
-    "clim_rmse": 0.1444,
+    "model_rmse": 0.1115,
+    "pers_rmse": 0.1241,
+    "clim_rmse": 0.1442,
     "flat_rmse": 0.1123,
-    "model_auc": 0.608,
-    "pers_auc": 0.537
+    "model_auc": 0.607,
+    "pers_auc": 0.538
    }
   }
  ]

@@ -6,31 +6,31 @@
  "note": "上界 = 点预报 + 该时效经验 80% 半宽（q80 倍数 x sigma），夹在 0..1；三个测试窗共 540 天，每个时效可结算 534 天。",
  "base_rate_pct": 2.06,
  "original_criterion": "上界达到高危险档时，实际复合灾害比例 >= 50%",
- "original_verdict": "不可达：以 2/3 为高档线时，8 个时效在 534 天样本外里触发 0 次（判据无法结算）；以 1/3 为线时精确率 1.0% 到 7.6%，远低于 50%。",
+ "original_verdict": "不可达：以 2/3 为高档线时，8 个时效在 534 天样本外里触发 0 次（判据无法结算）；以 1/3 为线时精确率 0.9% 到 8.1%，远低于 50%。",
  "revised_criterion": "上界越过 p95 线的日子，复合灾害发生率相对背景率的提升倍数（1 天档 >= 2 倍）与召回率（1 天档 >= 80%）",
  "by_h": {
   "1": {
    "n_test": 534,
-   "sigma": 0.1406,
-   "q80_multiplier": 1.276,
+   "sigma": 0.14,
+   "q80_multiplier": 1.246,
    "base_rate_pct": 2.06,
    "n_compound": 11,
    "upper_bound": [
     {
      "trigger": 0.3333,
-     "n_trigger": 132,
+     "n_trigger": 124,
      "hit": 10,
-     "precision_pct": 7.6,
+     "precision_pct": 8.1,
      "recall_pct": 90.9,
-     "lift_vs_base": 3.68
+     "lift_vs_base": 3.91
     },
     {
      "trigger": 0.5,
-     "n_trigger": 13,
-     "hit": 5,
-     "precision_pct": 38.5,
-     "recall_pct": 45.5,
-     "lift_vs_base": 18.67
+     "n_trigger": 11,
+     "hit": 4,
+     "precision_pct": 36.4,
+     "recall_pct": 36.4,
+     "lift_vs_base": 17.65
     },
     {
      "trigger": 0.6667,
@@ -90,22 +90,22 @@
      "lift_vs_base": 7.28
     }
    ],
-   "rmse": 0.1406
+   "rmse": 0.14
   },
   "2": {
    "n_test": 534,
    "sigma": 0.1547,
-   "q80_multiplier": 1.218,
+   "q80_multiplier": 1.216,
    "base_rate_pct": 2.06,
    "n_compound": 11,
    "upper_bound": [
     {
      "trigger": 0.3333,
-     "n_trigger": 132,
+     "n_trigger": 131,
      "hit": 7,
      "precision_pct": 5.3,
      "recall_pct": 63.6,
-     "lift_vs_base": 2.57
+     "lift_vs_base": 2.59
     },
     {
      "trigger": 0.5,
@@ -177,18 +177,18 @@
   },
   "3": {
    "n_test": 534,
-   "sigma": 0.1603,
-   "q80_multiplier": 1.219,
+   "sigma": 0.1606,
+   "q80_multiplier": 1.217,
    "base_rate_pct": 2.06,
    "n_compound": 11,
    "upper_bound": [
     {
      "trigger": 0.3333,
-     "n_trigger": 141,
+     "n_trigger": 137,
      "hit": 6,
-     "precision_pct": 4.3,
+     "precision_pct": 4.4,
      "recall_pct": 54.5,
-     "lift_vs_base": 2.07
+     "lift_vs_base": 2.13
     },
     {
      "trigger": 0.5,
@@ -256,22 +256,22 @@
      "lift_vs_base": 1.21
     }
    ],
-   "rmse": 0.1603
+   "rmse": 0.1606
   },
   "4": {
    "n_test": 534,
-   "sigma": 0.1632,
-   "q80_multiplier": 1.217,
+   "sigma": 0.1625,
+   "q80_multiplier": 1.222,
    "base_rate_pct": 2.06,
    "n_compound": 11,
    "upper_bound": [
     {
      "trigger": 0.3333,
-     "n_trigger": 104,
+     "n_trigger": 101,
      "hit": 5,
-     "precision_pct": 4.8,
+     "precision_pct": 5.0,
      "recall_pct": 45.5,
-     "lift_vs_base": 2.33
+     "lift_vs_base": 2.4
     },
     {
      "trigger": 0.5,
@@ -333,28 +333,28 @@
     },
     {
      "top_k": 40,
-     "hit": 3,
-     "precision_pct": 7.5,
-     "recall_pct": 27.3,
-     "lift_vs_base": 3.64
+     "hit": 4,
+     "precision_pct": 10.0,
+     "recall_pct": 36.4,
+     "lift_vs_base": 4.85
     }
    ],
-   "rmse": 0.1632
+   "rmse": 0.1625
   },
   "5": {
    "n_test": 534,
-   "sigma": 0.1631,
-   "q80_multiplier": 1.269,
+   "sigma": 0.1635,
+   "q80_multiplier": 1.279,
    "base_rate_pct": 2.06,
    "n_compound": 11,
    "upper_bound": [
     {
      "trigger": 0.3333,
-     "n_trigger": 99,
+     "n_trigger": 106,
      "hit": 1,
-     "precision_pct": 1.0,
+     "precision_pct": 0.9,
      "recall_pct": 9.1,
-     "lift_vs_base": 0.49
+     "lift_vs_base": 0.46
     },
     {
      "trigger": 0.5,
@@ -422,22 +422,22 @@
      "lift_vs_base": 1.21
     }
    ],
-   "rmse": 0.1631
+   "rmse": 0.1635
   },
   "6": {
    "n_test": 534,
-   "sigma": 0.1627,
-   "q80_multiplier": 1.201,
+   "sigma": 0.1626,
+   "q80_multiplier": 1.211,
    "base_rate_pct": 2.06,
    "n_compound": 11,
    "upper_bound": [
     {
      "trigger": 0.3333,
-     "n_trigger": 94,
+     "n_trigger": 96,
      "hit": 3,
-     "precision_pct": 3.2,
+     "precision_pct": 3.1,
      "recall_pct": 27.3,
-     "lift_vs_base": 1.55
+     "lift_vs_base": 1.52
     },
     {
      "trigger": 0.5,
@@ -505,22 +505,22 @@
      "lift_vs_base": 3.64
     }
    ],
-   "rmse": 0.1627
+   "rmse": 0.1626
   },
   "7": {
    "n_test": 534,
-   "sigma": 0.1624,
-   "q80_multiplier": 1.265,
+   "sigma": 0.1627,
+   "q80_multiplier": 1.262,
    "base_rate_pct": 2.06,
    "n_compound": 11,
    "upper_bound": [
     {
      "trigger": 0.3333,
-     "n_trigger": 78,
+     "n_trigger": 79,
      "hit": 1,
      "precision_pct": 1.3,
      "recall_pct": 9.1,
-     "lift_vs_base": 0.62
+     "lift_vs_base": 0.61
     },
     {
      "trigger": 0.5,
@@ -588,30 +588,30 @@
      "lift_vs_base": 1.21
     }
    ],
-   "rmse": 0.1624
+   "rmse": 0.1627
   },
   "8": {
    "n_test": 534,
    "sigma": 0.1624,
-   "q80_multiplier": 1.194,
+   "q80_multiplier": 1.202,
    "base_rate_pct": 2.06,
    "n_compound": 11,
    "upper_bound": [
     {
      "trigger": 0.3333,
-     "n_trigger": 83,
+     "n_trigger": 79,
      "hit": 1,
-     "precision_pct": 1.2,
+     "precision_pct": 1.3,
      "recall_pct": 9.1,
-     "lift_vs_base": 0.58
+     "lift_vs_base": 0.61
     },
     {
      "trigger": 0.5,
-     "n_trigger": 2,
+     "n_trigger": 0,
      "hit": 0,
-     "precision_pct": 0.0,
+     "precision_pct": null,
      "recall_pct": 0.0,
-     "lift_vs_base": 0.0
+     "lift_vs_base": null
     },
     {
      "trigger": 0.6667,
@@ -678,21 +678,21 @@
   "metrics": [
    {
     "h": 1,
-    "audit": 0.1406,
-    "dashboard": 0.14062434132163648,
-    "abs_diff": 2.434e-05
+    "audit": 0.14,
+    "dashboard": 0.13995113648825266,
+    "abs_diff": 4.886e-05
    },
    {
     "h": 3,
-    "audit": 0.1603,
-    "dashboard": 0.1602755799880957,
-    "abs_diff": 2.442e-05
+    "audit": 0.1606,
+    "dashboard": 0.1605891676038446,
+    "abs_diff": 1.083e-05
    },
    {
     "h": 7,
-    "audit": 0.1624,
-    "dashboard": 0.16239738274959523,
-    "abs_diff": 2.62e-06
+    "audit": 0.1627,
+    "dashboard": 0.16265307012723146,
+    "abs_diff": 4.693e-05
    }
   ],
   "interval": [

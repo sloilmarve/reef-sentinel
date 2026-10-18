@@ -34,7 +34,7 @@
    "end": "2023-11-10",
    "days": 11,
    "max_anom": 0.6046,
-   "cum_intensity": 5.6412,
+   "cum_intensity": 5.6411,
    "peak_sst": 30.88,
    "category": 1
   },
@@ -142,7 +142,7 @@
    "end": "2026-10-06",
    "days": 13,
    "max_anom": 0.8499,
-   "cum_intensity": 8.1795,
+   "cum_intensity": 8.1793,
    "peak_sst": 31.07,
    "category": 2
   }
@@ -190,7 +190,7 @@
    "hot_days": 41,
    "mhw_days": 35,
    "events": 4,
-   "max_cum": 8.18,
+   "max_cum": 8.179,
    "max_sst": 31.45
   }
  ],
@@ -198,8 +198,8 @@
   "window_days": 84,
   "start": "2026-07-25",
   "end": "2026-10-16",
-  "cum_anom": 18.218,
-  "percentile": 92.1,
+  "cum_anom": 18.222,
+  "percentile": 92.2,
   "tier": 3,
   "tier_txt": "极高",
   "hot_days": 12,
@@ -208,7 +208,7 @@
    "end": "2026-10-06",
    "days": 13,
    "max_anom": 0.8499,
-   "cum_intensity": 8.1795,
+   "cum_intensity": 8.1793,
    "peak_sst": 31.07,
    "category": 2
   }
@@ -227,10 +227,10 @@
    2026
   ],
   "year_station_cum": [
-   27.242,
-   64.538,
+   27.241,
+   64.537,
    42.574,
-   41.731
+   41.735
   ],
   "year_noaa_pacific_max": [
    0.07111,
@@ -298,7 +298,7 @@
    },
    {
     "month": "2023-10",
-    "cum_anom": 4.908,
+    "cum_anom": 4.907,
     "noaa_pacific": 0.01372
    },
    {
@@ -358,7 +358,7 @@
    },
    {
     "month": "2024-10",
-    "cum_anom": 1.467,
+    "cum_anom": 1.466,
     "noaa_pacific": 0.03566
    },
    {
@@ -413,7 +413,7 @@
    },
    {
     "month": "2025-10",
-    "cum_anom": 2.126,
+    "cum_anom": 2.125,
     "noaa_pacific": 0.01127
    },
    {
@@ -612,24 +612,24 @@
   },
   "vs_sabah": {
    "source": "NOAA CRW regional virtual station: Sabah, Malaysia (5km product, polygon centre 117.2E / 5.8N)",
-   "overlap_days": 1409,
+   "overlap_days": 1410,
    "first": "2022-11-23",
-   "last": "2026-10-14",
+   "last": "2026-10-15",
    "official_mmm": 29.4999,
    "station_mmm": 30.517,
    "sst_bias_station_minus_official": -0.013,
    "r_sst": 0.717,
-   "r_anom": 0.466,
-   "r_cum84_vs_dhw": 0.386,
+   "r_anom": 0.467,
+   "r_cum84_vs_dhw": 0.387,
    "r_event_intensity_vs_max_dhw": 0.58,
-   "latest_date": "2026-10-14",
-   "latest_dhw": 14.014,
+   "latest_date": "2026-10-15",
+   "latest_dhw": 14.199,
    "latest_alert": 4,
    "alert_days": {
-    "ge1": 1160,
-    "ge2": 582,
-    "ge3": 403,
-    "ge4": 186
+    "ge1": 1161,
+    "ge2": 583,
+    "ge3": 404,
+    "ge4": 187
    },
    "max_dhw": 14.297,
    "events_total": 13,
@@ -638,7 +638,7 @@
    "contingency": {
     "both": 96,
     "station_only": 0,
-    "official_only": 1064,
+    "official_only": 1065,
     "neither": 249
    },
    "p_alert_given_station": 100.0,
@@ -781,43 +781,43 @@
   "vs_sites": [
    {
     "site": "Sabah, Malaysia（仙本那同区）",
-    "overlap_days": 1409,
+    "overlap_days": 1410,
     "first": "2022-11-23",
-    "last": "2026-10-14",
+    "last": "2026-10-15",
     "official_mmm": 29.4999,
     "station_mean": 29.854,
-    "official_hotspot_mean": 29.867,
+    "official_hotspot_mean": 29.868,
     "bias_station_minus_official": -0.013,
     "r_sst": 0.717,
     "warmest_month": "2026-05",
     "warmest_month_mean": 31.024,
-    "hot_p90": 30.655,
+    "hot_p90": 30.659,
     "hot_days": 141,
     "alert_days": {
-     "ge1": 1160,
-     "ge2": 582,
-     "ge3": 403
+     "ge1": 1161,
+     "ge2": 583,
+     "ge3": 404
     },
     "max_dhw": 14.297,
-    "latest_date": "2026-10-14",
-    "latest_dhw": 14.014,
+    "latest_date": "2026-10-15",
+    "latest_dhw": 14.199,
     "latest_alert": 4,
     "contingency": {
      "both": 141,
      "hot_only": 0,
-     "official_only": 1019,
+     "official_only": 1020,
      "neither": 249
     },
     "p_alert_given_hot": 100.0,
-    "p_hot_given_alert": 12.2,
+    "p_hot_given_alert": 12.1,
     "background_alert_rate": 82.3,
     "lift": 1.21
    },
    {
     "site": "Palau（帕劳）",
-    "overlap_days": 1402,
+    "overlap_days": 1403,
     "first": "2022-11-23",
-    "last": "2026-10-14",
+    "last": "2026-10-15",
     "official_mmm": 29.2309,
     "station_mean": 29.599,
     "official_hotspot_mean": 29.66,
@@ -828,18 +828,18 @@
     "hot_p90": 30.3,
     "hot_days": 138,
     "alert_days": {
-     "ge1": 1161,
+     "ge1": 1162,
      "ge2": 356,
      "ge3": 161
     },
     "max_dhw": 9.86,
-    "latest_date": "2026-10-14",
+    "latest_date": "2026-10-15",
     "latest_dhw": 0.0,
     "latest_alert": 1,
     "contingency": {
      "both": 138,
      "hot_only": 0,
-     "official_only": 1023,
+     "official_only": 1024,
      "neither": 241
     },
     "p_alert_given_hot": 100.0,

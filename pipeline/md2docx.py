@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 # Convert the Chinese markdown materials in docs/ into .docx for submission upload.
-import os, re
+import os, re, zipfile
+from datetime import datetime
 from docx import Document
 from docx.shared import Pt, RGBColor
 from docx.enum.text import WD_ALIGN_PARAGRAPH
@@ -15,6 +16,34 @@ EN = 'Segoe UI'
 BQ = (0x44, 0x44, 0x44)
 CODE_C = (0x1F, 0x3A, 0x5F)
 HEAD_C = (0x0B, 0x3C, 0x5D)
+# 生成物的时间戳一律钉死：同一份 md 转两次必须逐字节一致（评审可以自己复算）。
+# 真实日期留在 git 历史与 docs/ 的修订说明里，不由 Word 的元数据来承担。
+DOCX_STAMP = datetime(2026, 10, 18, 0, 0, 0)
+ZIP_STAMP = (2026, 10, 18, 0, 0, 0)
+AUTHOR = '\u73ca\u745a\u54e8\u5175 / Reef Sentinel'
+
+
+def seal_docx(path):
+    """把 .docx 里 zip 成员的时间戳钉死，让 Word 文档也逐字节可复现。
+
+    python-docx 保存时会把**当前本地时间**写进每个 zip 成员的头里（docProps/core.xml
+    里的 created/modified 反而是模板常量），所以同一份 md 两次转换出来的字节不同 ——
+    一份 2 MB 的 .docx 里 17 个成员，每次重跑都全变。Word 不关心这些时间戳，但
+    「同一输入同一输出」是这套材料对外承诺过的事，评审随时可以跑两次来核。
+    """
+    with zipfile.ZipFile(path) as z:
+        items = [(i.filename, z.read(i.filename), i.compress_type, i.external_attr, i.create_system)
+                 for i in z.infolist()]
+    tmp = path + '.tmp'
+    with zipfile.ZipFile(tmp, 'w', zipfile.ZIP_DEFLATED) as out:
+        for name, data, ctype, ext, csys in items:
+            zi = zipfile.ZipInfo(name, date_time=ZIP_STAMP)
+            zi.compress_type = ctype
+            zi.external_attr = ext
+            zi.create_system = csys
+            out.writestr(zi, data)
+    os.replace(tmp, path)
+
 
 def set_font(run, name=EN, size=None, bold=None, color=None, cn=None):
     run.font.name = name
@@ -151,7 +180,16 @@ def convert(md_path, docx_path, title):
         par.paragraph_format.space_after = Pt(4)
         add_inline(par, s)
         i += 1
+    cp = doc.core_properties
+    cp.title = title
+    cp.author = AUTHOR
+    cp.last_modified_by = AUTHOR
+    cp.revision = 1
+    cp.created = DOCX_STAMP
+    cp.modified = DOCX_STAMP
+    cp.comments = '\u7531 docs/ \u91cc\u7684 Markdown \u81ea\u52a8\u751f\u6210\uff08pipeline/md2docx.py\uff09'
     doc.save(docx_path)
+    seal_docx(docx_path)
     return os.path.getsize(docx_path)
 
 def main():

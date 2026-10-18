@@ -13,6 +13,9 @@ _backup_before_refresh/
 # 「git add ... data/raw」会因路径被忽略而报错，整个工作流会失败。
 data/raw/_backup_before_refresh/
 
+# 下载来的设计技能（不随作品交付）
+.taste-skill/
+
 # 本地临时文件
 *.tmp
 *.log

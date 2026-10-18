@@ -70,5 +70,161 @@
  ],
  "analysis_cols_in_features": [],
  "analysis_leak_days_last8": 7,
+ "threshold_and_label_arms": {
+  "protocol": "same 4 walk-forward folds (train 55/65/75/85% of the record, test = the next 180 days) and the same ridge + inner-window lambda as pipeline/skill_regression.py; only the threshold calibration and the target definition change",
+  "horizons": [
+   1,
+   3,
+   7,
+   14
+  ],
+  "folds": [
+   "0.55",
+   "0.65",
+   "0.75",
+   "0.85"
+  ],
+  "arms": {
+   "as_shipped": {
+    "thresholds": {
+     "wh_max": 0.4,
+     "precipitation_sum": 15.6,
+     "surge_trail": 0.034517
+    },
+    "target": "n_haz（记录口径，含中心化残差）",
+    "horizons": {
+     "1": {
+      "model_rmse": 0.1512,
+      "pers_rmse": 0.1886,
+      "model_auc": 0.772,
+      "pers_auc": 0.569,
+      "pos_rate": 0.2819
+     },
+     "3": {
+      "model_rmse": 0.1689,
+      "pers_rmse": 0.2021,
+      "model_auc": 0.64,
+      "pers_auc": 0.44,
+      "pos_rate": 0.2778
+     },
+     "7": {
+      "model_rmse": 0.1725,
+      "pers_rmse": 0.2008,
+      "model_auc": 0.582,
+      "pers_auc": 0.444,
+      "pos_rate": 0.2778
+     },
+     "14": {
+      "model_rmse": 0.1696,
+      "pers_rmse": 0.1914,
+      "model_auc": 0.628,
+      "pers_auc": 0.542,
+      "pos_rate": 0.275
+     }
+    }
+   },
+   "causal_target": {
+    "thresholds": {
+     "wh_max": 0.4,
+     "precipitation_sum": 15.6,
+     "surge_trail": 0.034517
+    },
+    "target": "n_haz_t（严格因果口径）",
+    "horizons": {
+     "1": {
+      "model_rmse": 0.1546,
+      "pers_rmse": 0.1878,
+      "model_auc": 0.759,
+      "pers_auc": 0.587,
+      "pos_rate": 0.2625
+     },
+     "3": {
+      "model_rmse": 0.1724,
+      "pers_rmse": 0.1997,
+      "model_auc": 0.588,
+      "pers_auc": 0.49,
+      "pos_rate": 0.2583
+     },
+     "7": {
+      "model_rmse": 0.1727,
+      "pers_rmse": 0.2026,
+      "model_auc": 0.532,
+      "pers_auc": 0.458,
+      "pos_rate": 0.2583
+     },
+     "14": {
+      "model_rmse": 0.1719,
+      "pers_rmse": 0.1945,
+      "model_auc": 0.562,
+      "pers_auc": 0.526,
+      "pos_rate": 0.2583
+     }
+    }
+   },
+   "prefix_thresholds": {
+    "thresholds": "每一折只用训练前缀重算 p90",
+    "target": "n_haz_t（严格因果口径）",
+    "horizons": {
+     "1": {
+      "model_rmse": 0.1533,
+      "pers_rmse": 0.187,
+      "model_auc": 0.759,
+      "pers_auc": 0.596,
+      "pos_rate": 0.2625
+     },
+     "3": {
+      "model_rmse": 0.1719,
+      "pers_rmse": 0.1997,
+      "model_auc": 0.599,
+      "pers_auc": 0.494,
+      "pos_rate": 0.2583
+     },
+     "7": {
+      "model_rmse": 0.1722,
+      "pers_rmse": 0.2026,
+      "model_auc": 0.55,
+      "pers_auc": 0.468,
+      "pos_rate": 0.2597
+     },
+     "14": {
+      "model_rmse": 0.1716,
+      "pers_rmse": 0.1963,
+      "model_auc": 0.566,
+      "pers_auc": 0.518,
+      "pos_rate": 0.2583
+     }
+    }
+   }
+  },
+  "folds_above_persistence": {
+   "as_shipped": 4,
+   "causal_target": 4,
+   "prefix_thresholds": 4
+  },
+  "prefix_thresholds": {
+   "前缀 55%": {
+    "wh_max": 0.4,
+    "precipitation_sum": 15.2,
+    "surge_trail": 0.0353
+   },
+   "前缀 65%": {
+    "wh_max": 0.4,
+    "precipitation_sum": 16.1,
+    "surge_trail": 0.035967
+   },
+   "前缀 75%": {
+    "wh_max": 0.4,
+    "precipitation_sum": 15.9,
+    "surge_trail": 0.035967
+   },
+   "前缀 85%": {
+    "wh_max": 0.38,
+    "precipitation_sum": 16.3,
+    "surge_trail": 0.034783
+   }
+  },
+  "hazard_days_changed_vs_record_thresholds": 17,
+  "note": "as_shipped 一列用来验证这次重实现能复现 skill_regression.py 的主表；prefix_thresholds 与 causal_target 两列量化「阈值用的是全记录 p90」与「标签用的是中心化残差」这两条通道各值多少"
+ },
  "verdict": "PASS"
 }

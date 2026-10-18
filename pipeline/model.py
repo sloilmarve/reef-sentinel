@@ -35,11 +35,29 @@ def rmse(a, b):
     return float(np.sqrt(np.mean((a - b) ** 2)))
 
 def auc(p, l):
-    """Mann-Whitney rank-sum AUC (no scipy)."""
-    o = np.argsort(p); r = np.empty(len(p)); r[o] = np.arange(1, len(p) + 1)
-    npos = float((l == 1).sum()); nneg = len(p) - npos
+    """Mann-Whitney rank-sum AUC (no scipy), with AVERAGE ranks for ties.
+
+    Why average ranks: the persistence baseline scores are 7-day means of a discrete
+    0 / 1 / 3 index, so ties are everywhere.  Ranking ties by sort position makes the
+    value depend on the sort implementation (np.argsort default quicksort is not stable),
+    i.e. on the NumPy build, and the same code + same data then reports different AUCs on
+    different machines.  Average ranks make the statistic a function of the data alone.
+    """
+    p = np.asarray(p, dtype=float); l = np.asarray(l)
+    n = len(p)
+    npos = float((l == 1).sum()); nneg = float(n - npos)
     if npos == 0 or nneg == 0:
         return float("nan")
+    o = np.argsort(p, kind="mergesort")          # stable order, ties kept together
+    sp = p[o]
+    r = np.empty(n, dtype=float)
+    i = 0
+    while i < n:
+        j = i
+        while j + 1 < n and sp[j + 1] == sp[i]:
+            j += 1
+        r[o[i:j + 1]] = (i + j) / 2.0 + 1.0     # average rank of the tie block
+        i = j + 1
     return float((r[l == 1].sum() - npos * (npos + 1) / 2) / (npos * nneg))
 
 def inner_lambda(Xtr, ytr, grid=LAMBDA_GRID, cuts=INNER_CUTS):

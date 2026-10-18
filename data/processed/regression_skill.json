@@ -7,8 +7,8 @@
     "model_r": 0.497,
     "pers_r": 0.099,
     "model_auc": 0.772,
-    "pers_auc": 0.571,
-    "clim_auc": 0.459,
+    "pers_auc": 0.569,
+    "clim_auc": 0.477,
     "inner_lambda": [
       100,
       100,
@@ -24,8 +24,8 @@
     "model_r": 0.327,
     "pers_r": -0.033,
     "model_auc": 0.689,
-    "pers_auc": 0.493,
-    "clim_auc": 0.454,
+    "pers_auc": 0.491,
+    "clim_auc": 0.476,
     "inner_lambda": [
       200,
       200,
@@ -42,7 +42,7 @@
     "pers_r": -0.095,
     "model_auc": 0.64,
     "pers_auc": 0.44,
-    "clim_auc": 0.46,
+    "clim_auc": 0.477,
     "inner_lambda": [
       200,
       200,
@@ -58,8 +58,8 @@
     "model_r": 0.1,
     "pers_r": -0.142,
     "model_auc": 0.55,
-    "pers_auc": 0.393,
-    "clim_auc": 0.465,
+    "pers_auc": 0.398,
+    "clim_auc": 0.472,
     "inner_lambda": [
       1600,
       800,
@@ -75,8 +75,8 @@
     "model_r": 0.092,
     "pers_r": -0.079,
     "model_auc": 0.582,
-    "pers_auc": 0.442,
-    "clim_auc": 0.467,
+    "pers_auc": 0.444,
+    "clim_auc": 0.474,
     "inner_lambda": [
       1600,
       100,

@@ -24,6 +24,8 @@ pipeline/model.py holds the ridge fit itself and the inner-window lambda search.
 import math
 from datetime import date
 
+from ssum import ssum   # naive accumulation, see pipeline/ssum.py (3.12 changed sum() semantics)
+
 TRAIL_W = 25          # trailing window (days) behind the still-water level
 
 # current-day level of every variable the historical record carries
@@ -45,7 +47,7 @@ def pct(vals, p):
 
 def mean(vals):
     vals = [v for v in vals if v is not None]
-    return (sum(vals) / len(vals)) if vals else None
+    return (ssum(vals) / len(vals)) if vals else None
 
 def add_levels(days):
     """Trailing still-water level and the non-tidal residual built from it."""
@@ -78,7 +80,7 @@ def roll(days, i, key, w, how="mean"):
     vals = [v for v in vals if v is not None]
     if not vals:
         return None
-    return max(vals) if how == "max" else sum(vals) / len(vals)
+    return max(vals) if how == "max" else ssum(vals) / len(vals)
 
 def add_rolls(days):
     """Seasonal terms + rolling means / maxima / anomalies, all windows ending at t."""

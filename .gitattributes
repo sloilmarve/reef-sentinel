@@ -1,5 +1,20 @@
-# 批处理文件必须保持 CRLF，否则 Windows 上双击可能出错
+# 所有文本文件检出时一律用 LF。
+#
+# 为什么必须钉住：本项目的成品页与大部分产物都是「逐字节比对」的对象 ——
+# README 写着页面 sha256 前 16 位、tools/reviewer_repro.py 把复算出的页面与包内页面逐字节比、
+# tools/consistency_audit.py 直接断言成品页里一个 CR 都没有、tools/cost_model.py 还按字节数算仓库体积。
+# 行尾如果随克隆机器的 git 设置而变，这些断言就会在别人的电脑上无故变红。
+#
+# Git for Windows 安装时默认勾选 core.autocrlf=true，实测在那种设置下刚 clone 出来的
+# demo/index.html 会带 535 个 CR（sha256 与 README、与提交包里的页面都对不上，
+# consistency_audit.py 报「成品页行尾是纯 LF … 当前 CR 个数 535」）。
+# 下面这一行让检出结果与仓库里的字节完全一致，不再取决于本机设置。
+* text=auto eol=lf
+
+# 批处理文件必须保持 CRLF，否则 Windows 上双击可能出错（后面的规则覆盖上面的通配）
 *.bat text eol=crlf
+
 # 二进制资源不做行尾转换
 *.png binary
+*.jpg binary
 *.docx binary

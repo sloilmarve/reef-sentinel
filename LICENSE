@@ -1,0 +1,55 @@
+MIT License
+
+Copyright (c) 2026 珊瑚哨兵 / Reef Sentinel 项目贡献者
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+---
+
+附加说明（不属于上面的 MIT 许可正文，只界定各部分的适用范围）
+
+Additional notices. These statements do not modify the MIT text above; they
+only state which parts of this repository each license covers.
+
+1. **适用范围（MIT）**：本仓库的代码（`pipeline/`、`tools/`、`demo/` 中的
+   HTML / CSS / JavaScript、`.github/workflows/`）与文档（`docs/`、`docs_word/`、
+   `README.md`、`00_提交包说明.md`）。
+2. **派生数据、图表与成品页面（CC BY 4.0）**：本项目自行生成的中间数据
+   （`data/processed/*.json`）、图表，以及成品页 `demo/index.html` 中本项目自有的
+   文字、版式与内联字体，按 CC BY 4.0 释出，署名为「珊瑚哨兵 / Reef Sentinel」
+   （页面内嵌的 7 张实景照片不在此列，见第 4 条）；用于研究或报道时请同时引用
+   本仓库与 `docs/02_数据与AI说明.md` 中列出的方法口径。
+3. **上游数据（不属于本项目，也不由本项目再授权）**：Open-Meteo（CC BY 4.0）、
+   ERA5 / Copernicus Climate Change Service、NOAA Coral Reef Watch（美国联邦
+   政府作品，公有领域）。再分发时请分别遵循其条款。
+4. **照片（不属于本项目，由各自摄影者以 CC 许可释出；成品页页脚逐张署名）**：
+   - Semporna Sabah Kampung-Balimbang-Asal-01 / CEphoto, Uwe Aranas / CC BY-SA 3.0
+   - Buhey Dulang, Semporna, Sabah / REDZUAN BOHARI / CC BY-SA 4.0
+   - Kampung Jetty on Pom Pom Island, Semporna, Sabah / Profmauri / CC BY-SA 3.0
+   - Coral Outcrop Flynn Reef / Toby Hudson / CC BY-SA 3.0
+   - Bleached Staghorn Coral / Matt Kieffer / CC BY-SA 2.0
+   - Aerial shot of a small island on a coral reef in the Maldives / Dr. Ondřej Havelka / CC BY-SA 4.0
+   - Kenting coral reef 墾丁珊瑚礁 / Lungchin / CC BY-SA 4.0
+
+   全部来自 Wikimedia Commons。CC BY-SA 要求署名并以相同方式共享：成品页对照片
+   做了裁切与压缩（属于改编），所以无论单独再分发照片、还是整页转发，都要保留
+   上述逐张署名与许可版本，照片部分继续以相同方式共享；整页中本项目自有的文字、
+   图表与数据仍按第 2 条的 CC BY 4.0 释出。
+5. **演示视频**：旁白、脚本与录屏为本项目原创（适用第 1 条）；视频中出现的
+   实景照片与 NOAA 区域图分别适用第 3、4 条。

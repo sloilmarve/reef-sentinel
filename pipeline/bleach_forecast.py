@@ -255,7 +255,7 @@ def main():
                   "features": {k: round(float(X[-1][j]), 3) for j, k in enumerate(FEATS)},
                   "coef_rank": [{"key": FEATS[j], "cn": CN[FEATS[j]], "z": round(float(w[j]), 3)}
                                 for j in np.argsort(-np.abs(w))]}
-    with io.open(os.path.join(PROC, "bleach_forecast.json"), "w", encoding="utf-8") as fh:
+    with io.open(os.path.join(PROC, "bleach_forecast.json"), "w", encoding="utf-8", newline="\n") as fh:
         fh.write(json.dumps(out, ensure_ascii=False, indent=1))
     print("样本 %d 天（%s 至 %s），正类占比 %.1f%%" % (M, row_date[0], row_date[-1], float(y28.mean()) * 100))
     for fm in fold_meta:

@@ -1,0 +1,128 @@
+{
+ "task": "数值天气预报驱动自身的误差，对成品页预报的影响有多大",
+ "protocol": "3 折扩展窗前推（切点 0.62 / 0.75 / 0.88，测试窗各 180 天），与 dashboard_data.json 的指标表同一协议；只改驱动列",
+ "n_days": 1446,
+ "feature_count": 66,
+ "driver_columns": [
+  "wh_max",
+  "precipitation_sum",
+  "sst_mean",
+  "sst_max",
+  "sl_mean",
+  "sl_max",
+  "sl_min",
+  "sl_range",
+  "wp_mean",
+  "ww_mean",
+  "oc_mean",
+  "temperature_2m_mean",
+  "wind_speed_10m_max",
+  "wind_gusts_10m_max",
+  "relative_humidity_2m_mean"
+ ],
+ "variants": {
+  "obs": "目标日驱动取记录观测值（驱动完美，上界；即现行指标表口径）",
+  "persist": "把每一天的驱动水平整体替换为 h 天前的值（完全不使用驱动预报，下界）"
+ },
+ "noise_rule": "配对 95% 区间跨过 0（RMSE 差）且 |ΔAUC| <= 0.03 记为噪声量级",
+ "horizons": {
+  "1": {
+   "rmse_obs": 0.1406,
+   "auc_obs": 0.796,
+   "rmse_persist_drivers": 0.1545,
+   "auc_persist_drivers": 0.71,
+   "rmse_gap": 0.0139,
+   "rmse_gap_pct": 9.9,
+   "rmse_gap_ci95": 0.0054,
+   "auc_gap": -0.085,
+   "pers_rmse": 0.1776,
+   "pers_auc": 0.585,
+   "lam_obs": [
+    100,
+    50,
+    50
+   ],
+   "lam_persist": [
+    200,
+    100,
+    200
+   ],
+   "noise_level": false,
+   "verdict": "驱动预报有实测增益"
+  },
+  "3": {
+   "rmse_obs": 0.1603,
+   "auc_obs": 0.665,
+   "rmse_persist_drivers": 0.1635,
+   "auc_persist_drivers": 0.583,
+   "rmse_gap": 0.0032,
+   "rmse_gap_pct": 2.0,
+   "rmse_gap_ci95": 0.0045,
+   "auc_gap": -0.081,
+   "pers_rmse": 0.1935,
+   "pers_auc": 0.438,
+   "lam_obs": [
+    400,
+    20,
+    100
+   ],
+   "lam_persist": [
+    6400,
+    100,
+    100
+   ],
+   "noise_level": false,
+   "verdict": "点误差无变化，但排序能力依赖驱动信息"
+  },
+  "7": {
+   "rmse_obs": 0.1624,
+   "auc_obs": 0.6,
+   "rmse_persist_drivers": 0.1612,
+   "auc_persist_drivers": 0.627,
+   "rmse_gap": -0.0012,
+   "rmse_gap_pct": -0.7,
+   "rmse_gap_ci95": 0.003,
+   "auc_gap": 0.028,
+   "pers_rmse": 0.1919,
+   "pers_auc": 0.437,
+   "lam_obs": [
+    6400,
+    3200,
+    1600
+   ],
+   "lam_persist": [
+    400,
+    800,
+    1600
+   ],
+   "noise_level": true,
+   "verdict": "无可测差异（噪声量级）"
+  },
+  "14": {
+   "rmse_obs": 0.1615,
+   "auc_obs": 0.615,
+   "rmse_persist_drivers": 0.1584,
+   "auc_persist_drivers": 0.657,
+   "rmse_gap": -0.0031,
+   "rmse_gap_pct": -1.9,
+   "rmse_gap_ci95": 0.0032,
+   "auc_gap": 0.042,
+   "pers_rmse": 0.1772,
+   "pers_auc": 0.583,
+   "lam_obs": [
+    800,
+    800,
+    3200
+   ],
+   "lam_persist": [
+    6400,
+    400,
+    200
+   ],
+   "noise_level": false,
+   "verdict": "差异在噪声边缘"
+  }
+ },
+ "summary": "把目标日的驱动换成持续值（即完全不使用驱动预报）后重跑同一协议：1 天 RMSE 从 0.1406 升到 0.1545（+9.9%，配对 95% 区间 ±0.0054）、排序 AUC 从 0.796 掉到 0.710 —— 1 天的驱动预报是实的。3 天 RMSE 无变化（+2.0%，区间跨 0）但排序 AUC 掉 0.081；7 天两口径都无可测差异；14 天持续值反而略好（RMSE -1.9%、AUC +0.042）。结论：本模型不依赖驱动预报的精度 —— 1 天时效拿的是真实增益，长时效上目标日驱动水平更接近噪声；差异在噪声边缘，不据此改动部署配置。",
+ "caveat": "真实部署落在两行之间：驱动预报越准就越接近上界；差异在噪声量级的时效上不据此改动部署配置。"
+}

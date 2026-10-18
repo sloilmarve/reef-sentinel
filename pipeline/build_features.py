@@ -52,6 +52,21 @@ for row in days:
         v = fnum(w.get(k))
         if v is not None: row[k] = v
 
+# 记录窗口的截止日由 ERA5 逐日归档决定：海浪/降水/增水三项里，降水只能来自归档。
+# 海洋接口是预报模型，会先给出比归档早一天的日子；若把它算进来，窗口会落在「没有降水驱动」的一天上，
+# 三项越线也就无从判定。因此只保留在逐日气象表里有记录的日子。
+_no_wx = [r["date"] for r in days if r["date"] not in wby]
+if _no_wx:
+    days = [r for r in days if r["date"] in wby]
+    print("  剔除尾部无 ERA5 逐日驱动的 %d 天（%s）：窗口截止到最后一个驱动齐全的日子" % (len(_no_wx), ", ".join(_no_wx[:4])))
+# 记录窗口只能收在「完整的一天」上：归档接口会把当前 UTC 日（只覆盖已经过去的若干小时）也返回，
+# 若把它算进来，最后一天就是残缺的——三项越线判定与「今日」档位都会失真。窗口截到严格早于当前 UTC 日。
+import datetime as _dt
+_utc_today = _dt.datetime.now(_dt.timezone.utc).date().isoformat()
+_partial = [r["date"] for r in days if r["date"] >= _utc_today]
+if _partial:
+    days = [r for r in days if r["date"] < _utc_today]
+    print("  剔除尾部未走完的 %d 天（%s）：记录窗口只收完整的一天" % (len(_partial), ", ".join(_partial[:3])))
 print("daily rows:", len(days), days[0]["date"], "->", days[-1]["date"])
 
 # ---------- tide removal (RETROSPECTIVE ANALYSIS): 25-DAY centred rolling mean of the daily mean sea level ----------
@@ -103,7 +118,7 @@ print("positive rate y7:", round(100*sum(r["y7"] for r in days)/len(days), 1), "
 CTH = feat_ext.add_all(days)
 print("causal thresholds (p90):", {k: round(v, 4) for k, v in CTH.items()})
 
-with open(os.path.join(OUT, "semporna_features.json"), "w", encoding="utf-8") as f:
+with open(os.path.join(OUT, "semporna_features.json"), "w", encoding="utf-8", newline="\n") as f:
     json.dump({"thresholds": TH, "causal_thresholds": CTH, "days": days}, f, ensure_ascii=False)
 print("\nwrote", os.path.join(OUT, "semporna_features.json"))
 last = days[-1]

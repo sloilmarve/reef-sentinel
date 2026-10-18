@@ -3,6 +3,8 @@
 import json, os, math
 import numpy as np
 
+from ssum import ssum   # naive accumulation, see pipeline/ssum.py
+
 BASE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 d = json.load(open(os.path.join(BASE, "data", "processed", "semporna_features.json"), encoding="utf-8"))
 days = d["days"]; n = len(days); dates = [r["date"] for r in days]
@@ -11,7 +13,7 @@ days = d["days"]; n = len(days); dates = [r["date"] for r in days]
 for i, r in enumerate(days):
     for tag in ("h_wave", "h_rain", "h_surge"):
         for w in (3, 7, 14):
-            r["m_%s_%dd" % (tag, w)] = sum(days[j][tag] for j in range(max(0, i-w+1), i+1))
+            r["m_%s_%dd" % (tag, w)] = ssum(days[j][tag] for j in range(max(0, i-w+1), i+1))
     r["m_nhaz_7d"] = sum(days[j]["n_haz"] for j in range(max(0, i-6), i+1))
     r["m_compound_14d"] = sum(days[j]["compound"] for j in range(max(0, i-13), i+1))
     r["m_compound_30d"] = sum(days[j]["compound"] for j in range(max(0, i-29), i+1))
@@ -79,4 +81,4 @@ for h in (1, 3, 7, 14):
     out[h] = dict(prev=round(float(Y.mean()),3), model_auc=round(float(auc(Y,P)),3),
                   clim_auc=round(float(auc(Y,C)),3), persistence_auc=round(float(auc(Y,PER)),3), brier=round(br,3))
 
-json.dump(out, open(os.path.join(BASE,"data","processed","diagnostics.json"),"w",encoding="utf-8"), indent=2)
+json.dump(out, open(os.path.join(BASE,"data","processed","diagnostics.json"),"w",encoding="utf-8", newline="\n"), indent=2)

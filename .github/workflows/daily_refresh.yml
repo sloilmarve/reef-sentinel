@@ -1,8 +1,20 @@
 name: daily-refresh
 
+# 触发方式（三条，缺一不可）：
+#   schedule          —— 每天 22:10 UTC = 次日 06:10 马来西亚时间（UTC+8）自动重算并重新部署；
+#   push              —— 往 main 推一次就**立刻**部署一次，不用等到第二天 06:10。
+#                        这一条是 2026-10-18 补的，补的是一个真实缺口：本仓库的 Pages 源是
+#                        「GitHub Actions」，推分支本身不会上线，只有这个工作流部署才会上线 ——
+#                        没有 push 触发时，「推完就等下一次定时任务」最长要等满 24 小时。
+#   workflow_dispatch —— 在仓库 Actions 页手动 Run workflow，用于临时补跑或补部署。
+# 不会自激：工作流自己用 GITHUB_TOKEN 提交并 push，而由 GITHUB_TOKEN 触发的 push 事件不会再
+# 触发新的工作流运行（GitHub 官方行为，见「Automatic token authentication」）；deploy 作业里
+# 另有一道 github.actor 判断作为双保险。
 on:
   schedule:
     - cron: "10 22 * * *"        # 每天 22:10 UTC = 次日 06:10 马来西亚时间（UTC+8）
+  push:
+    branches: [main]
   workflow_dispatch: {}
 
 permissions:
@@ -23,7 +35,9 @@ jobs:
 
       - uses: actions/setup-python@v5
         with:
-          python-version: "3.12"
+          # 3.10：与本地实测解释器一致。Python 3.12 起内置 sum() 改用 Neumaier 补偿求和，
+          # 同一份数据会差最后一位（成品页 0.659 变 0.658），故云端锁 3.10 与本地逐位同解。
+          python-version: "3.10"
 
       - name: 安装依赖
         run: pip install --no-cache-dir -r requirements.txt
@@ -41,6 +55,25 @@ jobs:
           git commit -m "daily refresh $(date -u +%Y-%m-%d)" || echo "no changes to commit"
           git push
 
+  deploy:
+    needs: refresh
+    # 部署**不依赖刷新是否成功**：只要 main 上的成品页是完整的就上线。
+    # 刷新失败时不会有任何提交（提交是刷新的下一个步骤，刷新非零就跳过），main 仍是推送时那一版，
+    # 所以照样把这一版部署上去 —— 这一条保证「推完就在线」，不因上游接口抽风而落空。
+    # 由机器人自己 push 触发的运行直接跳过（双保险，避免自激）。
+    if: always() && needs.refresh.result != 'cancelled' && (github.event_name != 'push' || github.actor != 'github-actions[bot]')
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      # ref: main —— 定时运行里 refresh 刚把新页面推回 main，必须取 main 的最新提交才拿得到它
+      # （默认取的是触发本次运行的那个提交，定时事件下那就是刷新前的旧页面）。
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+
       # configure-pages@v5：官方 Pages 起始模板（pages/static.yml）里就有这一步，
       # 它校验仓库已把 Pages 源设为 "GitHub Actions"，并把站点信息注入后续步骤。
       # 2026-10-16 已逐个核对本文件用到的 action 版本确实存在：
@@ -51,14 +84,6 @@ jobs:
         with:
           path: demo
 
-  deploy:
-    needs: refresh
-    runs-on: ubuntu-latest
-    timeout-minutes: 10
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    steps:
       # deploy-pages@v5：与 GitHub 官方 Pages 起始模板（static.yml）当前推荐的版本一致，
       # 搭配 actions/upload-pages-artifact@v3 用（模板里也是这一对）
       - id: deployment

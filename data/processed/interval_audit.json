@@ -3,7 +3,7 @@
     "n_test": 534,
     "sigma": 0.1406,
     "coverage_1sigma": 69.5,
-    "coverage_128sigma": 80.3,
+    "coverage_128sigma": 80.1,
     "coverage_164sigma": 88.4,
     "coverage_196sigma": 95.5,
     "q80_multiplier": 1.276,
@@ -44,7 +44,7 @@
     "coverage_196sigma": 96.6,
     "q80_multiplier": 1.217,
     "q90_multiplier": 1.445,
-    "mean_resid": -0.0128,
+    "mean_resid": -0.0129,
     "kurtosis": 1.17
   },
   "5": {

@@ -82,7 +82,7 @@ for h in HORIZONS:
             h, bstar, br, base["flat"], base["pers"], base["clim"], auc(Pb, lab), auc(Pr, lab), beats))
 
 p = os.path.join(BASE, "data", "processed", "blend_audit.json")
-json.dump(out, open(p, "w", encoding="utf-8"), indent=2, ensure_ascii=False)
+json.dump(out, open(p, "w", encoding="utf-8", newline="\n"), indent=2, ensure_ascii=False)
 head = [out[str(h)] for h in HEAD]
 print("")
 print("1/3/7/14 天：收缩后 RMSE %s，全部低于常数均值：%s" % ([x["blend_rmse"] for x in head], all(x["beats_all_baselines"] for x in head)))

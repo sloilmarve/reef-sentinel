@@ -36,9 +36,9 @@ L.append("当日实测：海温 " + format(float(now["sst"]), ".2f") + " °C（p
 L.append("未来 " + str(NH) + " 天（数值天气预报驱动）：指数上界最高 " + format(hi, ".3f") + "（第 " + str(hi_lead) + " 天），点预报最高 " + format(max(float(f["risk"]) for f in F), ".3f") + "，持续预报 " + format(float(now["pers7"]), ".3f") + "，气候平均 " + format(float(now["clim"]), ".3f") + "；触发线为 " + format(P90, ".3f") + "，" + ("本期未触发。" if hi < P90 else "已接近/超过触发线。"))
 L.append("行动建议：" + action(r))
 L.append("模型诚实度：1 天 RMSE " + format(float(M["1"]["model_rmse"]), ".4f") + "（持续预报 " + format(float(M["1"]["pers_rmse"]), ".4f") + "）；7 天 " + format(float(M["7"]["model_rmse"]), ".4f") + "（持续预报 " + format(float(M["7"]["pers_rmse"]), ".4f") + "）。指数为统计估计，不替代现场判断。")
-text = os.linesep.join(L)
+text = "\n".join(L)
 out = os.path.join(ROOT, "data", "processed", "daily_brief_latest.txt")
-open(out, "w", encoding="utf-8").write(text + os.linesep)
+open(out, "w", encoding="utf-8", newline="\n").write(text + "\n")
 print(text)
 print("")
 print("WROTE " + out + " " + str(os.path.getsize(out)) + " bytes")
@@ -53,7 +53,7 @@ frozen = os.path.join(arch, "daily_brief_" + day + ".txt")
 if os.path.exists(frozen):
     print("FROZEN " + frozen + " (already archived, not rewritten)")
 else:
-    open(frozen, "w", encoding="utf-8").write(text + os.linesep)
+    open(frozen, "w", encoding="utf-8", newline="\n").write(text + "\n")
     print("ARCHIVED " + frozen + " " + str(os.path.getsize(frozen)) + " bytes")
 
 logp = os.path.join(arch, "forecast_log.jsonl")
@@ -72,6 +72,6 @@ else:
     rec = {"date": day, "risk": round(r, 4), "n_haz": now["n_haz"],
            "forecast": [{"lead": f["lead"], "risk": round(float(f["risk"]), 4),
                          "hi": round(float(f["hi"]), 4), "half": round(float(f["half"]), 4)} for f in F]}
-    with open(logp, "a", encoding="utf-8") as fh:
-        fh.write(json.dumps(rec, ensure_ascii=False) + os.linesep)
+    with open(logp, "a", encoding="utf-8", newline="\n") as fh:
+        fh.write(json.dumps(rec, ensure_ascii=False) + "\n")
     print("LEDGER appended " + day + " -> " + logp)

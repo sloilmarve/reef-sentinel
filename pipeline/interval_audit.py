@@ -52,7 +52,7 @@ for h in (1, 2, 3, 4, 5, 6, 7, 8, 10, 14):
     print("%-4d %-8d %-8.4f %-8.1f %-8.1f %-8.1f %-8.3f %-8.2f" % (h, len(res), sigma, cov[68], cov[80], cov[90], q80, kurt))
 
 p = os.path.join(BASE, "data", "processed", "interval_audit.json")
-json.dump(out, open(p, "w", encoding="utf-8"), indent=2, ensure_ascii=False)
+json.dump(out, open(p, "w", encoding="utf-8", newline="\n"), indent=2, ensure_ascii=False)
 print("")
 print("高斯假设下 ±1 sigma 应覆盖 68.3%，实际覆盖见上表；q80x = 经验 80% 区间所需倍数。")
 print("wrote", p)

@@ -1,0 +1,111 @@
+{
+  "_note": "演示视频旁白的文字记录，随提交材料一起打包：docs/04 的逐字稿与视频里的中英双语字幕都由这份记录核对（tools/script_audit.py）。出片脚本（工作区 .taste-skill/video/build.py）用同一份文字喂系统语音合成，故 zh 与视频里听到的逐字相同。audio_seconds 是每段旁白音频的实测时长；zh_cues 是该段被切成的中文字幕句数，与 en 的行数一一对应。",
+  "voice": "Microsoft Huihui Desktop",
+  "rate": 1,
+  "pad_seconds": 0.4,
+  "title_seconds": 4.0,
+  "end_seconds": 3.0,
+  "snapshot": {
+    "date": "2026-10-16",
+    "note": "视频里念到的每个数字都冻结在这一天的数据快照上（data/processed 的 dashboard_data.json span.end）。页面每天 06:10（马来西亚时间）自动重算，所以在线页可能比视频新一天到几天；片头卡与片尾卡都印了这个日期。tools/narration_audit.py 会把这个日期与现算值逐条核对。"
+  },
+  "shots": {
+    "shot1": {
+      "zh": "在马来西亚沙巴的仙本那，珊瑚礁养着潜水旅游和上千个家庭。但珊瑚正被三件事压着：海水越来越热、暴雨把泥沙冲进近岸、大浪折断礁体。潜店明天要不要出海，只能靠感觉。",
+      "zh_cues": 5,
+      "audio_seconds": 18.98,
+      "en": [
+        "In Semporna, Sabah, Malaysia,",
+        "coral reefs feed dive tourism and more than a thousand households.",
+        "But three things press on the reef: warmer seas,",
+        "storm runoff washing silt into the shallows, and waves that break the reef itself.",
+        "Whether a dive shop can go out tomorrow is still guesswork."
+      ]
+    },
+    "shot2": {
+      "zh": "我们用四年公开数据，算出这个站点的病历。二零二四年，全球第四次白化事件的高峰年，这里有十五个复合灾害日、四十六个热压力日，是全记录最重的一年；二零二六年最高海温三十一点四五摄氏度、单日降水四十八点二毫米。",
+      "zh_cues": 6,
+      "audio_seconds": 22.29,
+      "en": [
+        "Using four years of open data, we built this station's medical record.",
+        "2024 — the peak of the fourth global bleaching event —",
+        "saw 15 compound-hazard days and 46 heat-stress days here,",
+        "the worst year in the whole record;",
+        "in 2026 the peak sea temperature reached 31.45 °C and",
+        "a single day brought 48.2 mm of rain."
+      ]
+    },
+    "shot3": {
+      "zh": "珊瑚哨兵做三件事：用本站历史的前百分之十分位数定阈值；把浪、雨、增水合成零到一的危险指数，海温单列为热压力；再用岭回归预测未来一到十四天，给出经验百分之八十区间。",
+      "zh_cues": 5,
+      "audio_seconds": 17.66,
+      "en": [
+        "Reef Sentinel does three things: thresholds come from this station's own top decile;",
+        "wave, rain and surge combine into a 0–1 hazard index,",
+        "while sea temperature is tracked separately as heat stress;",
+        "then ridge regression predicts the next 1 to 14 days with",
+        "an empirical 80% interval."
+      ]
+    },
+    "shot4": {
+      "zh": "方向里要的第二件事是识别与优先级。我们用本站海温建三十一天滑动气候态，按霍布迪的定义识别出十三次海洋热浪；当前处于记录第九十二点二百分位、极高档。系统据此把十一月三日与十二月一日设为复测窗口，并给出七条触发—响应标准作业程序。",
+      "zh_cues": 6,
+      "audio_seconds": 24.59,
+      "en": [
+        "The track's second ask is detection and priority.",
+        "We build a 31-day rolling climatology from this station's own SST",
+        "and identify 13 marine heatwaves under the Hobday definitions;",
+        "today it sits at the 92.2nd percentile of the record — the top level.",
+        "The system therefore sets 3 November and 1 December as re-survey windows",
+        "and prints a seven-step trigger-and-response SOP."
+      ]
+    },
+    "shot5": {
+      "zh": "也要请您看这里：二元分类器的曲线下面积只有零点四九五。连续回归在一到十四天都优于持续预报，误差低百分之二十点八到百分之八点九；对常数均值也全时效更低，但三天以上只低千分之几；收缩校准只多赚千分之几，页面仍部署满幅预报。",
+      "zh_cues": 5,
+      "audio_seconds": 23.78,
+      "en": [
+        "And look here: our binary classifier's AUC is only 0.495.",
+        "The continuous regression beats persistence at all four horizons,",
+        "cutting error by 20.8% down to 8.9%;",
+        "it also beats the constant mean everywhere, but by thousandths beyond three days;",
+        "shrinkage calibration adds only thousandths, so the page ships the full forecast."
+      ]
+    },
+    "shot6": {
+      "zh": "我们把白化预警升级成学习组件：预测未来二十八天是否出现热浪日，四折扩展窗池化平均精度零点三六四，高于现行规则零点三一一与基准零点二四二。",
+      "zh_cues": 3,
+      "audio_seconds": 14.73,
+      "en": [
+        "We upgraded bleaching watch into a learned component: will a heatwave day occur in the next 28 days?",
+        "Four-fold expanding-window pooled average precision is 0.364,",
+        "above the current rule's 0.311 and the 0.242 base rate."
+      ]
+    },
+    "shot7": {
+      "zh": "官方对照做了两层：年度排序与美国国家海洋和大气管理局一致，仅四个年份、样本小；官方站点覆盖了十三次热浪，海温只差零点零一三度；但官方八成二日子在预警状态，只能印证趋势，不能当触发线。",
+      "zh_cues": 5,
+      "audio_seconds": 20.35,
+      "en": [
+        "The official cross-check works at two levels: the yearly ranking agrees with NOAA,",
+        "on only four years — a small sample;",
+        "the official station covers all 13 heatwaves, with SST differing by just 0.013 °C;",
+        "but it is in alert 82% of the time, so it confirms the trend",
+        "and cannot serve as a trigger line."
+      ]
+    },
+    "shot8": {
+      "zh": "预报要被执行才有价值：系统按档位给潜店、修复队、度假村和管理方写动作。接下来九十天，我们要找两到三家潜店和一支修复队做每日预警。这是研究演示，不是官方预警；停航与闭园以马来西亚气象局和沙巴公园管理局的发布为准。",
+      "zh_cues": 6,
+      "audio_seconds": 23.93,
+      "en": [
+        "A forecast only counts once it is acted on: the system writes actions by level for dive shops,",
+        "restoration teams, resorts and managers.",
+        "Over the next 90 days we will run daily warnings with",
+        "two or three dive shops and a restoration team.",
+        "This is a research demo, not an official warning;",
+        "suspending trips or closing sites follows MetMalaysia and Sabah Parks."
+      ]
+    }
+  }
+}

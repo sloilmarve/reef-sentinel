@@ -67,7 +67,8 @@ def write_rows(path, header, rows, key):
     return len(rows)
 
 today = datetime.date.today()
-print("TODAY " + today.isoformat())
+utc_today = datetime.datetime.now(datetime.timezone.utc).date()
+print("TODAY " + today.isoformat() + "  (UTC " + utc_today.isoformat() + ")")
 
 print("== 1) 海洋逐小时 ==")
 marine = read_rows(MARINE_CSV, "time_utc", len(MARINE_HEADER))
@@ -105,10 +106,25 @@ if old_last_d:
     start_d = datetime.date.fromisoformat(old_last_d) - datetime.timedelta(days=5)
 else:
     start_d = datetime.date(2022, 11, 1)
-for a, b in windows(start_d, today):
-    url = ("https://archive-api.open-meteo.com/v1/archive?latitude=" + LAT + "&longitude=" + LON
-           + "&daily=" + DAILY_VARS + "&start_date=" + a.isoformat() + "&end_date=" + b.isoformat() + "&timezone=UTC")
-    d = fetch(url)
+# ERA5 归档只到 UTC 今天：本地时钟进入次日（北京时间早于 UTC）时，请求次日会被拒（HTTP 400）。
+# 因此把归档请求的结束日夹到 UTC 今天；最近一天的缺口由下面的预报接口（past_days=30）补齐。
+arch_end = min(today, utc_today)
+if arch_end < today:
+    print("  归档结束日夹到 UTC 今天 %s（本地已是 %s；ERA5 不接受次日）" % (arch_end, today))
+for a, b in windows(start_d, arch_end):
+    bb = b
+    while True:
+        url = ("https://archive-api.open-meteo.com/v1/archive?latitude=" + LAT + "&longitude=" + LON
+               + "&daily=" + DAILY_VARS + "&start_date=" + a.isoformat() + "&end_date=" + bb.isoformat() + "&timezone=UTC")
+        try:
+            d = fetch(url)
+            break
+        except RuntimeError as e:
+            if "400" in str(e) and bb > a:
+                print("  归档 %s .. %s 被拒（HTTP 400），结束日回退一天重试" % (a.isoformat(), bb.isoformat()))
+                bb = bb - datetime.timedelta(days=1)
+                continue
+            raise
     dd = d.get("daily", {})
     times = dd.get("time", [])
     for i, t in enumerate(times):

@@ -1,0 +1,51 @@
+{
+  "task": "把排序目标换成复合灾害日（>=2 项驱动同时越过本站 p90）后模型还有没有排序能力",
+  "protocol": "3 折 0.62/0.75/0.88，每折 180 天；特征 / 模型 / λ 规则与主表完全相同，只换标签",
+  "n_days": 1446,
+  "feature_count": 66,
+  "label": "未来 h 天出现复合灾害日（n_haz >= 2）",
+  "note": "模型预测的是连续危险指数（0 / 1/3 / 2/3 / 1），这里只把它当作排序分数；复合日样本很少，数值噪声大",
+  "by_h": {
+    "1": {
+      "pos": 11,
+      "base_rate": 0.0206,
+      "model_auc": 0.898,
+      "pers_auc": 0.585,
+      "model_pr_auc": 0.403,
+      "pers_pr_auc": 0.029,
+      "lift_vs_base": 19.58,
+      "model_rmse_index": 0.1406
+    },
+    "3": {
+      "pos": 11,
+      "base_rate": 0.0206,
+      "model_auc": 0.765,
+      "pers_auc": 0.25,
+      "model_pr_auc": 0.052,
+      "pers_pr_auc": 0.014,
+      "lift_vs_base": 2.55,
+      "model_rmse_index": 0.1603
+    },
+    "7": {
+      "pos": 11,
+      "base_rate": 0.0206,
+      "model_auc": 0.569,
+      "pers_auc": 0.426,
+      "model_pr_auc": 0.027,
+      "pers_pr_auc": 0.019,
+      "lift_vs_base": 1.32,
+      "model_rmse_index": 0.1624
+    },
+    "14": {
+      "pos": 11,
+      "base_rate": 0.0206,
+      "model_auc": 0.744,
+      "pers_auc": 0.503,
+      "model_pr_auc": 0.078,
+      "pers_pr_auc": 0.023,
+      "lift_vs_base": 3.79,
+      "model_rmse_index": 0.1615
+    }
+  },
+  "selfcheck": "同一协议逐时效复现主表 RMSE（<=5e-5）"
+}

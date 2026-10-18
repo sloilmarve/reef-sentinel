@@ -25,7 +25,7 @@ CONFIGS = [
     ("base_lam5", "基础特征 + 固定 λ=5", BASEK, 5.0),
     ("base_inner", "基础特征 + 内窗 CV 选 λ", BASEK, None),
     ("ext_lam5", "基础 + 当日原始水平 + 固定 λ=5", ALL, 5.0),
-    ("ext_inner", "基础 + 当日原始水平 + 内窗 CV 选 λ（部署）", ALL, None),
+    ("ext_inner", "基础 + 当日原始水平 + 内窗 CV 选 λ（主表配置／报告口径）", ALL, None),
 ]
 out = []
 for cid, label, keys, fixed in CONFIGS:
@@ -51,7 +51,7 @@ for cid, label, keys, fixed in CONFIGS:
 payload = dict(
     protocol="3 folds (cuts 0.62 / 0.75 / 0.88, 180-day test windows) — identical to the metrics table in dashboard_data.json",
     features_base=len(BASEK), features_ext=len(ALL), raw_levels=list(RAW),
-    configs=out, deployed="ext_inner")
-open(P("data", "processed", "ablation_audit.json"), "w", encoding="utf-8").write(
+    configs=out, report_config="ext_inner")
+open(P("data", "processed", "ablation_audit.json"), "w", encoding="utf-8", newline="\n").write(
     json.dumps(payload, ensure_ascii=False, indent=1))
 print("WROTE ablation_audit.json  base=%d ext=%d" % (len(BASEK), len(ALL)))

@@ -12,7 +12,7 @@ import csv, json, os, statistics as st
 from datetime import date, timedelta
 
 BASE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-RAW = os.path.join(BASE, "data", "raw", "semporna_sst_hourly_2016_2026.csv")
+RAW = os.path.join(BASE, "data", "raw", "semporna_sst_hourly_2022_2026.csv")
 OUT = os.path.join(BASE, "data", "processed")
 os.makedirs(OUT, exist_ok=True)
 

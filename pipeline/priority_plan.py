@@ -118,7 +118,10 @@ days = []
 for r in fc:
     v = float(r.get("risk", r.get("value", r.get("v", 0.0))))
     h = float(r.get("half", 0.0))
-    up = round(v + h, 4)
+    # 第 62 轮：上界一律取成品页那一个（dashboard 的 hi，三位小数、且夹在 0..1），
+    # 不再自己重算 v + h。原来两边各算一次，同一张卡上「上界 0.301」与图里的 0.302
+    # 会并排出现（差在第四位小数的取整）。verify_demo.py 现在逐日断言两者相等。
+    up = round(float(r.get("hi", v + h)), 4)
     if up >= RP95 and RP95 > 0:
         tier, act = "高", "暂停不可逆施工与移栽，只做巡护记录"
     elif up >= RP90 and RP90 > 0:
@@ -163,6 +166,14 @@ else:
     rec = {}
 print("恢复窗口：最近一次热浪 %s（%d 天，%d 级）结束；今天距结束 %d 天；4 周 %s / 8 周 %s，窗口内 = %s" % (rec.get("event_end"), rec.get("event_days", 0), rec.get("category", 0), rec.get("days_since", 0), rec.get("w4"), rec.get("w8"), rec.get("inside")))
 
+# 恢复期内不得安排不可逆移栽：施工窗口的动作必须与之相容，不能在同一天给出互斥指令
+_no_transplant = bool(rec.get("inside")) and int(rec.get("days_since", 9999) or 9999) <= 28
+if _no_transplant:
+    for _x in days:
+        if _x["tier"] == "低":
+            _x["action"] = "优先安排可逆性作业（清污 / 巡护 / 固定样线复测）；不可逆移栽需等恢复期结束（%s 之后）" % rec.get("w4", "-")
+        elif _x["tier"] == "中":
+            _x["action"] = "只做低强度巡护与当日海况复核；不可逆移栽需等恢复期结束（%s 之后）" % rec.get("w4", "-")
 bt = B["tier_rule"]
 sop = [
  {"stage": "日常（低 / 中）", "trigger": "近 84 天累计热异常 < p75 = %.3f C 天" % bt["p75"], "action": "每周刷新一次数据；不额外投入现场人力", "timing": "每周"},
@@ -173,7 +184,42 @@ sop = [
  {"stage": "恢复期 4–8 周", "trigger": "热浪结束后 28 至 56 天（复测起点 %s）" % rec.get("w8", "-"), "action": "复测并评估恢复情况，决定是否重开保护工程", "timing": str(rec.get("w8", "-"))},
  {"stage": "施工窗口选择", "trigger": "未来 %d 天预报（风险上界最低的一天是 %s = %.3f）" % (len(days_sorted), days_sorted[0]["date"], days_sorted[0]["upper"]), "action": "把可逆性低的施工排在风险上界最低的日子；上界越过 p95 的日子暂停", "timing": days_sorted[0]["date"]},
 ]
+# 「今天适用哪一档」由数据算出来，不写死：同一时刻可能有多档同时成立
+# （例如热压力已到「极高」、同时未来窗口上界又越过 p95），此时按最严的一档执行。
+cum_now = float(B["now"]["cum_anom"])
+maxup = max(x["upper"] for x in days)
+ev_cat = int(rec.get("category", 0) or 0)
+ev_since = int(rec.get("days_since", 9999) or 9999)
+recent_strong = (ev_cat >= 2) and (ev_since <= 28)
+cond = [
+    cum_now < bt["p75"],
+    bt["p75"] <= cum_now < bt["p90"],
+    cum_now >= bt["p90"],
+    recent_strong or (RP95 > 0 and maxup > RP95),
+    bool(rec.get("inside")) and ev_since <= 28,
+    bool(rec.get("inside")) and 28 < ev_since <= 56,
+    True,
+]
+# 理由句按实际比较结果生成（不写死），未触发的档位也要读得通
+why = [
+    "今天近 84 天累计热异常 %.3f C 天 %s p75 %.3f" % (cum_now, "低于" if cond[0] else "不低于", bt["p75"]),
+    "今天累计热异常 %.3f C 天%s p75 %.3f 与 p90 %.3f" % (cum_now, "落在" if cond[1] else "不在", bt["p75"], bt["p90"]),
+    "今天累计热异常 %.3f C 天 %s p90 %.3f" % (cum_now, "不低于" if cond[2] else "低于", bt["p90"]),
+    ("最近一次热浪 %d 级、结束 %d 天（<= 28 天）" % (ev_cat, ev_since)) if recent_strong else
+    ("未来 %d 天上界最高 %.3f %s p95 %.3f" % (len(days), maxup, "越过" if (RP95 > 0 and maxup > RP95) else "未越过", RP95)),
+    "最近一次热浪结束 %d 天，%s 0–28 天复测窗口" % (ev_since, "落在" if cond[4] else "不在"),
+    "最近一次热浪结束 %d 天，%s 28–56 天复测窗口" % (ev_since, "落在" if cond[5] else "不在"),
+    "任何时候都适用（参考行，不单独触发动作）",
+]
+SEV = {"日常（低 / 中）": 0, "关注（高）": 1, "触发（极高）": 2, "严重（2 级及以上热浪）": 3}
+for _i, _s in enumerate(sop):
+    _s["active"] = bool(cond[_i])
+    _s["active_reason"] = why[_i]
+act = [s for s in sop if s["active"]]
+_press = [s for s in act if s["stage"] in SEV]
+today_stage = max(_press, key=lambda s: SEV[s["stage"]])["stage"] if _press else ""
 print("触发—响应 SOP 共 %d 条；最早可施工日 %s（上界 %.3f）" % (len(sop), days_sorted[0]["date"], days_sorted[0]["upper"]))
+print("今天适用 %d 条：%s；热压力最严的一档 = %s" % (len(act), "、".join(s["stage"] for s in act), today_stage))
 
 OUTD = {"method": "见 formula 字段；风险上界 = 点预报 + 80% 经验半宽（interval_audit 标定）",
         "thresholds": {"risk_p90": RP90, "risk_p95": RP95},
@@ -181,6 +227,10 @@ OUTD = {"method": "见 formula 字段；风险上界 = 点预报 + 80% 经验半
         "sites": sites_sorted,
         "recovery": rec,
         "sop": sop,
+        "today": {"stage": today_stage, "active": [s["stage"] for s in act],
+                  "cum_anom": cum_now, "risk_now": float(D["now"].get("risk", 0.0)),
+                  "max_upper": round(maxup, 4), "p75": bt["p75"], "p90": bt["p90"], "p95": RP95,
+                  "note": "两条轴：危险指数（浪/雨/水位）与热压力（海温）分开；SOP 第一条判断看热压力轴"},
         "formula": {"window_score": "按风险上界升序排序；上界 = 点预报 + 该时效 80% 经验半宽",
                     "site_score": "0.6 x 近 84 天热暴露百分位 + 0.4 x 近 90 天多压力日 / 三站最大多压力日",
                     "note": "多压力日 = 浪 / 雨 / 水位 中至少两项同日越过该站自身 p90；跨站点为同一口径的简化代理指标，用于排序，不等同于仙本那成品页指数"}}

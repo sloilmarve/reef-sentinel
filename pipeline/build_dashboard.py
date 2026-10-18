@@ -168,7 +168,7 @@ payload = dict(site=dict(name="Semporna, Sabah, Malaysia", lat=4.6, lon=118.7),
              surge=round(today["surge"],4), n_haz=today["n_haz"]),
     series=series, yearly=yearly)
 
-open(P("data","processed","dashboard_data.json"),"w",encoding="utf-8").write(
+open(P("data","processed","dashboard_data.json"),"w",encoding="utf-8", newline="\n").write(
     json.dumps(payload, ensure_ascii=False, separators=(",",":")))
 print("payload days:", n, "| features:", len(FEATS))
 print("metrics:", json.dumps({k:{kk:(round(vv,4) if not isinstance(vv,list) else vv) for kk,vv in v.items() if kk!='pers_rmse_h'} for k,v in metrics.items()}))

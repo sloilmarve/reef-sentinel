@@ -1,7 +1,27 @@
 {
  "generated_from": "data/processed/archive/forecast_log.jsonl",
- "obs_latest": "2026-10-15",
- "ledger_issues": 1,
- "settled_lead_days": 0,
- "per_lead": {}
+ "trigger_line": 0.333,
+ "trigger_line_source": "priority_plan.json",
+ "obs_latest": "2026-10-16",
+ "ledger_issues": 2,
+ "settled_lead_days": 1,
+ "s2_verdict": {
+  "status": "pending",
+  "why": "1 天档触发 0 次（少于 5 次，只报数字不下结论）"
+ },
+ "per_lead": {
+  "1": {
+   "n_settled": 1,
+   "rmse": 0.028,
+   "band_coverage": 100.0,
+   "compound_days": 0,
+   "base_rate_pct": 0.0,
+   "hi_high_days": 0,
+   "hit": 0,
+   "miss": 0,
+   "s2_precision_pct": null,
+   "s2_recall_pct": null,
+   "s2_lift_vs_base": null
+  }
+ }
 }

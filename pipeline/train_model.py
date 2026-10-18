@@ -133,5 +133,5 @@ json.dump(dict(features=FEATS, folds=rows, overall=overall,
                latest_date=dates[-1],
                latest_prob=round(float(predict(w, ((apply_impute(X[-1:], med) - mu) / sd))[0]), 4),
                thresholds=TH),
-          open(os.path.join(BASE, "data", "processed", "model_report.json"), "w", encoding="utf-8"), ensure_ascii=False, indent=2)
+          open(os.path.join(BASE, "data", "processed", "model_report.json"), "w", encoding="utf-8", newline="\n"), ensure_ascii=False, indent=2)
 print("\nwrote", os.path.join(BASE, "data", "processed", "model_report.json"))

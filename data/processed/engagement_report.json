@@ -1,0 +1,29 @@
+{
+ "task": "90 天验证计划 S3 / S4 / S5 的记录结算（真实使用 / 决策影响 / 误报耐受）",
+ "site": "Semporna, Sabah",
+ "n_s3": 0,
+ "n_s4": 0,
+ "n_s5": 0,
+ "s3": {
+  "orgs": {},
+  "n_orgs": 0,
+  "best_run": 0,
+  "need_weeks": 4,
+  "verdict": "pending"
+ },
+ "s4": {
+  "n": 0,
+  "n_incomplete": 0,
+  "need": 3,
+  "verdict": "pending"
+ },
+ "s5": {
+  "n": 0,
+  "tolerance_max": null,
+  "false_alarms_max": null,
+  "within_tolerance": null,
+  "verdict": "pending"
+ },
+ "verdict": "pending",
+ "note": "这三条只能等真实使用期发生，没有外部记录时如实报 pending，不用 0 充数、也不把空台账写成达标"
+}

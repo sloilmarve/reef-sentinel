@@ -104,7 +104,7 @@ for slug in SLUGS:
         out["threshold_sweep"].append(row)
         print("  %-9s p%-3d 复合灾害 %3d 天（%.1f%%）  h=3 模型 %.4f / 持续 %.4f / 常数均值 %.4f" % (slug, int(tp*100), comp, 100*comp/len(days), s3["model_rmse"], s3["pers_rmse"], s3["flat_rmse"]))
 
-with open(P("data","processed","multisite_transfer.json"), "w", encoding="utf-8") as f:
+with open(P("data","processed","multisite_transfer.json"), "w", encoding="utf-8", newline="\n") as f:
     json.dump(out, f, ensure_ascii=False, indent=1)
 print("")
 print("WROTE data/processed/multisite_transfer.json")

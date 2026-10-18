@@ -22,6 +22,7 @@ BASE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 RAW = os.path.join(BASE, "data", "raw")
 OUT = os.path.join(RAW, "semporna_forecast_drivers.json")
 LAT, LON, DAYS = 4.6, 118.7, 14
+HORIZON = 8            # 固定业务时效：页面、干预窗口与所有材料都写"未来 8 天"
 
 MARINE_VARS = "sea_surface_temperature,wave_height,wave_period,wind_wave_height,sea_level_height_msl,ocean_current_velocity"
 DAILY_VARS = "temperature_2m_max,temperature_2m_min,temperature_2m_mean,precipitation_sum,wind_speed_10m_max,wind_gusts_10m_max,wind_direction_10m_dominant,relative_humidity_2m_mean"
@@ -98,12 +99,25 @@ for d in sorted(byday):
         row[k] = num(wd.get(k, {}).get(d))
     rows.append(row)
 
+# 固定业务时效。海洋预报产品当日的可覆盖天数会在 8 到 9 天之间浮动（取决于刷新时刻），
+# 早期版本直接把 API 返回的全部天数交给下游，于是同一天不同时刻跑出来的页面会变成 8 天或
+# 9 天，材料里的"未来 8 天"随之对不上。这里统一：只保留最后一个历史日之后的前 HORIZON 天。
+try:
+    _feat_p = os.path.join(BASE, "data", "processed", "semporna_features.json")
+    _last_hist = json.load(open(_feat_p, encoding="utf-8"))["days"][-1]["date"]
+    _kept = [r for r in rows if r["date"] > _last_hist][:HORIZON]
+    if len(_kept) < len([r for r in rows if r["date"] > _last_hist]):
+        print("horizon pin: kept %d of %d days after %s" % (len(_kept), len([r for r in rows if r["date"] > _last_hist]), _last_hist))
+    rows = _kept
+except Exception as _e:
+    print("horizon pin skipped:", _e)
+
 payload = dict(source="Open-Meteo forecast API (marine + weather)",
                url_marine=MARINE, url_weather=WEATHER,
                fetched_for="Semporna 4.6N 118.7E", days=rows)
 os.makedirs(RAW, exist_ok=True)
 tmp = OUT + ".tmp"
-with open(tmp, "w", encoding="utf-8") as f:
+with open(tmp, "w", encoding="utf-8", newline="\n") as f:
     json.dump(payload, f, ensure_ascii=False, indent=1)
 os.replace(tmp, OUT)
 print("fetched forecast driver days:", len(rows), rows[0]["date"], "->", rows[-1]["date"], "->", OUT)

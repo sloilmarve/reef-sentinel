@@ -25,7 +25,7 @@
      "clim_rmse": 0.2056,
      "flat_rmse": 0.1645,
      "model_auc": 0.779,
-     "pers_auc": 0.6
+     "pers_auc": 0.592
     },
     "3": {
      "model_rmse": 0.1638,
@@ -33,7 +33,7 @@
      "clim_rmse": 0.2024,
      "flat_rmse": 0.164,
      "model_auc": 0.611,
-     "pers_auc": 0.443
+     "pers_auc": 0.442
     },
     "7": {
      "model_rmse": 0.1624,
@@ -41,7 +41,7 @@
      "clim_rmse": 0.1999,
      "flat_rmse": 0.1604,
      "model_auc": 0.57,
-     "pers_auc": 0.436
+     "pers_auc": 0.432
     },
     "14": {
      "model_rmse": 0.1621,
@@ -78,7 +78,7 @@
      "clim_rmse": 0.1924,
      "flat_rmse": 0.1582,
      "model_auc": 0.801,
-     "pers_auc": 0.627
+     "pers_auc": 0.624
     },
     "3": {
      "model_rmse": 0.148,
@@ -86,7 +86,7 @@
      "clim_rmse": 0.1906,
      "flat_rmse": 0.1579,
      "model_auc": 0.7,
-     "pers_auc": 0.476
+     "pers_auc": 0.48
     },
     "7": {
      "model_rmse": 0.1524,
@@ -94,7 +94,7 @@
      "clim_rmse": 0.1872,
      "flat_rmse": 0.1577,
      "model_auc": 0.641,
-     "pers_auc": 0.485
+     "pers_auc": 0.474
     },
     "14": {
      "model_rmse": 0.1492,
@@ -102,7 +102,7 @@
      "clim_rmse": 0.1846,
      "flat_rmse": 0.1567,
      "model_auc": 0.656,
-     "pers_auc": 0.603
+     "pers_auc": 0.612
     }
    }
   },
@@ -131,7 +131,7 @@
      "clim_rmse": 0.2088,
      "flat_rmse": 0.1686,
      "model_auc": 0.742,
-     "pers_auc": 0.621
+     "pers_auc": 0.616
     },
     "3": {
      "model_rmse": 0.1674,
@@ -139,7 +139,7 @@
      "clim_rmse": 0.209,
      "flat_rmse": 0.1682,
      "model_auc": 0.585,
-     "pers_auc": 0.485
+     "pers_auc": 0.48
     },
     "7": {
      "model_rmse": 0.1682,
@@ -147,7 +147,7 @@
      "clim_rmse": 0.21,
      "flat_rmse": 0.1684,
      "model_auc": 0.551,
-     "pers_auc": 0.439
+     "pers_auc": 0.427
     },
     "14": {
      "model_rmse": 0.1656,
@@ -167,12 +167,12 @@
    "compound_days": 90,
    "compound_pct": 6.41,
    "h3": {
-    "model_rmse": 0.1905,
+    "model_rmse": 0.1906,
     "pers_rmse": 0.228,
     "clim_rmse": 0.2448,
     "flat_rmse": 0.1946,
     "model_auc": 0.625,
-    "pers_auc": 0.448
+    "pers_auc": 0.444
    }
   },
   {
@@ -186,7 +186,7 @@
     "clim_rmse": 0.2024,
     "flat_rmse": 0.164,
     "model_auc": 0.611,
-    "pers_auc": 0.443
+    "pers_auc": 0.442
    }
   },
   {
@@ -200,7 +200,7 @@
     "clim_rmse": 0.145,
     "flat_rmse": 0.1212,
     "model_auc": 0.558,
-    "pers_auc": 0.404
+    "pers_auc": 0.411
    }
   },
   {
@@ -214,7 +214,7 @@
     "clim_rmse": 0.2282,
     "flat_rmse": 0.1889,
     "model_auc": 0.686,
-    "pers_auc": 0.487
+    "pers_auc": 0.492
    }
   },
   {
@@ -228,7 +228,7 @@
     "clim_rmse": 0.1906,
     "flat_rmse": 0.1579,
     "model_auc": 0.7,
-    "pers_auc": 0.476
+    "pers_auc": 0.48
    }
   },
   {
@@ -242,7 +242,7 @@
     "clim_rmse": 0.1402,
     "flat_rmse": 0.111,
     "model_auc": 0.74,
-    "pers_auc": 0.564
+    "pers_auc": 0.556
    }
   },
   {
@@ -251,12 +251,12 @@
    "compound_days": 107,
    "compound_pct": 7.62,
    "h3": {
-    "model_rmse": 0.2054,
+    "model_rmse": 0.2055,
     "pers_rmse": 0.2478,
     "clim_rmse": 0.2464,
     "flat_rmse": 0.2102,
     "model_auc": 0.599,
-    "pers_auc": 0.454
+    "pers_auc": 0.457
    }
   },
   {
@@ -270,7 +270,7 @@
     "clim_rmse": 0.209,
     "flat_rmse": 0.1682,
     "model_auc": 0.585,
-    "pers_auc": 0.485
+    "pers_auc": 0.48
    }
   },
   {
@@ -284,7 +284,7 @@
     "clim_rmse": 0.1444,
     "flat_rmse": 0.1123,
     "model_auc": 0.608,
-    "pers_auc": 0.497
+    "pers_auc": 0.537
    }
   }
  ]

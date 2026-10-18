@@ -173,7 +173,7 @@
  ],
  "agree_with_current": {
   "rule_tier": "极高",
-  "rule_score_pctl": 92.1
+  "rule_score_pctl": 92.2
  },
  "now": {
   "date": "2026-09-18",
@@ -206,7 +206,7 @@
    {
     "key": "days_since_end",
     "cn": "距上次热浪结束天数",
-    "z": 2.094
+    "z": 2.093
    },
    {
     "key": "sst",
@@ -216,7 +216,7 @@
    {
     "key": "a0",
     "cn": "当日热异常",
-    "z": 1.969
+    "z": 1.97
    },
    {
     "key": "sst_mean28",

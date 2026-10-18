@@ -93,7 +93,7 @@ out = {"source": "NOAA Coral Reef Watch 5 km v3.1 官方公开汇总（BAA 白�
        "header": header, "n_rows": len(raw), "span": [raw[0][3].strip(), last[3].strip()],
        "latest": latest, "annual": annual, "station_table": table,
        "record": {"global_year": best_g["year"], "global_max": best_g["global_max"], "pacific_year": best_p["year"], "pacific_max": best_p["pacific_max"], "early_max_global": early_max_g}}
-json.dump(out, open(OUT, "w", encoding="utf-8"), ensure_ascii=False, indent=1)
+json.dump(out, open(OUT, "w", encoding="utf-8", newline="\n"), ensure_ascii=False, indent=1)
 print("WROTE " + OUT + " " + str(os.path.getsize(OUT)) + " bytes")
 print("SPAN " + out["span"][0] + " .. " + out["span"][1] + "  years " + str(len(annual)))
 print("LATEST " + json.dumps(latest, ensure_ascii=False))

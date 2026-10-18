@@ -23,8 +23,12 @@ def f(v, k=2):
     return ("%." + str(k) + "f") % float(v)
 
 print("== 单页属性 ==")
-ok("<script" not in html.lower(), "成品页不含任何 script 标签（SCRIPT_TAGS=%d）" % html.lower().count("<script"))
-ok("getElementById" not in html, "成品页没有任何客户端脚本绑定")
+_n_script = html.lower().count("<script")
+ok(_n_script == 1 and 'src="http' not in html.lower() and "<link" not in html.lower(),
+   "成品页仅含 1 个内联渐进增强脚本、无任何外链脚本 / 样式（SCRIPT_TAGS=%d，离线可开）" % _n_script)
+ok('class="navlinks"' in html and "details.more" in html and "本页怎么读" not in html,
+   "渐进增强脚本只做吸顶导航高亮与展开 / 收起，全部内容为预渲染（无 JS 时仍可读）")
+ok("getElementById" not in html, "渐进增强脚本为原生 JS、无客户端数据绑定")
 ok("dashboard.html" not in html, "页面不再引用交互版页面（项目已收敛为单页）")
 ok("teleprompter" not in html, "页面不再引用提词器（已移出项目）")
 ok("data:image/png;base64," in html, "官方区域图已内嵌为 data URI（单文件可离线打开）")
@@ -94,45 +98,61 @@ now = D["now"]
 for label, s in [("危险指数", f(now["risk"], 2)), ("海温", f(now["sst"], 2)), ("降水", f(now["rain"], 1)), ("波高", f(now["wave"], 2)), ("增水", f(now["surge"], 3)), ("超阈值项", str(now["n_haz"]) + " / 3")]:
     ok(s in html, "页面上出现今日 " + label + " = " + s)
 
-print("== 预报图几何（viewBox 660x250）==")
-W, H, pl, pr, pt, pb = 660, 250, 42, 16, 16, 32
+print("== 预报图几何（viewBox 660x258）==")
+W, H, pl, pr, pt, pb = 660, 258, 42, 16, 16, 46
 iw, ih = W - pl - pr, H - pt - pb
 F10 = D["forecast"]
 maxv = max(0.45, max(x["hi"] for x in F10))
 X = lambda i: pl + (i + 0.5) * iw / len(F10)
 Y = lambda v: pt + ih - (v / maxv) * ih
-bw = iw / len(F10) * 0.5
+bw = iw / len(F10) * 0.62
 missing = []
 for i, d in enumerate(F10):
     x0 = round(X(i) - bw / 2, 1)
     t1 = "x=\"" + str(x0) + "\""
     if t1 not in html:
         missing.append(str(d["lead"]))
+    xp = round(X(i) - bw * 0.22, 1)
+    if ("x=\"" + str(xp) + "\"") not in html:
+        missing.append(str(d["lead"]) + "(point)")
     ok(pt <= Y(d["hi"]) <= pt + ih, "+%-2d 区间上界在绘图框内 y=%.1f（值 %.3f）" % (d["lead"], Y(d["hi"]), d["hi"]))
 ok(not missing, "每个时效的柱子在页面上都能找到对应坐标（缺失：%s）" % (missing or "无"))
+ok("0 0 660 258" in html, "forecast viewBox is 660x258")
 p90 = 1.0 / 3.0
 ok("p90 触发线" in html, "p90 触发线已标注（值 %.3f，四舍五入到 0.33）" % p90)
 
-print("== 历史图（最近 180 天）==")
-rk = S["risk"][-180:]
-cp = S["compound"][-180:]
-pl2, pr2, pt2, pb2 = 38, 14, 14, 28
-H2 = 210
-ih2 = H2 - pt2 - pb2
-maxh = max(0.45, max(rk))
-Y2 = lambda v: pt2 + ih2 - (v / maxh) * ih2
-ok(all(pt2 <= Y2(v) <= pt2 + ih2 for v in rk), "180 个点全部落在绘图框内（y 上限 %.3f）" % maxh)
-path = ""
-for i, v in enumerate(rk):
-    path = path + ((" L" if i else " M") + str(round(pl2 + (i / 179.0) * (W - pl2 - pr2), 1)) + "," + str(round(Y2(v), 1)))
-ok(path.strip() in html, "折线路径与源数据逐点一致（%d 个点）" % len(rk))
-ok(sum(cp) == cp.count(1), "窗口内复合灾害日 %d 天，竖条已渲染" % sum(cp))
-
-print("== 近 300 天条带 ==")
-b300 = S["risk"][-300:]
-ok(len(b300) == 300, "条带共 %d 根（含零值细条）" % len(b300))
-bmax = max(0.34, max(b300))
-ok(all(int(round((v / bmax) * 100)) >= 0 for v in b300), "条带高度由同一分母计算，最高 %d%%" % int(round(max(b300) / bmax * 100)))
+print("== 历史回看：近 180 天曲线与近 300 天条带（段 05）==")
+_SEQ = D["series"]
+ok("历史回看：近 180 天曲线与近 300 天逐日条带" in html, "段 05 已渲染近 180 天曲线与近 300 天逐日条带")
+_HN = 180
+_hrk = _SEQ["risk"][-_HN:]
+_hpl, _hiw = 38, 660 - 38 - 14
+_hih = 210 - 14 - 28
+_hmv = max(0.45, max(_hrk))
+_hX = lambda i: _hpl + (i / (_HN - 1)) * _hiw
+_hY = lambda v: 14 + _hih - (v / _hmv) * _hih
+_hpath = ""
+for _i, _v in enumerate(_hrk):
+    _hpath += (" L" if _i else " M") + str(round(_hX(_i), 1)) + "," + str(round(_hY(_v), 1))
+ok(_hpath.strip() in html, "近 %d 天危险指数曲线逐点坐标与源数据一致" % _HN)
+ok("0 0 660 210" in html, "历史曲线 viewBox is 660x210")
+_BN = 300
+_brk = _SEQ["risk"][-_BN:]
+_bcp = _SEQ["compound"][-_BN:]
+_bdt = _SEQ["date"][-_BN:]
+_bmv = 0.34
+for _v in _brk:
+    if _v > _bmv:
+        _bmv = _v
+_bmiss = []
+for _i in range(_BN):
+    _hh = max(2, int(round((_brk[_i] / _bmv) * 100)))
+    _tip = _bdt[_i] + " 危险指数 " + f(_brk[_i], 2) + ("（复合灾害日）" if _bcp[_i] else "")
+    if ("height:" + str(_hh) + "%;background:") not in html or ('title="' + _tip + '"') not in html:
+        _bmiss.append(_bdt[_i])
+ok(not _bmiss, "近 %d 天逐日条带的高度与提示口径与源数据一致（缺失：%s）" % (_BN, _bmiss or "无"))
+ok("background:var(--lv3)" in html and "background:var(--hair2)" in html, "近 300 天条带按危险指数分级实色着色、无半透明失真")
+ok(html.count('class="bar"') == _BN, "条带恰好 %d 根逐日柱（页面共 %d 根）" % (_BN, html.count('class="bar"')))
 
 print("== 年度病历表 ==")
 for y in D["yearly"]:
@@ -160,8 +180,8 @@ for h in ["1", "3", "7", "14"]:
 ok(f(LA["horizons"]["14"]["per_lam"]["400"]["rmse"], 4) in html, "14 天 λ=400 把 RMSE 压到 %s 的事实已公开" % f(LA["horizons"]["14"]["per_lam"]["400"]["rmse"], 4))
 AB = json.load(open(P("data", "processed", "ablation_audit.json"), encoding="utf-8"))
 _cf = {c["id"]: c for c in AB["configs"]}
-_old, _new = _cf["base_lam5"], _cf[AB["deployed"]]
-ok(AB["deployed"] == "ext_inner" and _new["features"] == D["forecast_meta"]["features"], "消融表里部署配置的特征数 %d 与载荷声明一致" % _new["features"])
+_old, _new = _cf["base_lam5"], _cf[AB["report_config"]]
+ok(AB["report_config"] == "ext_inner" and _new["features"] == D["forecast_meta"]["features"], "消融表里部署配置的特征数 %d 与载荷声明一致" % _new["features"])
 ok(all(abs(_new["by_h"][h]["rmse"] - D["metrics"][h]["model_rmse"]) <= 0.0002 for h in ("1", "3", "7", "14")), "消融表部署配置的 RMSE 与主表逐时效一致（同一协议、同一模型，互为交叉校验）")
 ok(all(_new["by_h"][h]["rmse"] < _old["by_h"][h]["rmse"] for h in ("1", "3", "7", "14")), "消融表显示升级在四个时效都优于上一版配置（%s -> %s）" % ("/".join(f(_old["by_h"][h]["rmse"], 4) for h in ("1", "3", "7", "14")), "/".join(f(_new["by_h"][h]["rmse"], 4) for h in ("1", "3", "7", "14"))))
 ok("消融：两个改动各自值多少" in html and f(_old["by_h"]["3"]["rmse"], 4) in html and f(_cf["ext_lam5"]["by_h"]["14"]["rmse"], 4) in html and f(_cf["base_inner"]["by_h"]["7"]["auc"], 3) in html, "页面消融卡同时列出旧配置的落败值与「单独改动不成立」的反例")
@@ -174,9 +194,61 @@ ok(not LK["analysis_cols_in_features"] and len(LK["analysis_cols_excluded"]) == 
 ok("严格因果" in html and "事后分析量" in html, "诚实清单写明模型输入严格因果、居中口径只作事后分析量")
 ok(str(LK["feature_count"]) in html and str(LK["analysis_leak_days_last8"]) in html, "页面披露特征数 %d 与最后 8 天里无法用过去数据复现的 %d 天" % (LK["feature_count"], LK["analysis_leak_days_last8"]))
 ok(f(LK["analysis_cols_excluded"][0]["max_abs_diff"], 4) in html, "页面公开被排除的居中分析列的最大偏差 %s（它们不能进模型的直接证据）" % f(LK["analysis_cols_excluded"][0]["max_abs_diff"], 4))
+_TL = LK["threshold_and_label_arms"]
+_tl_join = lambda arm: " / ".join(f(_TL["arms"][arm]["horizons"][str(h)]["model_auc"], 3) for h in _TL["horizons"])
+_tl_win = sum(1 for h in _TL["horizons"] if _TL["arms"]["causal_target"]["horizons"][str(h)]["model_auc"] > _TL["arms"]["causal_target"]["horizons"][str(h)]["pers_auc"])
+ok("训练前缀重算" in html and _tl_join("as_shipped") in html and _tl_join("prefix_thresholds") in html and _tl_join("causal_target") in html,
+   "诚实清单量化阈值与标签两条口径（%d 个时效）：现用 %s → 只用训练前缀阈值 %s → 严格因果标签 %s"
+   % (len(_TL["horizons"]), _tl_join("as_shipped"), _tl_join("prefix_thresholds"), _tl_join("causal_target")))
+ok(_tl_win == len(_TL["horizons"]) and str(_TL["hazard_days_changed_vs_record_thresholds"]) + " 天" in html,
+   "两条口径都变后仍有 %d/%d 个时效高于持续预报，且页面写明只有 %d 天的灾害计数会改变"
+   % (_tl_win, len(_TL["horizons"]), _TL["hazard_days_changed_vs_record_thresholds"]))
 _msc = [(s['slug'], h) for s in MS['sites'] for h in ('1', '3', '7', '14')]
+_msw = [(g, h) for (g, h) in _msc if [s for s in MS['sites'] if s['slug'] == g][0]['skill'][h]['model_auc'] > [s for s in MS['sites'] if s['slug'] == g][0]['skill'][h]['pers_auc']]
 _msl = [(g, h) for (g, h) in _msc if [s for s in MS['sites'] if s['slug'] == g][0]['skill'][h]['model_auc'] < [s for s in MS['sites'] if s['slug'] == g][0]['skill'][h]['pers_auc']]
-ok(True, "跨站点 %d 格排序 AUC 已逐格入表，其中模型低于持续预报 %d 格（落败格不隐藏）" % (len(_msc), len(_msl)))
+ok(str(len(_msc)) + " 个格子" in html and str(len(_msw)) + " 格排序 AUC 高于持续预报" in html,
+   "页面按数据现算跨站点胜负：%d 格里 %d 格高于持续预报、%d 格落败" % (len(_msc), len(_msw), len(_msl)))
+ok(("排序 AUC 全部高于持续预报" not in html) if _msl else True,
+   "有落败格时页面不得声称「全部高于持续预报」（当前落败 %d 格）" % len(_msl))
+
+DE = json.load(open(P("data", "processed", "driver_error_audit.json"), encoding="utf-8"))
+_dh = DE["horizons"]
+ok(DE["n_days"] == D["span"]["days"] and all(abs(_dh[h]["rmse_obs"] - D["metrics"][h]["model_rmse"]) <= 0.00005 for h in ("1", "3", "7", "14")),
+   "驱动误差审计的观测端点与主表同一协议、逐时效一致（1 天 %s，特征 %d 个）" % (f(_dh["1"]["rmse_obs"], 4), DE["feature_count"]))
+ok(all(abs(_dh[h]["rmse_obs"] - D["metrics"][h]["model_rmse"]) <= 0.0002 and _dh[h]["rmse_gap_ci95"] > 0 for h in ("1", "3", "7", "14")),
+   "四个时效都给出配对 95%% 区间（1 天 %s，14 天 %s）" % (f(_dh["1"]["rmse_gap_ci95"], 4), f(_dh["14"]["rmse_gap_ci95"], 4)))
+ok(f(_dh["1"]["rmse_persist_drivers"], 4) in html and f(_dh["1"]["rmse_gap_pct"], 1) + "%" in html
+   and f(_dh["1"]["rmse_gap_ci95"], 4) in html and f(_dh["14"]["rmse_gap_pct"], 1) + "%" in html and f(abs(_dh["3"]["auc_gap"]), 3) in html,
+   "诚实清单公开驱动误差量化的两个端点（1 天 %s%% / 14 天 %s%%、3 天排序 AUC 掉 %s）" % (f(_dh["1"]["rmse_gap_pct"], 1), f(_dh["14"]["rmse_gap_pct"], 1), f(abs(_dh["3"]["auc_gap"]), 3)))
+ok("驱动自身的误差未单独传播" not in html, "旧的「驱动误差未单独传播」纯文字披露已被量化结果取代")
+IV = json.load(open(P("data", "processed", "index_variant_audit.json"), encoding="utf-8"))
+_IVN = {"two_driver": "2 驱动（去增水）", "three_driver": "3 驱动（部署）", "four_driver": "4 驱动（加海温）", "three_driver_p85": "3 驱动 · p85", "three_driver_p95": "3 驱动 · p95"}
+_ivd = IV["variants"][IV["deployed_variant"]]
+ok(("复现" in IV["selfcheck"]) and all(abs(_ivd["by_h"][h]["model_rmse"] - D["metrics"][h]["model_rmse"]) <= 0.00005 for h in ("1", "3", "7", "14")),
+   "指数定义审计自证：部署定义逐时效复现主表（1 天 %s / 14 天 %s，共 %d 种定义）" % (f(_ivd["by_h"]["1"]["model_rmse"], 4), f(_ivd["by_h"]["14"]["model_rmse"], 4), len(IV["variants"])))
+_ivn = len(IV["variants"]) * 4
+_ivf = IV["flat_or_persistence_losses"]
+ok(len(_ivf) == 3 and _ivn - len(_ivf) == 17, "指数换定义后 %d 个（定义 × 时效）格里 %d 格仍同时优于常数均值与持续预报（落败 %d 格）" % (_ivn, _ivn - len(_ivf), len(_ivf)))
+for _k in IV["variants"]:
+    ok(_IVN[_k] in html and f(IV["variants"][_k]["mean_auc_gap"], 4) in html, "指数定义 %s 的平均 AUC 优势 %s 已入表" % (_IVN[_k], f(IV["variants"][_k]["mean_auc_gap"], 4)))
+ok(str(_ivn) + " 个（定义 × 时效）格里有 " + str(_ivn - len(_ivf)) + " 格同时优于常数均值与持续预报" in html, "页面按数据现算指数定义敏感性（%d 格里 %d 格仍胜）" % (_ivn, _ivn - len(_ivf)))
+ok("跨定义不能直接比 AUC" in html and f(IV["variants"]["four_driver"]["mean_auc_gap"], 4) in html, "页面写明跨定义不能直接比 AUC（4 驱动优势 %s 反而更小）" % f(IV["variants"]["four_driver"]["mean_auc_gap"], 4))
+for _k, _h in _ivf:
+    _v = IV["variants"][_k]["by_h"][_h]
+    _mm = (f(_v["model_rmse"], 4) + " 对常数均值 " + f(_v["flat_rmse"], 4)) if not _v["beats_flat"] else (f(_v["model_auc"], 3) + " 对持续预报 " + f(_v["pers_auc"], 3))
+    ok(_IVN[_k] + " " + _h + " 天" in html and _mm in html, "落败格 %s %s 天（%s）如实入页" % (_k, _h, _mm))
+CMP = json.load(open(P("data", "processed", "compound_label_audit.json"), encoding="utf-8"))
+_ch = CMP["by_h"]
+ok(("复现" in CMP["selfcheck"]) and all(abs(_ch[h]["model_rmse_index"] - D["metrics"][h]["model_rmse"]) <= 0.00005 for h in ("1", "3", "7", "14")),
+   "复合灾害日标签审计自证：同一 3 折协议只换标签，模型 RMSE 逐时效复现主表")
+ok(all(f(_ch[h]["model_auc"], 3) in html for h in ("1", "3", "7", "14")) and f(_ch["1"]["base_rate"], 3) in html,
+   "页面公开复合灾害日标签下的排序能力（样本外正类 %d 天 / %.1f%%，标签定义写清）" % (_ch["1"]["pos"], _ch["1"]["base_rate"] * 100))
+ok(f(_ch["7"]["model_pr_auc"], 3) in html and f(_ch["7"]["pers_pr_auc"], 3) in html and f(_ch["7"]["model_auc"], 3) in html,
+   "最弱的一档（7 天 AUC %s 对 %s）也如实入页" % (f(_ch["7"]["model_auc"], 3), f(_ch["7"]["pers_auc"], 3)))
+for _g, _h in _msl:
+    _s = [s for s in MS['sites'] if s['slug'] == _g][0]
+    ok(f(_s['skill'][_h]['model_auc'], 3) in html and f(_s['skill'][_h]['pers_auc'], 3) in html,
+       "落败格 %s h=%s 的模型 %s 与持续 %s 都如实入页" % (_g, _h, f(_s['skill'][_h]['model_auc'], 3), f(_s['skill'][_h]['pers_auc'], 3)))
 ok(len(MS["sites"]) == 3, "跨站点载荷含 %d 个站点" % len(MS["sites"]))
 for s in MS["sites"]:
     short = s["site"].split(",")[0]
@@ -246,16 +318,58 @@ ok(str(_ev["events_total"]) + " 次热浪里 " + str(_ev["events_hit"]) + " 次"
 ok(f(_ev["lift"], 2) + " 倍" in html and f(_ev["p_official_given_station"], 1) + "%" in html, "页面披露提升倍数 %s 与站内热浪日落在官方抬升日的比例" % f(_ev["lift"], 2))
 _sop = PPJ["sop"]
 ok("触发—响应 SOP" in html and str(len(_sop)) + " 条" in html, "页面渲染触发—响应 SOP（%d 条）" % len(_sop))
-ok("口径提醒" in html and "1,404 天" in html and "1,446 天" in html, "保护优先级卡标明百分位来自三站点数据集（1,404 天）、白化卡的百分位来自主记录（1,446 天）")
+_ms_days = format(int(PPJ["sites"][0]["n_days"]), ",")
+_main_days = format(int(D["span"]["days"]), ",")
+ok("口径提醒" in html and (_ms_days + " 天") in html and (_main_days + " 天") in html,
+   "保护优先级卡标明百分位来自三站点数据集（%s 天）、白化卡的百分位来自主记录（%s 天）" % (_ms_days, _main_days))
 for _s in _sop:
     ok(_s["stage"] in html and _s["timing"] in html, "SOP 条目「%s」及其时限 %s 已入表" % (_s["stage"], _s["timing"]))
 ok(PPJ["recovery"]["w4"] in html, "SOP 中 4 周复测起点 %s 已渲染" % PPJ["recovery"]["w4"])
+_td = PPJ.get("today", {})
+ok("今天适用" in html and "两个不同的轴" in html, "SOP 表标注「今天适用」，并说明危险指数轴与热压力轴的区别")
+ok(bool(_td.get("stage")) and _td["stage"] in html and str(len(_td.get("active", []))) + " 条" in html,
+   "页面写出今天适用的 SOP 条数（%d 条）与热压力最严一档（%s）" % (len(_td.get("active", [])), _td.get("stage")))
+ok(f(_td.get("cum_anom", 0.0), 3) in html and f(_td.get("p90", 0.0), 3) in html,
+   "两轴说明里给出热压力累计异常 %s C 天与本站 p90 %s" % (f(_td.get("cum_anom", 0.0), 3), f(_td.get("p90", 0.0), 3)))
+ok(all("active" in _s for _s in _sop) and sum(1 for _s in _sop if _s["active"]) == len(_td.get("active", [])),
+   "SOP 每条都带 active 标记，且与 today.active 完全一致")
+
+# 方法与出处（第 40 轮）：规则要求高风险应用交代数据来源，评委要能逐条打开核对。
+_ref_idents = ["doi:10.1016/j.pocean.2015.12.014", "doi:10.5670/oceanog.2018.205",
+               "doi:10.3390/rs61111579", "doi:10.3390/rs12233856", "doi:10.1002/qj.3803",
+               "doi:10.24381/cds.adbb2d47", "doi:10.1038/s41558-018-0156-3",
+               "doi:10.1080/00401706.1970.10488634",
+               "coralreefwatch.noaa.gov/product/5km/methodology.php",
+               "coralreefwatch.noaa.gov/satellite/docs/recommendations_crw_citation.php",
+               "open-meteo.com/en/docs/marine-weather-api", "open-meteo.com/en/licence"]
+ok('id="refs"' in html and all(_s in html for _s in _ref_idents),
+   "页面附「依据与来源」折叠块：12 条出处标识串（8 个 DOI + 4 个产品页/许可页链接）逐条可打开核对")
+ok(html.find('id="refs"') > html.find('id="en"') > 0,
+   "「依据与来源」排在英文摘要之后（页面最末，演示视频的分镜坐标不受影响）")
+ok("依据与来源：" in html[html.rfind('<footer class="foot'):],
+   "页脚有一条不展开也看得到的「依据与来源」摘要")
+ok(all(_s.get("active_reason", "") in html for _s in _sop if _s.get("active")),
+   "今天适用的每一条都写出适用原因（%d 条）" % len(_td.get("active", [])))
+ok(abs(float(_td.get("max_upper", 0.0)) - max(w["upper"] for w in PPJ["windows"])) < 1e-9,
+   "today.max_upper 与窗口上界最大值一致（%s）" % f(_td.get("max_upper", 0.0), 3))
+# 第 62 轮：同一个「风险上界」此前由两个模块各算一次 —— 日档位列表取 priority_plan 的 upper
+# （v + h，四位小数），预报图取 dashboard 的 hi（三位小数、夹在 0..1），于是同一张卡上并排显示
+# 0.301 与 0.302。现在 priority_plan 直接沿用 hi，这条断言逐日钉住两者相等。
+_fcmap = {x["date"]: float(x["hi"]) for x in D["forecast"]}
+ok(all(abs(float(w["upper"]) - _fcmap.get(w["date"], -1.0)) < 1e-9 for w in PPJ["windows"]),
+   "干预窗口的「上界」与预报图用的是同一个数（%d 天逐日相等）" % len(PPJ["windows"]))
 _vs = BWJ["noaa_check"]["vs_sabah"]
 ok("区域站点对照" in html, "页面新增 NOAA 区域虚拟站点对照（同一片沙巴海域的 5km 产品）")
 ok(str(_vs["events_total"]) + " 次热浪有 " + str(_vs["events_hit"]) + " 次" in html and f(_vs["event_hit_rate"], 1) + "%" in html, "页面披露区域站点事件命中 %s/%s = %s%%" % (_vs["events_hit"], _vs["events_total"], f(_vs["event_hit_rate"], 1)))
 ok(f(_vs["sst_bias_station_minus_official"], 3) + " °C" in html and "r = " + f(_vs["r_sst"], 3) in html, "页面披露本站与官方区域站点的海温偏差 %s °C、相关系数 %s" % (f(_vs["sst_bias_station_minus_official"], 3), f(_vs["r_sst"], 3)))
 ok(f(_vs["latest_dhw"], 2) in html and _vs["latest_date"] in html and "Alert Level 2" in html, "页面披露官方最新（%s）DHW %s 与 Alert Level 2" % (_vs["latest_date"], f(_vs["latest_dhw"], 2)))
 ok(f(_vs["official_mmm"], 4) in html and f(_vs["station_mmm"], 3) in html, "页面披露两种 MMM（官方长期 %s / 本站短记录 %s）" % (f(_vs["official_mmm"], 4), f(_vs["station_mmm"], 3)))
+ok("官方同一站点最新（" + _vs["latest_date"] + "）的 DHW = " + f(_vs["latest_dhw"], 2) in html,
+   "诚实清单里的官方 DHW 也按数据现算（%s / %s），不是抄死的旧值" % (_vs["latest_date"], f(_vs["latest_dhw"], 2)))
+ok("短记录暖月均 " + f(BWJ["baseline"]["mmm"], 3) + " °C 对官方长期 MMM " + f(_vs["official_mmm"], 4) + " °C" in html,
+   "诚实清单里的两个 MMM 都来自数据（本站 %s / 官方 %s）" % (f(BWJ["baseline"]["mmm"], 3), f(_vs["official_mmm"], 4)))
+ok(("Alert Level 2（二级警报）" in html) if int(_vs["latest_alert"]) == 4 else True,
+   "官方最新预警级别 %s 以可读名称入页（不写裸数字）" % _vs["latest_alert"])
 _vss = BWJ["noaa_check"]["vs_sites"]
 ok("跨站官方验证" in html and str(len(_vss)) + " 个官方站点" in html, "页面新增跨站官方验证说明（%d 个官方区域站点）" % len(_vss))
 for _s in _vss:

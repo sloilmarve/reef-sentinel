@@ -1,0 +1,429 @@
+{
+  "task": "灾害指数定义敏感性：换一种同样站得住脚的定义，模型结论还成不成立",
+  "protocol": "与成品页主表完全相同的 3 折前推协议（切点 0.62 / 0.75 / 0.88，每折 180 天测试窗），只改指数定义",
+  "n_days": 1446,
+  "feature_count": 66,
+  "deployed_variant": "three_driver",
+  "variants": {
+    "two_driver": {
+      "drivers": [
+        "wave",
+        "rain"
+      ],
+      "tp": 0.9,
+      "levels": [
+        0,
+        1,
+        2
+      ],
+      "zero_share_pct": 80.4,
+      "mean_auc": 0.5588,
+      "mean_auc_gap": 0.028,
+      "mean_rmse_gain_vs_flat_pct": 0.9,
+      "by_h": {
+        "1": {
+          "model_rmse": 0.19416135030813308,
+          "model_auc": 0.6582205029013539,
+          "pers_rmse": 0.21336972048850014,
+          "pers_auc": 0.5919729206963249,
+          "clim_rmse": 0.2432505460045307,
+          "flat_rmse": 0.20069422660266317,
+          "inner_lambda": [
+            100,
+            50,
+            6400
+          ],
+          "beats_flat": true,
+          "auc_beats_pers": true
+        },
+        "3": {
+          "model_rmse": 0.1998495344866588,
+          "model_auc": 0.5532392168336869,
+          "pers_rmse": 0.22362388849772052,
+          "pers_auc": 0.4854558310779509,
+          "clim_rmse": 0.24239365018073405,
+          "flat_rmse": 0.20007175365545776,
+          "inner_lambda": [
+            6400,
+            6400,
+            6400
+          ],
+          "beats_flat": true,
+          "auc_beats_pers": true
+        },
+        "7": {
+          "model_rmse": 0.19944748617719774,
+          "model_auc": 0.4659787165430506,
+          "pers_rmse": 0.22422124396736762,
+          "pers_auc": 0.4577431597747625,
+          "clim_rmse": 0.24306335817688163,
+          "flat_rmse": 0.19875999615393575,
+          "inner_lambda": [
+            6400,
+            6400,
+            6400
+          ],
+          "beats_flat": false,
+          "auc_beats_pers": true
+        },
+        "14": {
+          "model_rmse": 0.1978758228648256,
+          "model_auc": 0.557710912112718,
+          "pers_rmse": 0.20909533502727629,
+          "pers_auc": 0.588172549797832,
+          "clim_rmse": 0.2431703402939354,
+          "flat_rmse": 0.19881035994781104,
+          "inner_lambda": [
+            6400,
+            6400,
+            6400
+          ],
+          "beats_flat": true,
+          "auc_beats_pers": false
+        }
+      }
+    },
+    "three_driver": {
+      "drivers": [
+        "wave",
+        "rain",
+        "surge"
+      ],
+      "tp": 0.9,
+      "levels": [
+        0,
+        1,
+        2
+      ],
+      "zero_share_pct": 72.3,
+      "mean_auc": 0.6687,
+      "mean_auc_gap": 0.1577,
+      "mean_rmse_gain_vs_flat_pct": 4.7,
+      "by_h": {
+        "1": {
+          "model_rmse": 0.14062434132163648,
+          "model_auc": 0.7955652797440659,
+          "pers_rmse": 0.17758929726830566,
+          "pers_auc": 0.5854584566732244,
+          "clim_rmse": 0.20573177991170974,
+          "flat_rmse": 0.16439828053284736,
+          "inner_lambda": [
+            100,
+            50,
+            50
+          ],
+          "beats_flat": true,
+          "auc_beats_pers": true
+        },
+        "3": {
+          "model_rmse": 0.1602755799880957,
+          "model_auc": 0.6648507462686567,
+          "pers_rmse": 0.19352824992904588,
+          "pers_auc": 0.4379384328358209,
+          "clim_rmse": 0.20561937352172482,
+          "flat_rmse": 0.1637312682396014,
+          "inner_lambda": [
+            400,
+            20,
+            100
+          ],
+          "beats_flat": true,
+          "auc_beats_pers": true
+        },
+        "7": {
+          "model_rmse": 0.16239738274959523,
+          "model_auc": 0.5996849980312376,
+          "pers_rmse": 0.19190873819411125,
+          "pers_auc": 0.4372058575366096,
+          "clim_rmse": 0.20453430329053826,
+          "flat_rmse": 0.16352673627866196,
+          "inner_lambda": [
+            6400,
+            3200,
+            1600
+          ],
+          "beats_flat": true,
+          "auc_beats_pers": true
+        },
+        "14": {
+          "model_rmse": 0.16148113468634215,
+          "model_auc": 0.6148320895522388,
+          "pers_rmse": 0.17717035519556107,
+          "pers_auc": 0.5834048507462687,
+          "clim_rmse": 0.20283171288026486,
+          "flat_rmse": 0.16384002028447114,
+          "inner_lambda": [
+            800,
+            800,
+            3200
+          ],
+          "beats_flat": true,
+          "auc_beats_pers": true
+        }
+      }
+    },
+    "four_driver": {
+      "drivers": [
+        "wave",
+        "rain",
+        "surge",
+        "sst"
+      ],
+      "tp": 0.9,
+      "levels": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "zero_share_pct": 65.4,
+      "mean_auc": 0.7205,
+      "mean_auc_gap": 0.1001,
+      "mean_rmse_gain_vs_flat_pct": 9.5,
+      "by_h": {
+        "1": {
+          "model_rmse": 0.11427425225015073,
+          "model_auc": 0.8156062687312687,
+          "pers_rmse": 0.14011377377607562,
+          "pers_auc": 0.6949456793206793,
+          "clim_rmse": 0.16529554610267516,
+          "flat_rmse": 0.14428247474161804,
+          "inner_lambda": [
+            5,
+            20,
+            20
+          ],
+          "beats_flat": true,
+          "auc_beats_pers": true
+        },
+        "3": {
+          "model_rmse": 0.1293784545591414,
+          "model_auc": 0.7209240448875464,
+          "pers_rmse": 0.1522933553063729,
+          "pers_auc": 0.601458688745246,
+          "clim_rmse": 0.16466494563081877,
+          "flat_rmse": 0.14236065709194157,
+          "inner_lambda": [
+            5,
+            5,
+            20
+          ],
+          "beats_flat": true,
+          "auc_beats_pers": true
+        },
+        "7": {
+          "model_rmse": 0.13772764194855353,
+          "model_auc": 0.6688505910838912,
+          "pers_rmse": 0.15587429990422938,
+          "pers_auc": 0.5695532450268243,
+          "clim_rmse": 0.1654331695368895,
+          "flat_rmse": 0.1421272470857638,
+          "inner_lambda": [
+            6400,
+            100,
+            800
+          ],
+          "beats_flat": true,
+          "auc_beats_pers": true
+        },
+        "14": {
+          "model_rmse": 0.13632563058353642,
+          "model_auc": 0.6764281230382926,
+          "pers_rmse": 0.15640971543602775,
+          "pers_auc": 0.61530131826742,
+          "clim_rmse": 0.16626629501273477,
+          "flat_rmse": 0.14327979538954044,
+          "inner_lambda": [
+            1600,
+            1600,
+            1600
+          ],
+          "beats_flat": true,
+          "auc_beats_pers": true
+        }
+      }
+    },
+    "three_driver_p85": {
+      "drivers": [
+        "wave",
+        "rain",
+        "surge"
+      ],
+      "tp": 0.85,
+      "levels": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "zero_share_pct": 59.7,
+      "mean_auc": 0.6521,
+      "mean_auc_gap": 0.1263,
+      "mean_rmse_gain_vs_flat_pct": 4.7,
+      "by_h": {
+        "1": {
+          "model_rmse": 0.16373989198762456,
+          "model_auc": 0.7963518052689451,
+          "pers_rmse": 0.20685961213148413,
+          "pers_auc": 0.5746057328774345,
+          "clim_rmse": 0.24210137597147913,
+          "flat_rmse": 0.19259337442770477,
+          "inner_lambda": [
+            200,
+            50,
+            200
+          ],
+          "beats_flat": true,
+          "auc_beats_pers": true
+        },
+        "3": {
+          "model_rmse": 0.18812841992298177,
+          "model_auc": 0.6353759895461383,
+          "pers_rmse": 0.22450041164909118,
+          "pers_auc": 0.4541048121191862,
+          "clim_rmse": 0.24238768892376575,
+          "flat_rmse": 0.19256468938892618,
+          "inner_lambda": [
+            3200,
+            400,
+            50
+          ],
+          "beats_flat": true,
+          "auc_beats_pers": true
+        },
+        "7": {
+          "model_rmse": 0.19131309430744642,
+          "model_auc": 0.5883640010332305,
+          "pers_rmse": 0.221434180705286,
+          "pers_auc": 0.46847887195538873,
+          "clim_rmse": 0.24046047901071174,
+          "flat_rmse": 0.19244033800596635,
+          "inner_lambda": [
+            6400,
+            1600,
+            800
+          ],
+          "beats_flat": true,
+          "auc_beats_pers": true
+        },
+        "14": {
+          "model_rmse": 0.19046622202683083,
+          "model_auc": 0.5883972468043265,
+          "pers_rmse": 0.20014050624300866,
+          "pers_auc": 0.6061644353679752,
+          "clim_rmse": 0.23825099437429492,
+          "flat_rmse": 0.19261588017060133,
+          "inner_lambda": [
+            800,
+            800,
+            3200
+          ],
+          "beats_flat": true,
+          "auc_beats_pers": false
+        }
+      }
+    },
+    "three_driver_p95": {
+      "drivers": [
+        "wave",
+        "rain",
+        "surge"
+      ],
+      "tp": 0.95,
+      "levels": [
+        0,
+        1,
+        2
+      ],
+      "zero_share_pct": 85.7,
+      "mean_auc": 0.6454,
+      "mean_auc_gap": 0.1703,
+      "mean_rmse_gain_vs_flat_pct": 2.6,
+      "by_h": {
+        "1": {
+          "model_rmse": 0.11151327596502995,
+          "model_auc": 0.7728582890084094,
+          "pers_rmse": 0.1327818603817244,
+          "pers_auc": 0.5686714408819422,
+          "clim_rmse": 0.14544453552613293,
+          "flat_rmse": 0.12183831508231915,
+          "inner_lambda": [
+            200,
+            50,
+            50
+          ],
+          "beats_flat": true,
+          "auc_beats_pers": true
+        },
+        "3": {
+          "model_rmse": 0.11921904106020922,
+          "model_auc": 0.6036945812807881,
+          "pers_rmse": 0.14092685552573783,
+          "pers_auc": 0.4099137931034483,
+          "clim_rmse": 0.14350425472458261,
+          "flat_rmse": 0.12008844141834935,
+          "inner_lambda": [
+            6400,
+            6400,
+            3200
+          ],
+          "beats_flat": true,
+          "auc_beats_pers": true
+        },
+        "7": {
+          "model_rmse": 0.11767701607109993,
+          "model_auc": 0.5846144012272684,
+          "pers_rmse": 0.13783454172456874,
+          "pers_auc": 0.4210904790821055,
+          "clim_rmse": 0.14216892597936392,
+          "flat_rmse": 0.11830162202085802,
+          "inner_lambda": [
+            6400,
+            6400,
+            6400
+          ],
+          "beats_flat": true,
+          "auc_beats_pers": true
+        },
+        "14": {
+          "model_rmse": 0.11909347543214506,
+          "model_auc": 0.6202586206896552,
+          "pers_rmse": 0.13533178366306572,
+          "pers_auc": 0.5005541871921182,
+          "clim_rmse": 0.14426747377833438,
+          "flat_rmse": 0.12010132595636912,
+          "inner_lambda": [
+            6400,
+            6400,
+            6400
+          ],
+          "beats_flat": true,
+          "auc_beats_pers": true
+        }
+      }
+    }
+  },
+  "selfcheck": "deployed 变体逐时效复现 dashboard_data.json 主表（RMSE 5e-5 / AUC 5e-4），不自洽即失败退出",
+  "mean_auc_spread": 0.1617,
+  "worst_variant": "two_driver",
+  "mean_auc_gap_range": [
+    0.028,
+    0.1703
+  ],
+  "flat_or_persistence_losses": [
+    [
+      "two_driver",
+      "7"
+    ],
+    [
+      "two_driver",
+      "14"
+    ],
+    [
+      "three_driver_p85",
+      "14"
+    ]
+  ],
+  "summary": "同一协议下换指数定义，模型相对**同定义**持续预报的平均排序 AUC 优势在 0.0280 到 0.1703 之间（部署定义 three_driver 为 0.1577，最强是 three_driver_p95，最弱是 two_driver）。20 个（定义 x 时效）格子里 17 格同时优于常数均值与持续预报；落败的 3 格是 two_driver 的 7 天；two_driver 的 14 天；three_driver_p85 的 14 天。注意跨定义不能直接比 AUC：four_driver 把海温并入指数后目标本身更可预测，模型与基线同时升高（1 天 0.816 对 0.695），它的相对优势反而比部署定义小。部署定义保持不变。",
+  "caveat": "只做了四种替代定义（去掉增水驱动 / 加入海温驱动 / 阈值 p85 / 阈值 p95），不是穷举；每一行都是同一协议下的样本外数值，但都是单站（仙本那）记录，跨站迁移性见 multisite_transfer.json。"
+}

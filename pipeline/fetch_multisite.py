@@ -30,7 +30,10 @@ SITES = [("semporna", "Semporna, Sabah, Malaysia", 4.60, 118.70),
 
 CTX = ssl.create_default_context(); CTX.check_hostname = False; CTX.verify_mode = ssl.CERT_NONE
 UA = {"User-Agent": "Mozilla/5.0 (reef-sentinel research)"}
-TODAY = datetime.date.today()
+# 与 pipeline/build_features.py 同一口径：记录窗口只收「完整的一天」。
+# 归档接口会把当前 UTC 日（只覆盖已经过去的若干小时）也算一天，把它写进来会让
+# 三站点数据集比主记录多出残缺的一天，百分位与跨站点口径随之漂移。
+TODAY = datetime.datetime.now(datetime.timezone.utc).date() - datetime.timedelta(days=1)
 
 
 def get(url, tries=4):
@@ -74,7 +77,7 @@ def load_raw(path):
 
 def write_payload(path, payload):
     tmp = path + ".tmp"
-    with open(tmp, "w", encoding="utf-8") as f:
+    with open(tmp, "w", encoding="utf-8", newline="\n") as f:
         json.dump(payload, f, ensure_ascii=False, separators=(",", ":"))
     os.replace(tmp, path)
 
@@ -86,6 +89,7 @@ for slug, name, lat, lon in SITES:
     p = os.path.join(OUT, slug + "_daily.json")
     old = load_raw(p)
     rows = {d["date"]: d for d in old.get("days", []) if d.get("date")}
+    rows = {d: v for d, v in rows.items() if d <= TODAY.isoformat()}
     old_n = len(rows)
     old_last = max(rows) if rows else None
     old_urls = [old.get("url_marine", ""), old.get("url_archive", "")]

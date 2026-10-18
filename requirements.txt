@@ -1,4 +1,9 @@
+# -*- coding: utf-8 -*-
+# 第 50 轮实测：本文件是 UTF-8 且带中文注释，而 pip 的 auto_decode 在既没有 BOM
+# 也没有 PEP 263 编码声明时会退回 locale 编码（中文 Windows 上是 GBK），于是
+# `pip install -r requirements.txt` 当场崩：UnicodeDecodeError: 'gbk' codec can't
+# decode byte 0xa1 in position 6。上面这一行声明就是给 pip 看的，别删。
 # 运行 pipeline/refresh.py 只需要 numpy（标准库之外唯一的运行时依赖）
-numpy>=1.26
+numpy==2.2.6   # 锁版本：云端与本地必须逐位同解（numpy 版本变了浮点末位会漂）
 # 只有重新生成 docs_word/*.docx 时才需要（pipeline/md2docx.py）
 python-docx>=1.1

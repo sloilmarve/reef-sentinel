@@ -156,13 +156,13 @@
   },
   {
    "id": "ext_inner",
-   "label": "基础 + 当日原始水平 + 内窗 CV 选 λ（部署）",
+   "label": "基础 + 当日原始水平 + 内窗 CV 选 λ（主表配置／报告口径）",
    "features": 66,
    "lam_mode": "inner-cv",
    "by_h": {
     "1": {
      "rmse": 0.1406,
-     "auc": 0.795,
+     "auc": 0.796,
      "lam": [
       100,
       50,
@@ -199,5 +199,5 @@
    }
   }
  ],
- "deployed": "ext_inner"
+ "report_config": "ext_inner"
 }

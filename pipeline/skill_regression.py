@@ -62,5 +62,5 @@ for h in (1, 2, 3, 5, 7):
                   model_auc=round(auc(Pm,lab),3), pers_auc=round(auc(Pp,lab),3), clim_auc=round(auc(Pc,lab),3),
                   inner_lambda=LAMS)
 
-json.dump(out, open(os.path.join(BASE,"data","processed","regression_skill.json"),"w",encoding="utf-8"), indent=2, ensure_ascii=False)
+json.dump(out, open(os.path.join(BASE,"data","processed","regression_skill.json"),"w",encoding="utf-8", newline="\n"), indent=2, ensure_ascii=False)
 print("\nwrote regression_skill.json")

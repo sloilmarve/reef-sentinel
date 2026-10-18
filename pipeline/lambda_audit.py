@@ -88,5 +88,5 @@ for h in (1, 3, 7, 14):
     print("h=%-3d flat %.4f | lam5 RMSE %.4f AUC %.3f | lam%d RMSE %.4f AUC %.3f" % (
         h, o["flat_rmse"], o["per_lam"]["5"]["rmse"], o["per_lam"]["5"]["auc"],
         o["best_rmse_lam"], o["per_lam"]["%d" % o["best_rmse_lam"]]["rmse"], o["per_lam"]["%d" % o["best_rmse_lam"]]["auc"]))
-json.dump(out, open(os.path.join(BASE, "data", "processed", "lambda_audit.json"), "w", encoding="utf-8"), indent=2, ensure_ascii=False)
+json.dump(out, open(os.path.join(BASE, "data", "processed", "lambda_audit.json"), "w", encoding="utf-8", newline="\n"), indent=2, ensure_ascii=False)
 print("wrote lambda_audit.json")

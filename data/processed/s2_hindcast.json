@@ -6,31 +6,31 @@
  "note": "上界 = 点预报 + 该时效经验 80% 半宽（q80 倍数 x sigma），夹在 0..1；三个测试窗共 540 天，每个时效可结算 534 天。",
  "base_rate_pct": 2.06,
  "original_criterion": "上界达到高危险档时，实际复合灾害比例 >= 50%",
- "original_verdict": "不可达：以 2/3 为高档线时，8 个时效在 534 天样本外里触发 0 次（判据无法结算）；以 1/3 为线时精确率 0.9% 到 8.1%，远低于 50%。",
+ "original_verdict": "不可达：以 2/3 为高档线时，8 个时效在 534 天样本外里触发 0 次（判据无法结算）；以 1/3 为线时精确率 1.2% 到 8.1%，远低于 50%。",
  "revised_criterion": "上界越过 p95 线的日子，复合灾害发生率相对背景率的提升倍数（1 天档 >= 2 倍）与召回率（1 天档 >= 80%）",
  "by_h": {
   "1": {
    "n_test": 534,
-   "sigma": 0.14,
-   "q80_multiplier": 1.246,
+   "sigma": 0.1399,
+   "q80_multiplier": 1.247,
    "base_rate_pct": 2.06,
    "n_compound": 11,
    "upper_bound": [
     {
      "trigger": 0.3333,
-     "n_trigger": 124,
+     "n_trigger": 123,
      "hit": 10,
      "precision_pct": 8.1,
      "recall_pct": 90.9,
-     "lift_vs_base": 3.91
+     "lift_vs_base": 3.95
     },
     {
      "trigger": 0.5,
-     "n_trigger": 11,
+     "n_trigger": 10,
      "hit": 4,
-     "precision_pct": 36.4,
+     "precision_pct": 40.0,
      "recall_pct": 36.4,
-     "lift_vs_base": 17.65
+     "lift_vs_base": 19.42
     },
     {
      "trigger": 0.6667,
@@ -90,22 +90,22 @@
      "lift_vs_base": 7.28
     }
    ],
-   "rmse": 0.14
+   "rmse": 0.1399
   },
   "2": {
    "n_test": 534,
-   "sigma": 0.1547,
-   "q80_multiplier": 1.216,
+   "sigma": 0.155,
+   "q80_multiplier": 1.214,
    "base_rate_pct": 2.06,
    "n_compound": 11,
    "upper_bound": [
     {
      "trigger": 0.3333,
-     "n_trigger": 131,
+     "n_trigger": 129,
      "hit": 7,
-     "precision_pct": 5.3,
+     "precision_pct": 5.4,
      "recall_pct": 63.6,
-     "lift_vs_base": 2.59
+     "lift_vs_base": 2.63
     },
     {
      "trigger": 0.5,
@@ -173,22 +173,22 @@
      "lift_vs_base": 3.64
     }
    ],
-   "rmse": 0.1547
+   "rmse": 0.155
   },
   "3": {
    "n_test": 534,
-   "sigma": 0.1606,
-   "q80_multiplier": 1.217,
+   "sigma": 0.1598,
+   "q80_multiplier": 1.201,
    "base_rate_pct": 2.06,
    "n_compound": 11,
    "upper_bound": [
     {
      "trigger": 0.3333,
-     "n_trigger": 137,
+     "n_trigger": 130,
      "hit": 6,
-     "precision_pct": 4.4,
+     "precision_pct": 4.6,
      "recall_pct": 54.5,
-     "lift_vs_base": 2.13
+     "lift_vs_base": 2.24
     },
     {
      "trigger": 0.5,
@@ -250,18 +250,18 @@
     },
     {
      "top_k": 40,
-     "hit": 1,
-     "precision_pct": 2.5,
-     "recall_pct": 9.1,
-     "lift_vs_base": 1.21
+     "hit": 2,
+     "precision_pct": 5.0,
+     "recall_pct": 18.2,
+     "lift_vs_base": 2.43
     }
    ],
-   "rmse": 0.1606
+   "rmse": 0.1598
   },
   "4": {
    "n_test": 534,
    "sigma": 0.1625,
-   "q80_multiplier": 1.222,
+   "q80_multiplier": 1.219,
    "base_rate_pct": 2.06,
    "n_compound": 11,
    "upper_bound": [
@@ -343,18 +343,18 @@
   },
   "5": {
    "n_test": 534,
-   "sigma": 0.1635,
-   "q80_multiplier": 1.279,
+   "sigma": 0.1633,
+   "q80_multiplier": 1.189,
    "base_rate_pct": 2.06,
    "n_compound": 11,
    "upper_bound": [
     {
      "trigger": 0.3333,
-     "n_trigger": 106,
-     "hit": 1,
-     "precision_pct": 0.9,
-     "recall_pct": 9.1,
-     "lift_vs_base": 0.46
+     "n_trigger": 92,
+     "hit": 2,
+     "precision_pct": 2.2,
+     "recall_pct": 18.2,
+     "lift_vs_base": 1.06
     },
     {
      "trigger": 0.5,
@@ -422,22 +422,22 @@
      "lift_vs_base": 1.21
     }
    ],
-   "rmse": 0.1635
+   "rmse": 0.1633
   },
   "6": {
    "n_test": 534,
-   "sigma": 0.1626,
-   "q80_multiplier": 1.211,
+   "sigma": 0.1628,
+   "q80_multiplier": 1.216,
    "base_rate_pct": 2.06,
    "n_compound": 11,
    "upper_bound": [
     {
      "trigger": 0.3333,
-     "n_trigger": 96,
+     "n_trigger": 97,
      "hit": 3,
      "precision_pct": 3.1,
      "recall_pct": 27.3,
-     "lift_vs_base": 1.52
+     "lift_vs_base": 1.5
     },
     {
      "trigger": 0.5,
@@ -505,22 +505,22 @@
      "lift_vs_base": 3.64
     }
    ],
-   "rmse": 0.1626
+   "rmse": 0.1628
   },
   "7": {
    "n_test": 534,
-   "sigma": 0.1627,
-   "q80_multiplier": 1.262,
+   "sigma": 0.1628,
+   "q80_multiplier": 1.261,
    "base_rate_pct": 2.06,
    "n_compound": 11,
    "upper_bound": [
     {
      "trigger": 0.3333,
-     "n_trigger": 79,
+     "n_trigger": 81,
      "hit": 1,
-     "precision_pct": 1.3,
+     "precision_pct": 1.2,
      "recall_pct": 9.1,
-     "lift_vs_base": 0.61
+     "lift_vs_base": 0.6
     },
     {
      "trigger": 0.5,
@@ -588,22 +588,22 @@
      "lift_vs_base": 1.21
     }
    ],
-   "rmse": 0.1627
+   "rmse": 0.1628
   },
   "8": {
    "n_test": 534,
-   "sigma": 0.1624,
-   "q80_multiplier": 1.202,
+   "sigma": 0.1646,
+   "q80_multiplier": 1.17,
    "base_rate_pct": 2.06,
    "n_compound": 11,
    "upper_bound": [
     {
      "trigger": 0.3333,
-     "n_trigger": 79,
-     "hit": 1,
-     "precision_pct": 1.3,
-     "recall_pct": 9.1,
-     "lift_vs_base": 0.61
+     "n_trigger": 117,
+     "hit": 3,
+     "precision_pct": 2.6,
+     "recall_pct": 27.3,
+     "lift_vs_base": 1.24
     },
     {
      "trigger": 0.5,
@@ -658,41 +658,41 @@
     },
     {
      "top_k": 20,
-     "hit": 0,
-     "precision_pct": 0.0,
-     "recall_pct": 0.0,
-     "lift_vs_base": 0.0
+     "hit": 1,
+     "precision_pct": 5.0,
+     "recall_pct": 9.1,
+     "lift_vs_base": 2.43
     },
     {
      "top_k": 40,
-     "hit": 0,
-     "precision_pct": 0.0,
-     "recall_pct": 0.0,
-     "lift_vs_base": 0.0
+     "hit": 2,
+     "precision_pct": 5.0,
+     "recall_pct": 18.2,
+     "lift_vs_base": 2.43
     }
    ],
-   "rmse": 0.1624
+   "rmse": 0.1646
   }
  },
  "selfcheck": {
   "metrics": [
    {
     "h": 1,
-    "audit": 0.14,
-    "dashboard": 0.13995113648825266,
-    "abs_diff": 4.886e-05
+    "audit": 0.1399,
+    "dashboard": 0.13992966008260813,
+    "abs_diff": 2.966e-05
    },
    {
     "h": 3,
-    "audit": 0.1606,
-    "dashboard": 0.1605891676038446,
-    "abs_diff": 1.083e-05
+    "audit": 0.1598,
+    "dashboard": 0.1598013480578931,
+    "abs_diff": 1.35e-06
    },
    {
     "h": 7,
-    "audit": 0.1627,
-    "dashboard": 0.16265307012723146,
-    "abs_diff": 4.693e-05
+    "audit": 0.1628,
+    "dashboard": 0.16284947458304577,
+    "abs_diff": 4.947e-05
    }
   ],
   "interval": [

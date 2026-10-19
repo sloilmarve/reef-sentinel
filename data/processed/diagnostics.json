@@ -1,30 +1,30 @@
 {
   "1": {
-    "prev": 0.029,
-    "model_auc": 0.819,
-    "clim_auc": 0.504,
-    "persistence_auc": 0.73,
+    "prev": 0.028,
+    "model_auc": 0.815,
+    "clim_auc": 0.461,
+    "persistence_auc": 0.746,
     "brier": 0.027
   },
   "3": {
-    "prev": 0.062,
-    "model_auc": 0.66,
-    "clim_auc": 0.426,
-    "persistence_auc": 0.884,
+    "prev": 0.061,
+    "model_auc": 0.651,
+    "clim_auc": 0.42,
+    "persistence_auc": 0.881,
     "brier": 0.077
   },
   "7": {
-    "prev": 0.129,
-    "model_auc": 0.526,
-    "clim_auc": 0.447,
-    "persistence_auc": 0.94,
+    "prev": 0.128,
+    "model_auc": 0.519,
+    "clim_auc": 0.444,
+    "persistence_auc": 0.939,
     "brier": 0.172
   },
   "14": {
-    "prev": 0.246,
-    "model_auc": 0.57,
-    "clim_auc": 0.493,
-    "persistence_auc": 0.954,
+    "prev": 0.244,
+    "model_auc": 0.568,
+    "clim_auc": 0.504,
+    "persistence_auc": 0.963,
     "brier": 0.279
   }
 }

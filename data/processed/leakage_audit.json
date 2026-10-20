@@ -1,7 +1,7 @@
 {
  "task": "model inputs are strictly causal (no feature reads day t+1 or later)",
  "protocol": "rebuild every model column from the raw inputs of the truncated prefix 0..T with the record's causal thresholds, then compare with the stored value",
- "n_days": 1448,
+ "n_days": 1449,
  "feature_count": 66,
  "causal_thresholds": {
   "wh_max": 0.4,
@@ -24,29 +24,29 @@
    "max_abs_diff": 0.0
   },
   {
-   "cut": "2025-08-10",
-   "t": 1013,
+   "cut": "2025-08-11",
+   "t": 1014,
    "missing": [],
    "n_compared": 66,
    "max_abs_diff": 0.0
   },
   {
-   "cut": "2026-03-15",
-   "t": 1230,
+   "cut": "2026-03-16",
+   "t": 1231,
    "missing": [],
    "n_compared": 66,
    "max_abs_diff": 0.0
   },
   {
-   "cut": "2026-10-11",
-   "t": 1440,
+   "cut": "2026-10-12",
+   "t": 1441,
    "missing": [],
    "n_compared": 66,
    "max_abs_diff": 0.0
   },
   {
-   "cut": "2026-10-17",
-   "t": 1446,
+   "cut": "2026-10-18",
+   "t": 1447,
    "missing": [],
    "n_compared": 66,
    "max_abs_diff": 0.0
@@ -94,32 +94,32 @@
     "target": "n_haz（记录口径，含中心化残差）",
     "horizons": {
      "1": {
-      "model_rmse": 0.1504,
-      "pers_rmse": 0.1872,
-      "model_auc": 0.774,
-      "pers_auc": 0.57,
-      "pos_rate": 0.2792
+      "model_rmse": 0.1498,
+      "pers_rmse": 0.1863,
+      "model_auc": 0.775,
+      "pers_auc": 0.569,
+      "pos_rate": 0.2778
      },
      "3": {
-      "model_rmse": 0.1691,
-      "pers_rmse": 0.202,
-      "model_auc": 0.64,
-      "pers_auc": 0.44,
+      "model_rmse": 0.1688,
+      "pers_rmse": 0.2019,
+      "model_auc": 0.641,
+      "pers_auc": 0.441,
       "pos_rate": 0.2778
      },
      "7": {
-      "model_rmse": 0.1723,
-      "pers_rmse": 0.2008,
-      "model_auc": 0.583,
-      "pers_auc": 0.445,
-      "pos_rate": 0.2806
+      "model_rmse": 0.1725,
+      "pers_rmse": 0.2011,
+      "model_auc": 0.581,
+      "pers_auc": 0.443,
+      "pos_rate": 0.2819
      },
      "14": {
-      "model_rmse": 0.1693,
+      "model_rmse": 0.1692,
       "pers_rmse": 0.191,
-      "model_auc": 0.627,
-      "pers_auc": 0.541,
-      "pos_rate": 0.2722
+      "model_auc": 0.626,
+      "pers_auc": 0.54,
+      "pos_rate": 0.2708
      }
     }
    },
@@ -132,32 +132,32 @@
     "target": "n_haz_t（严格因果口径）",
     "horizons": {
      "1": {
-      "model_rmse": 0.154,
-      "pers_rmse": 0.1861,
-      "model_auc": 0.76,
-      "pers_auc": 0.589,
-      "pos_rate": 0.2597
+      "model_rmse": 0.1534,
+      "pers_rmse": 0.1852,
+      "model_auc": 0.761,
+      "pers_auc": 0.588,
+      "pos_rate": 0.2583
      },
      "3": {
-      "model_rmse": 0.1726,
-      "pers_rmse": 0.1999,
-      "model_auc": 0.587,
-      "pers_auc": 0.487,
+      "model_rmse": 0.1724,
+      "pers_rmse": 0.1998,
+      "model_auc": 0.588,
+      "pers_auc": 0.488,
       "pos_rate": 0.2583
      },
      "7": {
-      "model_rmse": 0.1729,
-      "pers_rmse": 0.2027,
-      "model_auc": 0.538,
-      "pers_auc": 0.457,
-      "pos_rate": 0.2611
+      "model_rmse": 0.173,
+      "pers_rmse": 0.203,
+      "model_auc": 0.54,
+      "pers_auc": 0.456,
+      "pos_rate": 0.2625
      },
      "14": {
-      "model_rmse": 0.1718,
-      "pers_rmse": 0.1949,
-      "model_auc": 0.56,
-      "pers_auc": 0.524,
-      "pos_rate": 0.2569
+      "model_rmse": 0.1717,
+      "pers_rmse": 0.1948,
+      "model_auc": 0.558,
+      "pers_auc": 0.523,
+      "pos_rate": 0.2556
      }
     }
    },
@@ -166,32 +166,32 @@
     "target": "n_haz_t（严格因果口径）",
     "horizons": {
      "1": {
-      "model_rmse": 0.1527,
-      "pers_rmse": 0.1853,
-      "model_auc": 0.761,
-      "pers_auc": 0.597,
-      "pos_rate": 0.2597
+      "model_rmse": 0.1521,
+      "pers_rmse": 0.1839,
+      "model_auc": 0.756,
+      "pers_auc": 0.592,
+      "pos_rate": 0.2514
      },
      "3": {
-      "model_rmse": 0.1717,
-      "pers_rmse": 0.1999,
-      "model_auc": 0.6,
-      "pers_auc": 0.492,
-      "pos_rate": 0.2597
+      "model_rmse": 0.1704,
+      "pers_rmse": 0.1985,
+      "model_auc": 0.597,
+      "pers_auc": 0.494,
+      "pos_rate": 0.2528
      },
      "7": {
-      "model_rmse": 0.1726,
-      "pers_rmse": 0.2025,
-      "model_auc": 0.55,
-      "pers_auc": 0.469,
-      "pos_rate": 0.2625
+      "model_rmse": 0.1719,
+      "pers_rmse": 0.2015,
+      "model_auc": 0.539,
+      "pers_auc": 0.465,
+      "pos_rate": 0.2569
      },
      "14": {
-      "model_rmse": 0.1715,
-      "pers_rmse": 0.1966,
-      "model_auc": 0.564,
-      "pers_auc": 0.516,
-      "pos_rate": 0.2569
+      "model_rmse": 0.1703,
+      "pers_rmse": 0.195,
+      "model_auc": 0.572,
+      "pers_auc": 0.518,
+      "pos_rate": 0.25
      }
     }
    }
@@ -218,9 +218,9 @@
     "surge_trail": 0.035967
    },
    "前缀 85%": {
-    "wh_max": 0.38,
+    "wh_max": 0.4,
     "precipitation_sum": 16.3,
-    "surge_trail": 0.034783
+    "surge_trail": 0.034867
    }
   },
   "hazard_days_changed_vs_record_thresholds": 17,

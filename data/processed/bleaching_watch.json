@@ -2,10 +2,10 @@
  "method": "Hobday et al. (2016) 海洋热浪定义 + Hobday et al. (2018) I-IV 强度分级；本站逐日海温（Open-Meteo Marine 日均）",
  "baseline": {
   "first": "2022-11-23",
-  "last": "2026-10-18",
-  "n_days": 1414,
+  "last": "2026-10-19",
+  "n_days": 1415,
   "clim_win_days": 31,
-  "anom_p90": 0.3907,
+  "anom_p90": 0.3914,
   "sst_p90": 30.675,
   "mmm_base_year": 2023,
   "mmm_month": "2023-05",
@@ -18,9 +18,9 @@
  },
  "tier_rule": {
   "metric": "近 84 天累计正向海温异常（摄氏度 天）",
-  "p50": 10.537,
-  "p75": 15.637,
-  "p90": 17.89,
+  "p50": 10.526,
+  "p75": 15.599,
+  "p90": 17.894,
   "levels": [
    "低",
    "中",
@@ -34,17 +34,8 @@
    "end": "2023-11-10",
    "days": 11,
    "max_anom": 0.6046,
-   "cum_intensity": 5.6144,
+   "cum_intensity": 5.5889,
    "peak_sst": 30.88,
-   "category": 1
-  },
-  {
-   "start": "2024-01-09",
-   "end": "2024-01-13",
-   "days": 5,
-   "max_anom": 0.632,
-   "cum_intensity": 2.5658,
-   "peak_sst": 29.85,
    "category": 1
   },
   {
@@ -141,8 +132,8 @@
    "start": "2026-09-24",
    "end": "2026-10-06",
    "days": 13,
-   "max_anom": 0.8402,
-   "cum_intensity": 8.1372,
+   "max_anom": 0.8403,
+   "cum_intensity": 8.1211,
    "peak_sst": 31.07,
    "category": 2
   }
@@ -163,15 +154,15 @@
    "hot_days": 35,
    "mhw_days": 11,
    "events": 1,
-   "max_cum": 5.614,
+   "max_cum": 5.589,
    "max_sst": 31.22
   },
   {
    "year": 2024,
    "days": 366,
    "hot_days": 45,
-   "mhw_days": 33,
-   "events": 5,
+   "mhw_days": 28,
+   "events": 4,
    "max_cum": 4.833,
    "max_sst": 31.18
   },
@@ -186,29 +177,29 @@
   },
   {
    "year": 2026,
-   "days": 291,
-   "hot_days": 43,
+   "days": 292,
+   "hot_days": 44,
    "mhw_days": 35,
    "events": 4,
-   "max_cum": 8.137,
+   "max_cum": 8.121,
    "max_sst": 31.45
   }
  ],
  "now": {
   "window_days": 84,
-  "start": "2026-07-27",
-  "end": "2026-10-18",
-  "cum_anom": 19.021,
-  "percentile": 96.9,
+  "start": "2026-07-28",
+  "end": "2026-10-19",
+  "cum_anom": 19.517,
+  "percentile": 98.7,
   "tier": 3,
   "tier_txt": "极高",
-  "hot_days": 14,
+  "hot_days": 15,
   "last_event": {
    "start": "2026-09-24",
    "end": "2026-10-06",
    "days": 13,
-   "max_anom": 0.8402,
-   "cum_intensity": 8.1372,
+   "max_anom": 0.8403,
+   "cum_intensity": 8.1211,
    "peak_sst": 31.07,
    "category": 2
   }
@@ -217,8 +208,8 @@
   "months": 45,
   "month_first": "2022-12",
   "month_last": "2026-09",
-  "r_cum_pacific": 0.304,
-  "r_cum_global": 0.293,
+  "r_cum_pacific": 0.305,
+  "r_cum_global": 0.292,
   "r_hot_pacific": -0.032,
   "years": [
    2023,
@@ -227,10 +218,10 @@
    2026
   ],
   "year_station_cum": [
-   27.075,
-   64.397,
-   42.441,
-   42.534
+   26.966,
+   64.324,
+   42.372,
+   43.03
   ],
   "year_noaa_pacific_max": [
    0.07111,
@@ -298,12 +289,12 @@
    },
    {
     "month": "2023-10",
-    "cum_anom": 4.757,
+    "cum_anom": 4.668,
     "noaa_pacific": 0.01372
    },
    {
     "month": "2023-11",
-    "cum_anom": 8.603,
+    "cum_anom": 8.583,
     "noaa_pacific": 0.01018
    },
    {
@@ -358,7 +349,7 @@
    },
    {
     "month": "2024-10",
-    "cum_anom": 1.326,
+    "cum_anom": 1.252,
     "noaa_pacific": 0.03566
    },
    {
@@ -413,7 +404,7 @@
    },
    {
     "month": "2025-10",
-    "cum_anom": 1.993,
+    "cum_anom": 1.924,
     "noaa_pacific": 0.01127
    },
    {
@@ -476,20 +467,20 @@
    "site": "Semporna",
    "overlap_days": 1421,
    "noaa_pacific_p90_pct": 0.08739,
-   "events_total": 13,
+   "events_total": 12,
    "events_hit": 3,
-   "event_hit_rate": 23.1,
-   "mean_peak_lag_days": 4.2,
+   "event_hit_rate": 25.0,
+   "mean_peak_lag_days": 4.5,
    "contingency": {
     "both": 13,
-    "station_only": 83,
+    "station_only": 78,
     "official_only": 130,
-    "neither": 1195
+    "neither": 1200
    },
-   "p_official_given_station": 13.5,
+   "p_official_given_station": 14.3,
    "p_station_given_official": 9.1,
    "background_official_rate": 10.1,
-   "lift": 1.35,
+   "lift": 1.42,
    "events": [
     {
      "start": "2023-10-31",
@@ -497,15 +488,6 @@
      "days": 11,
      "category": 1,
      "noaa_pacific_max_pct": 0.01405,
-     "noaa_days_above_p90": 0,
-     "hit": false
-    },
-    {
-     "start": "2024-01-09",
-     "end": "2024-01-13",
-     "days": 5,
-     "category": 1,
-     "noaa_pacific_max_pct": 0.05616,
      "noaa_days_above_p90": 0,
      "hit": false
     },
@@ -612,38 +594,38 @@
   },
   "vs_sabah": {
    "source": "NOAA CRW regional virtual station: Sabah, Malaysia (5km product, polygon centre 117.2E / 5.8N)",
-   "overlap_days": 1410,
+   "overlap_days": 1413,
    "first": "2022-11-23",
-   "last": "2026-10-15",
+   "last": "2026-10-18",
    "official_mmm": 29.4999,
    "station_mmm": 30.517,
    "sst_bias_station_minus_official": -0.013,
    "r_sst": 0.717,
-   "r_anom": 0.466,
-   "r_cum84_vs_dhw": 0.387,
-   "r_event_intensity_vs_max_dhw": 0.579,
-   "latest_date": "2026-10-15",
-   "latest_dhw": 14.199,
+   "r_anom": 0.467,
+   "r_cum84_vs_dhw": 0.391,
+   "r_event_intensity_vs_max_dhw": 0.589,
+   "latest_date": "2026-10-18",
+   "latest_dhw": 14.563,
    "latest_alert": 4,
    "alert_days": {
-    "ge1": 1161,
-    "ge2": 583,
-    "ge3": 404,
-    "ge4": 187
+    "ge1": 1164,
+    "ge2": 586,
+    "ge3": 407,
+    "ge4": 190
    },
-   "max_dhw": 14.297,
-   "events_total": 13,
-   "events_hit": 13,
+   "max_dhw": 14.563,
+   "events_total": 12,
+   "events_hit": 12,
    "event_hit_rate": 100.0,
    "contingency": {
-    "both": 96,
+    "both": 91,
     "station_only": 0,
-    "official_only": 1065,
+    "official_only": 1073,
     "neither": 249
    },
    "p_alert_given_station": 100.0,
-   "p_station_given_alert": 8.3,
-   "background_alert_rate": 82.3,
+   "p_station_given_alert": 7.8,
+   "background_alert_rate": 82.4,
    "lift": 1.21,
    "events": [
     {
@@ -654,16 +636,6 @@
      "vs_max_dhw": 7.887,
      "vs_max_hotspot": 1.58,
      "vs_max_alert": 3,
-     "hit": true
-    },
-    {
-     "start": "2024-01-09",
-     "end": "2024-01-13",
-     "days": 5,
-     "category": 1,
-     "vs_max_dhw": 5.443,
-     "vs_max_hotspot": 0.26,
-     "vs_max_alert": 1,
      "hit": true
     },
     {
@@ -781,70 +753,70 @@
   "vs_sites": [
    {
     "site": "Sabah, Malaysia（仙本那同区）",
-    "overlap_days": 1410,
+    "overlap_days": 1413,
     "first": "2022-11-23",
-    "last": "2026-10-15",
+    "last": "2026-10-18",
     "official_mmm": 29.4999,
-    "station_mean": 29.854,
-    "official_hotspot_mean": 29.868,
+    "station_mean": 29.856,
+    "official_hotspot_mean": 29.869,
     "bias_station_minus_official": -0.013,
     "r_sst": 0.717,
     "warmest_month": "2026-05",
     "warmest_month_mean": 31.024,
-    "hot_p90": 30.659,
-    "hot_days": 141,
+    "hot_p90": 30.673,
+    "hot_days": 142,
     "alert_days": {
-     "ge1": 1161,
-     "ge2": 583,
-     "ge3": 404
+     "ge1": 1164,
+     "ge2": 586,
+     "ge3": 407
     },
-    "max_dhw": 14.297,
-    "latest_date": "2026-10-15",
-    "latest_dhw": 14.199,
+    "max_dhw": 14.563,
+    "latest_date": "2026-10-18",
+    "latest_dhw": 14.563,
     "latest_alert": 4,
     "contingency": {
-     "both": 141,
+     "both": 142,
      "hot_only": 0,
-     "official_only": 1020,
+     "official_only": 1022,
      "neither": 249
     },
     "p_alert_given_hot": 100.0,
-    "p_hot_given_alert": 12.1,
-    "background_alert_rate": 82.3,
+    "p_hot_given_alert": 12.2,
+    "background_alert_rate": 82.4,
     "lift": 1.21
    },
    {
     "site": "Palau（帕劳）",
-    "overlap_days": 1403,
+    "overlap_days": 1406,
     "first": "2022-11-23",
-    "last": "2026-10-15",
+    "last": "2026-10-18",
     "official_mmm": 29.2309,
-    "station_mean": 29.599,
+    "station_mean": 29.598,
     "official_hotspot_mean": 29.66,
-    "bias_station_minus_official": -0.061,
-    "r_sst": 0.921,
+    "bias_station_minus_official": -0.062,
+    "r_sst": 0.92,
     "warmest_month": "2024-08",
     "warmest_month_mean": 30.44,
     "hot_p90": 30.3,
     "hot_days": 138,
     "alert_days": {
-     "ge1": 1162,
+     "ge1": 1165,
      "ge2": 356,
      "ge3": 161
     },
     "max_dhw": 9.86,
-    "latest_date": "2026-10-15",
+    "latest_date": "2026-10-18",
     "latest_dhw": 0.0,
     "latest_alert": 1,
     "contingency": {
      "both": 138,
      "hot_only": 0,
-     "official_only": 1024,
+     "official_only": 1027,
      "neither": 241
     },
     "p_alert_given_hot": 100.0,
-    "p_hot_given_alert": 11.9,
-    "background_alert_rate": 82.8,
+    "p_hot_given_alert": 11.8,
+    "background_alert_rate": 82.9,
     "lift": 1.21
    }
   ]

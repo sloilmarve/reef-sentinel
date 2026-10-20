@@ -11,8 +11,8 @@
  "by_h": {
   "1": {
    "n_test": 534,
-   "sigma": 0.1399,
-   "q80_multiplier": 1.247,
+   "sigma": 0.14,
+   "q80_multiplier": 1.248,
    "base_rate_pct": 2.06,
    "n_compound": 11,
    "upper_bound": [
@@ -26,11 +26,11 @@
     },
     {
      "trigger": 0.5,
-     "n_trigger": 10,
+     "n_trigger": 11,
      "hit": 4,
-     "precision_pct": 40.0,
+     "precision_pct": 36.4,
      "recall_pct": 36.4,
-     "lift_vs_base": 19.42
+     "lift_vs_base": 17.65
     },
     {
      "trigger": 0.6667,
@@ -90,26 +90,26 @@
      "lift_vs_base": 7.28
     }
    ],
-   "rmse": 0.1399
+   "rmse": 0.14
   },
   "2": {
    "n_test": 534,
-   "sigma": 0.155,
-   "q80_multiplier": 1.214,
+   "sigma": 0.1546,
+   "q80_multiplier": 1.215,
    "base_rate_pct": 2.06,
    "n_compound": 11,
    "upper_bound": [
     {
      "trigger": 0.3333,
-     "n_trigger": 129,
+     "n_trigger": 125,
      "hit": 7,
-     "precision_pct": 5.4,
+     "precision_pct": 5.6,
      "recall_pct": 63.6,
-     "lift_vs_base": 2.63
+     "lift_vs_base": 2.72
     },
     {
      "trigger": 0.5,
-     "n_trigger": 2,
+     "n_trigger": 1,
      "hit": 0,
      "precision_pct": 0.0,
      "recall_pct": 0.0,
@@ -173,22 +173,22 @@
      "lift_vs_base": 3.64
     }
    ],
-   "rmse": 0.155
+   "rmse": 0.1546
   },
   "3": {
    "n_test": 534,
-   "sigma": 0.1598,
-   "q80_multiplier": 1.201,
+   "sigma": 0.1597,
+   "q80_multiplier": 1.203,
    "base_rate_pct": 2.06,
    "n_compound": 11,
    "upper_bound": [
     {
      "trigger": 0.3333,
-     "n_trigger": 130,
+     "n_trigger": 128,
      "hit": 6,
-     "precision_pct": 4.6,
+     "precision_pct": 4.7,
      "recall_pct": 54.5,
-     "lift_vs_base": 2.24
+     "lift_vs_base": 2.28
     },
     {
      "trigger": 0.5,
@@ -256,22 +256,22 @@
      "lift_vs_base": 2.43
     }
    ],
-   "rmse": 0.1598
+   "rmse": 0.1597
   },
   "4": {
    "n_test": 534,
-   "sigma": 0.1625,
-   "q80_multiplier": 1.219,
+   "sigma": 0.1628,
+   "q80_multiplier": 1.221,
    "base_rate_pct": 2.06,
    "n_compound": 11,
    "upper_bound": [
     {
      "trigger": 0.3333,
-     "n_trigger": 101,
+     "n_trigger": 105,
      "hit": 5,
-     "precision_pct": 5.0,
+     "precision_pct": 4.8,
      "recall_pct": 45.5,
-     "lift_vs_base": 2.4
+     "lift_vs_base": 2.31
     },
     {
      "trigger": 0.5,
@@ -339,12 +339,12 @@
      "lift_vs_base": 4.85
     }
    ],
-   "rmse": 0.1625
+   "rmse": 0.1628
   },
   "5": {
    "n_test": 534,
-   "sigma": 0.1633,
-   "q80_multiplier": 1.189,
+   "sigma": 0.1636,
+   "q80_multiplier": 1.186,
    "base_rate_pct": 2.06,
    "n_compound": 11,
    "upper_bound": [
@@ -422,11 +422,11 @@
      "lift_vs_base": 1.21
     }
    ],
-   "rmse": 0.1633
+   "rmse": 0.1636
   },
   "6": {
    "n_test": 534,
-   "sigma": 0.1628,
+   "sigma": 0.1629,
    "q80_multiplier": 1.216,
    "base_rate_pct": 2.06,
    "n_compound": 11,
@@ -505,22 +505,22 @@
      "lift_vs_base": 3.64
     }
    ],
-   "rmse": 0.1628
+   "rmse": 0.1629
   },
   "7": {
    "n_test": 534,
    "sigma": 0.1628,
-   "q80_multiplier": 1.261,
+   "q80_multiplier": 1.265,
    "base_rate_pct": 2.06,
    "n_compound": 11,
    "upper_bound": [
     {
      "trigger": 0.3333,
-     "n_trigger": 81,
+     "n_trigger": 83,
      "hit": 1,
      "precision_pct": 1.2,
      "recall_pct": 9.1,
-     "lift_vs_base": 0.6
+     "lift_vs_base": 0.58
     },
     {
      "trigger": 0.5,
@@ -592,18 +592,18 @@
   },
   "8": {
    "n_test": 534,
-   "sigma": 0.1646,
-   "q80_multiplier": 1.17,
+   "sigma": 0.1645,
+   "q80_multiplier": 1.171,
    "base_rate_pct": 2.06,
    "n_compound": 11,
    "upper_bound": [
     {
      "trigger": 0.3333,
-     "n_trigger": 117,
+     "n_trigger": 118,
      "hit": 3,
-     "precision_pct": 2.6,
+     "precision_pct": 2.5,
      "recall_pct": 27.3,
-     "lift_vs_base": 1.24
+     "lift_vs_base": 1.23
     },
     {
      "trigger": 0.5,
@@ -671,28 +671,28 @@
      "lift_vs_base": 2.43
     }
    ],
-   "rmse": 0.1646
+   "rmse": 0.1645
   }
  },
  "selfcheck": {
   "metrics": [
    {
     "h": 1,
-    "audit": 0.1399,
-    "dashboard": 0.13992966008260813,
-    "abs_diff": 2.966e-05
+    "audit": 0.14,
+    "dashboard": 0.1400297135527411,
+    "abs_diff": 2.971e-05
    },
    {
     "h": 3,
-    "audit": 0.1598,
-    "dashboard": 0.1598013480578931,
-    "abs_diff": 1.35e-06
+    "audit": 0.1597,
+    "dashboard": 0.15969299707047532,
+    "abs_diff": 7e-06
    },
    {
     "h": 7,
     "audit": 0.1628,
-    "dashboard": 0.16284947458304577,
-    "abs_diff": 4.947e-05
+    "dashboard": 0.1628211013222402,
+    "abs_diff": 2.11e-05
    }
   ],
   "interval": [

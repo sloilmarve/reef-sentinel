@@ -1,7 +1,7 @@
 {
  "task": "model inputs are strictly causal (no feature reads day t+1 or later)",
  "protocol": "rebuild every model column from the raw inputs of the truncated prefix 0..T with the record's causal thresholds, then compare with the stored value",
- "n_days": 1449,
+ "n_days": 1450,
  "feature_count": 66,
  "causal_thresholds": {
   "wh_max": 0.4,
@@ -10,15 +10,15 @@
  },
  "cuts": [
   {
-   "cut": "2024-06-02",
-   "t": 579,
+   "cut": "2024-06-03",
+   "t": 580,
    "missing": [],
    "n_compared": 66,
    "max_abs_diff": 0.0
   },
   {
-   "cut": "2025-01-05",
-   "t": 796,
+   "cut": "2025-01-06",
+   "t": 797,
    "missing": [],
    "n_compared": 66,
    "max_abs_diff": 0.0
@@ -31,22 +31,22 @@
    "max_abs_diff": 0.0
   },
   {
-   "cut": "2026-03-16",
-   "t": 1231,
+   "cut": "2026-03-17",
+   "t": 1232,
    "missing": [],
    "n_compared": 66,
    "max_abs_diff": 0.0
   },
   {
-   "cut": "2026-10-12",
-   "t": 1441,
+   "cut": "2026-10-13",
+   "t": 1442,
    "missing": [],
    "n_compared": 66,
    "max_abs_diff": 0.0
   },
   {
-   "cut": "2026-10-18",
-   "t": 1447,
+   "cut": "2026-10-19",
+   "t": 1448,
    "missing": [],
    "n_compared": 66,
    "max_abs_diff": 0.0
@@ -57,15 +57,15 @@
  "analysis_cols_excluded": [
   {
    "col": "sl_still",
-   "max_abs_diff": 0.014500291375291408
+   "max_abs_diff": 0.017657203907203822
   },
   {
    "col": "sl_anom",
-   "max_abs_diff": 0.014500291375291408
+   "max_abs_diff": 0.017657203907203822
   },
   {
    "col": "surge",
-   "max_abs_diff": 0.014500291375291408
+   "max_abs_diff": 0.017657203907203822
   }
  ],
  "analysis_cols_in_features": [],
@@ -94,32 +94,32 @@
     "target": "n_haz（记录口径，含中心化残差）",
     "horizons": {
      "1": {
-      "model_rmse": 0.1498,
-      "pers_rmse": 0.1863,
-      "model_auc": 0.775,
-      "pers_auc": 0.569,
+      "model_rmse": 0.1506,
+      "pers_rmse": 0.1861,
+      "model_auc": 0.77,
+      "pers_auc": 0.57,
       "pos_rate": 0.2778
      },
      "3": {
       "model_rmse": 0.1688,
-      "pers_rmse": 0.2019,
-      "model_auc": 0.641,
-      "pers_auc": 0.441,
-      "pos_rate": 0.2778
+      "pers_rmse": 0.2017,
+      "model_auc": 0.643,
+      "pers_auc": 0.443,
+      "pos_rate": 0.2792
      },
      "7": {
-      "model_rmse": 0.1725,
-      "pers_rmse": 0.2011,
-      "model_auc": 0.581,
-      "pers_auc": 0.443,
+      "model_rmse": 0.1721,
+      "pers_rmse": 0.2008,
+      "model_auc": 0.579,
+      "pers_auc": 0.445,
       "pos_rate": 0.2819
      },
      "14": {
-      "model_rmse": 0.1692,
-      "pers_rmse": 0.191,
-      "model_auc": 0.626,
-      "pers_auc": 0.54,
-      "pos_rate": 0.2708
+      "model_rmse": 0.1689,
+      "pers_rmse": 0.1912,
+      "model_auc": 0.627,
+      "pers_auc": 0.538,
+      "pos_rate": 0.2694
      }
     }
    },
@@ -132,31 +132,31 @@
     "target": "n_haz_t（严格因果口径）",
     "horizons": {
      "1": {
-      "model_rmse": 0.1534,
-      "pers_rmse": 0.1852,
-      "model_auc": 0.761,
-      "pers_auc": 0.588,
+      "model_rmse": 0.1537,
+      "pers_rmse": 0.1853,
+      "model_auc": 0.757,
+      "pers_auc": 0.587,
       "pos_rate": 0.2583
      },
      "3": {
       "model_rmse": 0.1724,
-      "pers_rmse": 0.1998,
-      "model_auc": 0.588,
-      "pers_auc": 0.488,
-      "pos_rate": 0.2583
+      "pers_rmse": 0.1994,
+      "model_auc": 0.589,
+      "pers_auc": 0.491,
+      "pos_rate": 0.2597
      },
      "7": {
-      "model_rmse": 0.173,
-      "pers_rmse": 0.203,
-      "model_auc": 0.54,
+      "model_rmse": 0.1729,
+      "pers_rmse": 0.2027,
+      "model_auc": 0.538,
       "pers_auc": 0.456,
       "pos_rate": 0.2625
      },
      "14": {
-      "model_rmse": 0.1717,
-      "pers_rmse": 0.1948,
-      "model_auc": 0.558,
-      "pers_auc": 0.523,
+      "model_rmse": 0.1713,
+      "pers_rmse": 0.1951,
+      "model_auc": 0.561,
+      "pers_auc": 0.522,
       "pos_rate": 0.2556
      }
     }
@@ -166,30 +166,30 @@
     "target": "n_haz_t（严格因果口径）",
     "horizons": {
      "1": {
-      "model_rmse": 0.1521,
-      "pers_rmse": 0.1839,
+      "model_rmse": 0.1519,
+      "pers_rmse": 0.1841,
       "model_auc": 0.756,
-      "pers_auc": 0.592,
+      "pers_auc": 0.59,
       "pos_rate": 0.2514
      },
      "3": {
-      "model_rmse": 0.1704,
-      "pers_rmse": 0.1985,
-      "model_auc": 0.597,
-      "pers_auc": 0.494,
-      "pos_rate": 0.2528
+      "model_rmse": 0.1703,
+      "pers_rmse": 0.1981,
+      "model_auc": 0.6,
+      "pers_auc": 0.497,
+      "pos_rate": 0.2542
      },
      "7": {
-      "model_rmse": 0.1719,
-      "pers_rmse": 0.2015,
-      "model_auc": 0.539,
+      "model_rmse": 0.1718,
+      "pers_rmse": 0.2012,
+      "model_auc": 0.541,
       "pers_auc": 0.465,
       "pos_rate": 0.2569
      },
      "14": {
-      "model_rmse": 0.1703,
-      "pers_rmse": 0.195,
-      "model_auc": 0.572,
+      "model_rmse": 0.1701,
+      "pers_rmse": 0.1953,
+      "model_auc": 0.576,
       "pers_auc": 0.518,
       "pos_rate": 0.25
      }
@@ -220,7 +220,7 @@
    "前缀 85%": {
     "wh_max": 0.4,
     "precipitation_sum": 16.3,
-    "surge_trail": 0.034867
+    "surge_trail": 0.034931
    }
   },
   "hazard_days_changed_vs_record_thresholds": 17,

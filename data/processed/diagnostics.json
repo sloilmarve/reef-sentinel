@@ -1,30 +1,30 @@
 {
   "1": {
     "prev": 0.026,
-    "model_auc": 0.808,
-    "clim_auc": 0.433,
-    "persistence_auc": 0.733,
+    "model_auc": 0.809,
+    "clim_auc": 0.453,
+    "persistence_auc": 0.73,
     "brier": 0.026
   },
   "3": {
     "prev": 0.06,
-    "model_auc": 0.644,
-    "clim_auc": 0.404,
-    "persistence_auc": 0.878,
-    "brier": 0.077
+    "model_auc": 0.643,
+    "clim_auc": 0.407,
+    "persistence_auc": 0.877,
+    "brier": 0.076
   },
   "7": {
     "prev": 0.126,
-    "model_auc": 0.515,
-    "clim_auc": 0.443,
-    "persistence_auc": 0.938,
+    "model_auc": 0.513,
+    "clim_auc": 0.438,
+    "persistence_auc": 0.937,
     "brier": 0.172
   },
   "14": {
     "prev": 0.243,
     "model_auc": 0.568,
-    "clim_auc": 0.501,
-    "persistence_auc": 0.962,
-    "brier": 0.279
+    "clim_auc": 0.498,
+    "persistence_auc": 0.953,
+    "brier": 0.278
   }
 }
